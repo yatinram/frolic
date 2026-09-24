@@ -1,0 +1,123 @@
+// Bootstrap SCSS Grid & Utilities (No full reset to avoid conflicts with Ant Design)
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/helpers';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/utilities/api';
+
+// Antd Global Tokens and CSS Overrides
+:root {
+  --ant-color-primary: #{$orange};
+  --ant-color-primary-hover: #{$orange-dark};
+  --ant-color-success: #{$green};
+  --ant-color-info: #{$blue};
+  --ant-color-warning: #{$yellow};
+  --ant-color-error: #{$coral};
+  --ant-border-radius: #{$r-md};
+  --ant-font-family: #{$font-body};
+  
+  --primary: #{$orange};
+  --primary-hover: #{$orange-dark};
+  --green: #{$green};
+  --green-light: #4CAF3D;
+  --blue: #{$blue};
+  --yellow: #{$yellow};
+  --pink: #{$pink};
+  --bg-light: #{$canvas};
+  --text-dark: #{$text-primary};
+  --text-muted: #{$text-muted};
+  --card-bg: #{$white};
+}
+
+// Global Resets & Body Styles
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $canvas;
+  color: $text-primary;
+  font-family: $font-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: $canvas;
+}
+::-webkit-scrollbar-thumb {
+  background: $orange;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $orange-dark;
+}
+
+// Global Brand Button classes (legacy support)
+.frolic-btn-primary {
+  @include frolic-button-base;
+  background-color: $orange;
+  color: $white;
+  padding: 12px 26px;
+  font-family: $font-heading;
+  font-size: 0.98rem;
+  box-shadow: $shadow-btn;
+  
+  &:hover {
+    background-color: $orange-dark;
+    color: $white;
+  }
+}
+
+.frolic-btn-secondary {
+  @include frolic-button-base;
+  background-color: transparent;
+  color: $orange;
+  border: 2px solid $orange;
+  padding: 10px 24px;
+  font-family: $font-heading;
+  font-size: 0.98rem;
+  
+  &:hover {
+    background-color: rgba($orange, 0.08);
+    color: $orange;
+  }
+}
+
+.frolic-card {
+  @include frolic-card;
+  padding: 28px;
+}
+
+// Animations
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.floating-element {
+  animation: floatSlow 4s ease-in-out infinite;
+}

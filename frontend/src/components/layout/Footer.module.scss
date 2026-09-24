@@ -1,0 +1,244 @@
+// ── Dark Emerald / Teal Luxury Corporate Footer ──
+$footer-bg: #071918;
+$footer-bg-subtle: #0B2220;
+$footer-heading-mint: #2ECC71;
+$footer-heading-teal: #38D39F;
+$footer-subheading: #FFFFFF;
+$footer-text-muted: #9BB0A8;
+$footer-text-hover: #FFFFFF;
+$footer-border-emerald: rgba(46, 204, 113, 0.22);
+$footer-border-dark: rgba(255, 255, 255, 0.08);
+
+.footerWrapper {
+  background-color: $footer-bg;
+  color: $footer-text-muted;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  border-top: 1px solid rgba(46, 204, 113, 0.15);
+}
+
+.footerContainer {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 60px 24px 20px 24px;
+}
+
+// ── Top Navigation Grid ──
+.topGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  padding-bottom: 48px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.colGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainHeading {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: $footer-heading-teal;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.subHeading {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: $footer-subheading;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    line-height: 1.4;
+  }
+
+  a {
+    color: $footer-text-muted;
+    text-decoration: none;
+    font-size: 0.87rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-block;
+
+    &:hover {
+      color: $footer-subheading;
+      transform: translateX(4px);
+    }
+  }
+}
+
+// ── Middle Brand & Social Row ──
+.middleDivider {
+  border-top: 1px solid $footer-border-emerald;
+  padding: 40px 0 32px 0;
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr 1fr;
+  gap: 40px;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .logoRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    img {
+      height: 48px;
+      width: auto;
+      border-radius: 10px;
+      object-fit: contain;
+      background: #FFFFFF;
+      padding: 3px;
+    }
+
+    .brandName {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+
+      span {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: $footer-heading-teal;
+        letter-spacing: 0.5px;
+        margin-top: 3px;
+      }
+    }
+  }
+
+  .tagline {
+    font-size: 0.88rem;
+    color: #F5821F;
+    font-weight: 700;
+  }
+}
+
+.whatWeDoCol {
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: $footer-heading-teal;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: $footer-text-muted;
+    line-height: 1.65;
+    margin: 0;
+  }
+}
+
+.socialCol {
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: $footer-heading-teal;
+    margin-bottom: 12px;
+  }
+
+  .socialIcons {
+    display: flex;
+    gap: 12px;
+
+    a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(46, 204, 113, 0.12);
+      border: 1px solid rgba(46, 204, 113, 0.25);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+
+      &:hover {
+        background: $footer-heading-mint;
+        color: #071918;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(46, 204, 113, 0.35);
+      }
+    }
+  }
+}
+
+// ── Bottom Legal & Copyright Bar ──
+.bottomBar {
+  border-top: 1px solid $footer-border-emerald;
+  padding: 24px 0 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: #7E948D;
+
+  a {
+    color: #7E948D;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+
+  .legalLinks {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}

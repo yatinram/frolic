@@ -1,0 +1,138 @@
+/* Realistic Animated Jungle Hero Styles */
+
+.jungle-hero-wrapper {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 75% 25%, #E9F7E8 0%, #FFF8EF 55%, #FFF0DE 100%);
+}
+
+.jungle-layer-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ambient Jungle Sunrays */
+.jungle-sunray {
+  position: absolute;
+  top: -100px;
+  right: 15%;
+  width: 350px;
+  height: 700px;
+  background: radial-gradient(ellipse at top, rgba(253, 185, 19, 0.25) 0%, rgba(255, 248, 239, 0) 70%);
+  transform: rotate(-25deg);
+  filter: blur(25px);
+  pointer-events: none;
+}
+
+/* Floating Jungle Foliage Elements */
+.jungle-leaf-1 {
+  position: absolute;
+  top: 8%;
+  left: 3%;
+  font-size: 3rem;
+  opacity: 0.85;
+  filter: drop-shadow(0 10px 15px rgba(58, 150, 45, 0.25));
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.jungle-leaf-2 {
+  position: absolute;
+  bottom: 12%;
+  left: 8%;
+  font-size: 3.5rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 10px 15px rgba(58, 150, 45, 0.25));
+  animation: floatSlow 8s ease-in-out infinite 1s;
+}
+
+.jungle-leaf-3 {
+  position: absolute;
+  top: 15%;
+  right: 6%;
+  font-size: 2.8rem;
+  opacity: 0.75;
+  filter: drop-shadow(0 8px 12px rgba(58, 150, 45, 0.2));
+  animation: floatSlow 7s ease-in-out infinite 2s;
+}
+
+.jungle-butterfly-1 {
+  position: absolute;
+  top: 32%;
+  left: 45%;
+  font-size: 2rem;
+  filter: drop-shadow(0 5px 10px rgba(245, 130, 31, 0.3));
+  animation: butterflyFlutter 10s ease-in-out infinite;
+}
+
+.jungle-butterfly-2 {
+  position: absolute;
+  top: 65%;
+  right: 25%;
+  font-size: 1.6rem;
+  filter: drop-shadow(0 5px 10px rgba(46, 155, 214, 0.3));
+  animation: butterflyFlutter 12s ease-in-out infinite 3s;
+}
+
+/* Foreground Student & Kit Hero Frame */
+.hero-visual-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 25px 65px rgba(245, 130, 31, 0.16), 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.hero-visual-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .hero-visual-img {
+    height: 360px;
+  }
+}
+
+.hero-floating-badge-1 {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid #F5821F;
+  border-radius: 20px;
+  padding: 12px 20px;
+  box-shadow: 0 12px 30px rgba(245, 130, 31, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: floatGentle 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+.hero-floating-badge-2 {
+  position: absolute;
+  bottom: -22px;
+  left: -20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid #4CAF3D;
+  border-radius: 20px;
+  padding: 12px 20px;
+  box-shadow: 0 12px 30px rgba(76, 175, 61, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: floatGentle 5s ease-in-out infinite 1.5s;
+  z-index: 10;
+}

@@ -1,0 +1,487 @@
+// ── Frolic Dedicated Full-Page Program Detail Styles ──
+.detailPage {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding-bottom: 80px;
+}
+
+/* ── Hero Banner ── */
+.hero {
+  position: relative;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 100px 0 70px;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.28;
+    pointer-events: none;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+  }
+
+  &__backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__ageBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+
+  &__tagline {
+    font-size: 15px;
+    color: #e2e8f0;
+    font-weight: 600;
+    margin: 0;
+    max-width: 600px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+}
+
+/* ── 2-Column Master Layout ── */
+.masterLayout {
+  margin-top: 40px;
+}
+
+/* Left Specs Card */
+.specsCard {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+  &__image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: orange;
+  
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #f1f5f9;
+    font-size: 12.5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  &__value {
+    color: #0f172a;
+    font-weight: 800;
+  }
+
+  &__ctaBox {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Right Content Sections */
+.overviewSection {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+  &__title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 12px;
+  }
+
+  &__text {
+    font-size: 14.5px;
+    color: #475569;
+    line-height: 1.75;
+    margin: 0 0 28px;
+  }
+
+  &__subheading {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #64748b;
+    margin: 0 0 16px;
+  }
+}
+
+/* 4 Developmental Pillars Grid */
+.pillarCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px;
+  height: 100%;
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  &__number {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  &__desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+/* Thematic Curriculum Section */
+.curriculumSection {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+  &__title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 6px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0 0 24px;
+  }
+}
+
+.termRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__badge {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffffff;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__step {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 3px;
+  }
+
+  &__details {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+/* Milestones Checklist Section */
+.milestonesSection {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+  &__title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 6px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0 0 20px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    border-radius: 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #166534;
+  }
+}
+
+/* Daily Routine Timeline */
+.routineSection {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+  &__title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 6px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0 0 24px;
+  }
+}
+
+.routineCard {
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__time {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #f7941d;
+    background: #fff7ed;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    align-self: flex-start;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 4px;
+  }
+
+  &__desc {
+    font-size: 11.5px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+/* Bottom Program Switcher Bar */
+.bottomSwitcher {
+  background: #0f172a;
+  border-radius: 24px;
+  padding: 24px 32px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  &__label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #f7941d;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+.switchBtn {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  &Active {
+    background: #f7941d !important;
+    border-color: #f7941d !important;
+    color: #ffffff !important;
+  }
+}

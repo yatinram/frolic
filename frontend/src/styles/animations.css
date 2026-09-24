@@ -1,0 +1,110 @@
+/* Keyframe Animations for Frolic Kids Edu Labs */
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+}
+
+@keyframes swayTree {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes leafDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(30px, 40px) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(60px, 90px) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(245, 130, 31, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(245, 130, 31, 0.75), 0 0 55px rgba(253, 185, 19, 0.4);
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes butterflyFlutter {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(25px, -20px) scale(1.05) rotate(10deg);
+  }
+  50% {
+    transform: translate(50px, 0px) scale(0.95) rotate(-5deg);
+  }
+  75% {
+    transform: translate(25px, 20px) scale(1.05) rotate(8deg);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.anim-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.anim-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.anim-sway {
+  transform-origin: bottom center;
+  animation: swayTree 7s ease-in-out infinite;
+}
+
+.anim-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.anim-bounce {
+  animation: bounceSlow 3s ease-in-out infinite;
+}
+
+.anim-butterfly {
+  animation: butterflyFlutter 8s ease-in-out infinite;
+}

@@ -1,0 +1,395 @@
+// ============================================================
+//  GalleryPage.module.scss
+//  Pure Image Gallery with Time Filter & Swipeable Lightbox
+// ============================================================
+
+.galleryPage {
+  background-color: #FFF8EF;
+  min-height: 100vh;
+  padding-bottom: 90px;
+}
+
+// ── Time Filter Pills ─────────────────────────────────────
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 36px 0 32px;
+}
+
+.timeFilterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  background: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 50px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid rgba(0, 0, 0, 0.05);
+}
+
+.filterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  color: #4B5563;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  user-select: none;
+
+  &:hover {
+    color: #F7941D;
+    background: rgba(247, 148, 29, 0.08);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #F7941D 0%, #FF6B35 100%);
+    color: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(247, 148, 29, 0.35);
+  }
+}
+
+.countBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.08);
+
+  .active & {
+    background: rgba(255, 255, 255, 0.28);
+    color: #FFFFFF;
+  }
+}
+
+// ── Secondary Category Pills (Optional) ───────────────────
+.categoryBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.categoryPill {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #FFFFFF;
+  color: #64748B;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #F7941D;
+    color: #F7941D;
+  }
+
+  &.activeCat {
+    border-color: #F7941D;
+    background: #FFF4E5;
+    color: #F7941D;
+    font-weight: 700;
+  }
+}
+
+// ── Pure Image Cards Grid (NO TEXT) ──────────────────────
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 10px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 18px;
+  }
+}
+
+.imageCard {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  height: 270px;
+  background: #E2E8F0;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid rgba(0, 0, 0, 0.04);
+
+  &:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+
+    .cardImg {
+      transform: scale(1.08);
+    }
+
+    .cardOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.45) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewIconBadge {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #F7941D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  transform: scale(0.85);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  .imageCard:hover & {
+    transform: scale(1);
+  }
+}
+
+// ── Fullscreen Interactive Lightbox Modal ─────────────────
+.lightboxModal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(8, 14, 20, 0.95);
+  backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: none;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lightboxHeader {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.counterBadge {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.closeBtn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.08) rotate(90deg);
+  }
+}
+
+.lightboxBody {
+  width: 100%;
+  height: calc(100vh - 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+
+  &.isDragging {
+    cursor: grabbing;
+  }
+}
+
+.lightboxImageContainer {
+  max-width: 88vw;
+  max-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+  pointer-events: auto;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  pointer-events: none; // Allows smooth mouse dragging on container
+}
+
+// ── Left & Right Nav Arrow Buttons ────────────────────────
+.navArrowBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 90;
+  transition: all 0.22s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.36);
+    transform: translateY(-50%) scale(1.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  &.prevBtn {
+    left: 24px;
+
+    @media (max-width: 640px) {
+      left: 10px;
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+    }
+  }
+
+  &.nextBtn {
+    right: 24px;
+
+    @media (max-width: 640px) {
+      right: 10px;
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// ── Bottom Thumbnails Strip ──────────────────────────────
+.thumbnailStrip {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  max-width: 90vw;
+  overflow-x: auto;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  scrollbar-width: thin;
+  z-index: 100;
+
+  @media (max-width: 640px) {
+    display: none; // Hide thumbnails on small screens for cleaner mobile view
+  }
+}
+
+.thumbItem {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.activeThumb {
+    opacity: 1;
+    border-color: #F7941D;
+    transform: scale(1.08);
+  }
+}
+
+.dragHint {
+  position: absolute;
+  bottom: 82px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+
+  @media (max-width: 640px) {
+    bottom: 24px;
+  }
+}

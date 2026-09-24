@@ -1,0 +1,116 @@
+.button {
+  @include frolic-button-base;
+  font-size: 15px;
+  line-height: 1.4;
+
+  &--sm {
+    padding: 6px 16px;
+    font-size: 13px;
+  }
+
+  &--md {
+    padding: 10px 22px;
+    font-size: 14.5px;
+  }
+
+  &--lg {
+    padding: 13px 28px;
+    font-size: 16px;
+  }
+
+  &--primary {
+    background-color: $orange;
+    color: $white !important;
+    box-shadow: $shadow-btn;
+
+    &:hover {
+      background-color: $orange-dark;
+      color: $white !important;
+      box-shadow: 0 12px 32px rgba($orange, 0.42);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: $orange !important;
+    border: 2px solid $orange;
+
+    &:hover {
+      background-color: rgba($orange, 0.08);
+      color: $orange !important;
+    }
+  }
+
+  &--ghost {
+    background-color: rgba($white, 0.15);
+    color: $white !important;
+    border: 2px solid rgba($white, 0.35);
+
+    &:hover {
+      background-color: rgba($white, 0.25);
+      border-color: rgba($white, 0.6);
+      color: $white !important;
+    }
+  }
+
+  &--green {
+    background-color: $green;
+    color: $white !important;
+    box-shadow: 0 6px 20px rgba($green, 0.3);
+
+    &:hover {
+      background-color: $green-dark;
+      color: $white !important;
+      box-shadow: 0 12px 32px rgba($green, 0.42);
+    }
+  }
+
+  &--blue {
+    background-color: $blue;
+    color: $white !important;
+    box-shadow: 0 6px 20px rgba($blue, 0.3);
+
+    &:hover {
+      background-color: #1976D2;
+      color: $white !important;
+      box-shadow: 0 12px 32px rgba($blue, 0.42);
+    }
+  }
+
+  &--danger {
+    background-color: $coral;
+    color: $white !important;
+
+    &:hover {
+      background-color: #D32F2F;
+      color: $white !important;
+    }
+  }
+
+  &--link {
+    background: transparent;
+    color: $orange !important;
+    padding: 0;
+    box-shadow: none;
+
+    &:hover {
+      color: $orange-dark !important;
+      text-decoration: underline;
+    }
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--loading {
+    opacity: 0.75;
+    pointer-events: none;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    box-shadow: none !important;
+  }
+}

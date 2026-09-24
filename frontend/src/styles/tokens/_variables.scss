@@ -1,0 +1,53 @@
+// ── Brand Colors ──────────────────────────────
+$orange:        #F7941D;
+$orange-dark:   #E07A0A;
+$green:         #4CAF50;
+$green-dark:    #2E7D32;
+$blue:          #2196F3;
+$yellow:        #FFC107;
+$coral:         #FF5722;
+$purple:        #9C27B0;
+$pink:          #E91E63;
+
+// ── Surface & Canvas ──────────────────────────
+$canvas:        #FCFDFB;
+$white:         #FFFFFF;
+$peach:         #FFF8E7;
+$mint:          #F0F9F1;
+$sky:           #F0F7FF;
+$butter:        #FEF5E7;
+$dark-bg:       #1A2E1C;
+
+// ── Text ──────────────────────────────────────
+$text-primary:  #1A2016;
+$text-sub:      #4A5248;
+$text-muted:    #7A827A;
+$border-color:  rgba(30, 40, 30, 0.09);
+
+// ── Shadows ───────────────────────────────────
+$shadow-card:   0 4px 20px -2px rgba(30,40,30,0.08), 0 1px 6px -1px rgba(247,148,29,0.06);
+$shadow-hover:  0 12px 40px -6px rgba(247,148,29,0.20), 0 4px 12px -2px rgba(30,40,30,0.08);
+$shadow-btn:    0 8px 24px -4px rgba(247,148,29,0.35);
+$shadow-sm:     0 2px 8px rgba(0,0,0,0.04);
+$shadow-lg:     0 16px 36px rgba(0,0,0,0.08);
+
+// ── Border Radii ──────────────────────────────
+$r-sm:    8px;
+$r-md:    14px;
+$r-lg:    20px;
+$r-card:  22px;
+$r-xl:    28px;
+$r-full:  9999px;
+
+// ── Spacing Scale ─────────────────────────────
+$space-xs:  4px;
+$space-sm:  8px;
+$space-md:  16px;
+$space-lg:  24px;
+$space-xl:  40px;
+$space-2xl: 64px;
+$space-3xl: 96px;
+
+// ── Typography ────────────────────────────────
+$font-heading:  'Outfit', sans-serif;
+$font-body:     'Plus Jakarta Sans', sans-serif;

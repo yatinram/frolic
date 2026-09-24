@@ -1,0 +1,30 @@
+export const BRAND_COLORS = {
+  primaryOrange: '#F5821F',
+  primaryOrangeDark: '#E06B08',
+  primaryOrangeLight: '#FF9E4A',
+  secondaryGreen: '#4CAF3D',
+  secondaryGreenDark: '#3A962D',
+  secondaryGreenLight: '#6BD45C',
+  accentBlue: '#2E9BD6',
+  accentBlueDark: '#1A7BB0',
+  accentBlueLight: '#59B6E6',
+  accentRed: '#E8453C',
+  accentRedDark: '#C42F26',
+  accentYellow: '#FDB913',
+  accentYellowDark: '#DB9E05',
+  pageBg: '#FFF8EF',
+  pageBgDark: '#FFF0DE',
+  bodyText: '#3A3A3A',
+  bodyTextMuted: '#6B6B6B',
+  surfaceWhite: '#FFFFFF',
+  purpleAccent: '#7B2D8B',
+};
+
+export const GRADIENTS = {
+  orangeSunset: 'linear-gradient(135deg, #F5821F 0%, #FDB913 100%)',
+  emeraldForest: 'linear-gradient(135deg, #4CAF3D 0%, #2E9BD6 100%)',
+  royalOcean: 'linear-gradient(135deg, #2E9BD6 0%, #7B2D8B 100%)',
+  warmSun: 'linear-gradient(135deg, #FDB913 0%, #F5821F 100%)',
+  rubyGlow: 'linear-gradient(135deg, #E8453C 0%, #F5821F 100%)',
+  softCard: 'linear-gradient(180deg, #FFFFFF 0%, #FFF8EF 100%)',
+};

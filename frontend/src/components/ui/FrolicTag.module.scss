@@ -1,0 +1,62 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: $r-full;
+  font-family: $font-body;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &--sm {
+    padding: 2px 10px;
+    font-size: 10px;
+  }
+
+  &--md {
+    padding: 4px 14px;
+    font-size: 11px;
+  }
+
+  &--lg {
+    padding: 6px 18px;
+    font-size: 12.5px;
+  }
+
+  // Predefined color themes
+  &--orange {
+    background-color: rgba($orange, 0.12);
+    color: $orange;
+  }
+
+  &--green {
+    background-color: rgba($green, 0.12);
+    color: $green;
+  }
+
+  &--blue {
+    background-color: rgba($blue, 0.12);
+    color: $blue;
+  }
+
+  &--yellow {
+    background-color: rgba($yellow, 0.18);
+    color: #B27B00;
+  }
+
+  &--coral {
+    background-color: rgba($coral, 0.12);
+    color: $coral;
+  }
+
+  &--purple {
+    background-color: rgba($purple, 0.12);
+    color: $purple;
+  }
+
+  &--pink {
+    background-color: rgba($pink, 0.12);
+    color: $pink;
+  }
+}

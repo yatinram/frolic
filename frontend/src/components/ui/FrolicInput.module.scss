@@ -1,0 +1,76 @@
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  
+
+  &--error {
+    .label {
+      color: $coral;
+    }
+  }
+}
+
+.label {
+  font-family: $font-body;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.requiredStar {
+  color: $coral;
+  font-weight: bold;
+}
+
+.inputControl {
+  width: 100%;
+  border-radius: $r-md !important;
+  font-family: $font-body !important;
+  font-size: 14.5px !important;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    border-color: $orange !important;
+  }
+
+  &:focus,
+  &:focus-within {
+    border-color: $orange !important;
+    box-shadow: 0 0 0 3px rgba($orange, 0.15) !important;
+  }
+}
+
+.radioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.checkboxControl {
+  font-family: $font-body;
+  font-size: 14px;
+  color: $text-primary;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hint {
+  font-family: $font-body;
+  font-size: 12px;
+  color: $text-muted;
+  margin-top: 2px;
+}
+
+.error {
+  font-family: $font-body;
+  font-size: 12px;
+  color: $coral;
+  font-weight: 600;
+  margin-top: 2px;
+}

@@ -1,0 +1,871 @@
+// AdmissionPage.module.scss
+// Frolic Kids Edu Labs — Premium Admission Experience Design
+
+@use '../styles/tokens/variables' as *;
+
+.admissionPage {
+  background-color: $canvas;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: $font-body;
+  color: $text-primary;
+}
+
+// ──────────────────────────────────────────────
+// 1. TOP NOTICE BAR
+// ──────────────────────────────────────────────
+.topNoticeBar {
+  background: linear-gradient(90deg, #F59E0B 0%, #F7941D 50%, #EA580C 100%);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 8px 16px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(247, 148, 29, 0.2);
+
+  &__pulse {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+// ──────────────────────────────────────────────
+// 2. MAIN HEADER (REPLACES OLD HERO)
+// ──────────────────────────────────────────────
+.mainHeader {
+  padding: 100px 0 20px;
+  background: radial-gradient(circle at 50% 0%, rgba(247, 148, 29, 0.08) 0%, transparent 70%);
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFF2E2;
+    color: #D97706;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    border: 1px solid rgba(247, 148, 29, 0.3);
+    box-shadow: 0 2px 8px rgba(247, 148, 29, 0.08);
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #F7941D;
+    animation: pulse 1.8s infinite;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: $text-primary;
+    margin-bottom: 14px;
+    margin-top: 10px;
+  }
+
+  &__gradient {
+    background: linear-gradient(135deg, #F7941D 0%, #EA580C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__subtitle {
+    font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+    line-height: 1.65;
+    color: $text-sub;
+    max-width: 680px;
+    margin: 0 auto 24px;
+  }
+
+  &__trustStrip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #475569;
+  }
+
+  &__trustItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__trustDivider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #CBD5E1;
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+}
+
+// ──────────────────────────────────────────────
+// 3. MAIN ADMISSION ENQUIRY + GUIDANCE SECTION
+// ──────────────────────────────────────────────
+.enquirySection {
+  background: #FFFDF9;
+  padding: 10px 0 70px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #FED7AA;
+  }
+
+  &__headerIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #F7941D 0%, #EA580C 100%);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 14px rgba(247, 148, 29, 0.25);
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  &__headerSubtitle {
+    font-size: 0.82rem;
+    color: #64748B;
+    margin: 2px 0 0;
+    font-weight: 500;
+  }
+
+  &__statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  &__liveDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #10B981;
+    animation: pulse 1.5s infinite;
+  }
+
+  // Form Card (Left Column)
+  &__formCard {
+    background: #FFFFFF;
+    border-radius: 28px;
+    padding: 32px 36px;
+    box-shadow: 0 20px 45px -12px rgba(247, 148, 29, 0.12), 0 0 0 1px rgba(247, 148, 29, 0.1);
+    border: 1px solid #FED7AA;
+
+    @media (max-width: 576px) {
+      padding: 24px 20px;
+      border-radius: 20px;
+    }
+  }
+
+  &__formSectionHeading {
+    font-family: $font-heading;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #F7941D;
+    background: #FFF7ED;
+    border: 1px solid #FFEDD5;
+    padding: 6px 14px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0 14px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  &__submitNote {
+    text-align: center;
+    font-size: 0.78rem;
+    color: #94A3B8;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  // Success Card
+  &__successCard {
+    text-align: center;
+    padding: 48px 24px;
+
+    .successIcon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #E8F8EA;
+      color: $green;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 36px;
+    }
+
+    h3 {
+      font-family: $font-heading;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: $text-primary;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: $text-sub;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+  }
+
+  // Guidance Sidebar (Right Column)
+  &__guidanceSidebar {
+    position: sticky;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__guidanceCard {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 0px 28px;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.04);
+    border: 1px solid #E2E8F0;
+  }
+
+  &__guidanceTitle {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 8px;
+  }
+
+  &__guidanceDesc {
+    font-size: 0.86rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  &__featureList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__featureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 16px;
+    background: #FAFAFA;
+    border: 1px solid #F1F5F9;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateX(3px);
+      background: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .featureIcon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .featureContent {
+      h5 {
+        font-family: $font-heading;
+    
+        font-weight: 800;
+        color: #1E293B;
+  
+      }
+      p {
+        font-size: 0.78rem;
+        color: #64748B;
+        line-height: 1.4;
+        margin: 0;
+      }
+    }
+  }
+
+  // Need Help Support Card
+  &__helpCard {
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+    border-radius: 24px;
+    padding: 24px 26px;
+    border: 1px solid #FED7AA;
+    box-shadow: 0 8px 24px rgba(247, 148, 29, 0.08);
+
+    h4 {
+      font-family: $font-heading;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #1E293B;
+      margin: 6px 0 4px;
+    }
+
+    p {
+      font-size: 0.82rem;
+      color: #475569;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+  }
+
+  &__helpTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #C2410C;
+  }
+
+  &__helpActionRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(247, 148, 29, 0.25);
+  }
+
+  &__helpPhone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: $font-heading;
+    font-weight: 900;
+    font-size: 1rem;
+    color: #0F172A;
+    text-decoration: none;
+
+    &:hover {
+      color: #EA580C;
+    }
+  }
+
+  &__helpBtn {
+    background: #F7941D;
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(247, 148, 29, 0.3);
+
+    &:hover {
+      background: #EA580C;
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// ──────────────────────────────────────────────
+// 4. ADMISSION JOURNEY SECTION
+// ──────────────────────────────────────────────
+.journeySection {
+  background: #FAF8F2;
+  padding: 50px 0 50px;
+  position: relative;
+  border-top: 1px solid #EFE9DC;
+  border-bottom: 1px solid #EFE9DC;
+
+  &__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+  }
+
+  &__tag {
+    display: inline-block;
+    background: #FFF0DF;
+    color: $orange;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: $text-primary;
+    margin-bottom: 12px;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: $text-sub;
+  }
+
+  &__timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__stepCard {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    border: 1.5px solid #F0ECE1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: $font-heading;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #E2DDD3;
+  }
+
+  &__iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #FFFDF9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border: 1.5px solid #F0ECE1;
+  }
+
+  &__stepTitle {
+    font-family: $font-heading;
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: 8px;
+  }
+
+  &__stepDesc {
+    font-size: 0.86rem;
+    color: $text-sub;
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+// ──────────────────────────────────────────────
+// 5. PROGRAM SELECTION SECTION
+// ──────────────────────────────────────────────
+.programsSection {
+  padding: 50px 0 50px;
+  background: #FFFFFF;
+
+  &__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #E8F4FF;
+    color: $sky;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: $text-primary;
+    margin-bottom: 12px;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: $text-sub;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: #FFFDF9;
+    border-radius: 22px;
+    padding: 28px;
+    border: 1.5px solid #F0ECE1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: $orange;
+      box-shadow: 0 16px 36px rgba(247, 148, 29, 0.09);
+    }
+  }
+
+  &__cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  &__cardIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__cardBadge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  &__cardTitle {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: 8px;
+  }
+
+  &__cardDesc {
+    font-size: 0.88rem;
+    color: $text-sub;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  &__chipContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  &__chip {
+    background: #F1F5F9;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  &__cardLink {
+    font-family: $font-heading;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: $orange;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+  }
+}
+
+
+
+// ──────────────────────────────────────────────
+// 7. FAQ SECTION
+// ──────────────────────────────────────────────
+.faqSection {
+  background: #FFFDF9;
+  padding: 0px 0 50px;
+
+  &__header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 40px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 900;
+    color: $text-primary;
+  }
+
+  &__accordion {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item {
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1.5px solid #F0ECE1;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+
+    &.open {
+      border-color: $orange;
+    }
+  }
+
+  &__question {
+    width: 100%;
+    padding: 18px 20px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    font-family: $font-heading;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: $text-primary;
+    cursor: pointer;
+
+    .iconCircle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #FFF0DF;
+      color: $orange;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+  }
+
+  &__answer {
+    padding: 0 20px 18px;
+    margin: 0;
+    font-size: 0.88rem;
+    color: $text-sub;
+    line-height: 1.6;
+  }
+}
+
+// ──────────────────────────────────────────────
+// 8. FINAL CTA SECTION
+// ──────────────────────────────────────────────
+.finalCtaSection {
+  background: linear-gradient(135deg, #F7941D 0%, #EA580C 100%);
+  padding: 72px 0 76px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #FFFFFF;
+
+  &__eyebrow {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 560px;
+    margin: 0 auto 28px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  &__contactNote {
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.85);
+
+    a {
+      color: #FFFFFF;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+  }
+}
+
+// ──────────────────────────────────────────────
+// 9. STICKY MOBILE BOTTOM BAR
+// ──────────────────────────────────────────────
+.mobileStickyBar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  padding: 10px 16px;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  border-top: 1px solid #F0ECE1;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  .callIconBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #FFF0DF;
+    color: $orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .applyBtn {
+    flex: 1;
+    background: $orange;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-family: $font-heading;
+    font-size: 0.94rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}

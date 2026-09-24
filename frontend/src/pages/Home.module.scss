@@ -1,0 +1,864 @@
+.homePage {
+  font-family: $font-body;
+  background-color: $canvas;
+  color: $text-primary;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+// ── Hero Section ──
+.heroSection {
+  background: linear-gradient(165deg, #F0FDF4 0%, #ECFDF5 35%, #FFFBEB 75%, #F0FDF4 100%);
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 108px;
+  padding-bottom: 20px;
+
+  &__glowOrange {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($orange, 0.16) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__glowGreen {
+    position: absolute;
+    bottom: 40px;
+    left: -60px;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($green, 0.14) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__content {
+    padding-bottom: 28px;
+    min-height: calc(85vh - 76px);
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 992px) {
+      min-height: auto;
+      padding-bottom: 36px;
+    }
+  }
+
+  &__tagWrapper {
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(34px, 4.5vw, 56px);
+    font-weight: 800;
+    line-height: 1.14;
+    letter-spacing: -0.025em;
+    color: $text-primary;
+    margin: 0 0 18px;
+
+    @media (max-width: 576px) {
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      display:flex;
+    }
+
+    &Gradient {
+      background: linear-gradient(135deg, #F5821F 0%, #D9690D 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+
+    &Green {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: clamp(15px, 1.2vw, 17px);
+    color: #475569;
+    line-height: 1.75;
+    margin: 0 0 26px;
+    max-width: 540px;
+
+    @media (max-width: 576px) {
+      font-size: 14.5px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+
+    @media (max-width: 576px) {
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__bulletItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__bulletIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  &__bulletText {
+    font-family: $font-body;
+    font-size: 14.5px;
+    color: #334155;
+    font-weight: 600;
+
+    @media (max-width: 576px) {
+      font-size: 13.5px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 34px;
+    flex-wrap: wrap;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 26px;
+
+      a, button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__trustRow {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 22px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    @media (max-width: 576px) {
+      gap: 20px;
+      justify-content: space-between;
+      padding-top: 16px;
+    }
+  }
+
+  &__trustNum {
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: clamp(22px, 2.5vw, 28px);
+    color: #F5821F;
+    line-height: 1;
+  }
+
+  &__trustLabel {
+    font-family: $font-body;
+    font-size: 12.5px;
+    color: #64748B;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  // Right image wrapper
+  &__imageContainer {
+    position: relative;
+    padding: 20px 10px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      margin-top: 24px;
+      padding: 10px 0 20px;
+    }
+  }
+
+  &__imageFrame {
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px -15px rgba(22, 101, 52, 0.18), 0 8px 24px -6px rgba($orange, 0.15);
+    border: 4px solid $white;
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 4 / 3.2;
+    position: relative;
+    background: #FFFFFF;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &:hover img {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 576px) {
+      border-radius: 20px;
+      border-width: 3px;
+    }
+  }
+
+  &__badgeTopLeft,
+  &__badgeBottomRight {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    z-index: 3;
+    animation: heroBadgeFloat 4s ease-in-out infinite;
+
+    @media (max-width: 576px) {
+      padding: 7px 12px;
+      gap: 8px;
+      border-radius: 12px;
+    }
+  }
+
+  &__badgeTopLeft {
+    top: 4px;
+    left: -10px;
+    border-left: 4px solid #2196F3;
+
+    @media (max-width: 576px) {
+      top: -6px;
+      left: 0;
+    }
+  }
+
+  &__badgeBottomRight {
+    bottom: 10px;
+    right: -10px;
+    border-left: 4px solid #FFC107;
+    animation-delay: 2s;
+
+    @media (max-width: 576px) {
+      bottom: 0px;
+      right: 0;
+    }
+  }
+
+  &__badgeIconBlue {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #E8F4FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @media (max-width: 576px) {
+      width: 28px;
+      height: 28px;
+      font-size: 13px;
+    }
+  }
+
+  &__badgeIconYellow {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #FFFDE7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @media (max-width: 576px) {
+      width: 28px;
+      height: 28px;
+      font-size: 13px;
+    }
+  }
+
+  &__badgeTitle {
+    font-family: $font-heading;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1E293B;
+    line-height: 1.2;
+
+    @media (max-width: 576px) {
+      font-size: 11.5px;
+    }
+  }
+
+  &__badgeSub {
+    font-family: $font-body;
+    font-size: 11px;
+    color: #64748B;
+    font-weight: 500;
+    margin-top: 2px;
+
+    @media (max-width: 576px) {
+      font-size: 9.5px;
+    }
+  }
+
+  &__marquee {
+    background: linear-gradient(90deg, #F5821F 0%, #E06D0C 100%);
+    padding: 13px 0;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(245, 130, 31, 0.2);
+  }
+
+  &__marqueeTrack {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    animation: marqueeAnimation 24s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  &__marqueeItem {
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: $white;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    letter-spacing: 0.3px;
+  }
+
+  &__marqueeDivider {
+    color: rgba($white, 0.5);
+    margin: 0 4px;
+  }
+}
+
+@keyframes marqueeAnimation {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+
+@keyframes heroBadgeFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+// ── Generic Modern Sections ──
+.sectionWhite {
+  background-color: $white;
+  padding: 56px 0 0 0;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 40px 0 0 0;
+  }
+}
+
+.sectionWaveBottom {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  margin-top: 48px;
+  line-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    height: 38px;
+    margin-top: 32px;
+  }
+}
+
+.sectionCanvas {
+  background-color: #F8FBF8;
+  padding: 40px 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 30px 0 30px;
+  }
+}
+
+.sectionCream {
+  background-color: #FFFDF8;
+  padding: 40px 0 40px;
+
+  @media (max-width: 768px) {
+    padding: 30px 0 30px;
+  }
+}
+
+.sectionSoftBlue {
+  background-color: #F4F8FF;
+  padding: 40px 0 40px;
+
+  @media (max-width: 768px) {
+    padding: 30px 0 30px;
+  }
+}
+
+// ── Progress Stepper on Growth Stage ──
+.progressionBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  position: relative;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(245, 130, 31, 0.3);
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+  }
+}
+
+.progressNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+
+  &__circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: 14.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #334155;
+  }
+}
+
+.progressLine {
+  flex: 1;
+  height: 3px;
+  margin: 0 6px;
+  border-radius: 2px;
+  position: relative;
+  top: -10px;
+  min-width: 24px;
+}
+
+// ── Kit Section ──
+.kitImageWrapper {
+  position: relative;
+
+  &__frame {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 56px -12px rgba(30, 40, 30, 0.14), 0 6px 18px -4px rgba($orange, 0.14);
+    border: 4px solid $white;
+    background: #FFFFFF;
+
+    img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 992px) {
+      height: 320px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: -16px;
+    left: 20px;
+    background: linear-gradient(135deg, #F5821F 0%, #D9690D 100%);
+    border-radius: 16px;
+    padding: 12px 22px;
+    box-shadow: 0 10px 24px rgba(245, 130, 31, 0.35);
+    color: $white;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 576px) {
+      bottom: -12px;
+      left: 12px;
+      padding: 8px 16px;
+    }
+  }
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #FAFCFA;
+    border-radius: 14px;
+    padding: 12px 18px;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #FFFFFF;
+      border-color: rgba(76, 175, 80, 0.4);
+      transform: translateX(4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (max-width: 576px) {
+      padding: 10px 14px;
+      gap: 10px;
+    }
+  }
+
+  &__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: 14.5px;
+    color: #1E293B;
+    font-weight: 600;
+    flex: 1;
+
+    @media (max-width: 576px) {
+      font-size: 13.5px;
+    }
+  }
+}
+
+// ── Educators Section ──
+.quoteBox {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.08) 0%, rgba(76, 175, 80, 0.08) 100%);
+  border-radius: 16px;
+  padding: 18px 22px;
+  border: 1px solid rgba(33, 150, 243, 0.18);
+  margin-bottom: 28px;
+  border-left: 4px solid #2196F3;
+
+  p {
+    font-family: $font-body;
+    font-size: 14px;
+    color: #334155;
+    margin: 0;
+    line-height: 1.7;
+    font-style: italic;
+    font-weight: 500;
+  }
+}
+
+.teacherImageFrame {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 56px -12px rgba(30, 40, 30, 0.14), 0 4px 16px -4px rgba(#2196F3, 0.16);
+  border: 4px solid $white;
+  position: relative;
+  background: #FFFFFF;
+
+  img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    display: block;
+
+    @media (max-width: 992px) {
+      height: 340px;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background: linear-gradient(to top, rgba(33, 150, 243, 0.35) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  &__tag {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+  }
+}
+
+// ── Life Collage ──
+.lifeCollageFrame {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.12);
+  border: 4px solid $white;
+  height: 100%;
+  min-height: 360px;
+  background: #FFFFFF;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 992px) {
+    min-height: 280px;
+    margin-bottom: 16px;
+  }
+}
+
+// ── Franchise Section ──
+.franchiseSection {
+  background: linear-gradient(145deg, #071918 0%, #0E2926 50%, #071918 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
+
+  &__glowOrange {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(#F5821F, 0.22) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  &__glowGreen {
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(#2ECC71, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(26px, 3.8vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: $white;
+    margin: 16px 0 12px;
+
+   
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 15.5px;
+    color: rgba($white, 0.78);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.75;
+
+    @media (max-width: 576px) {
+      font-size: 14px;
+    }
+  }
+
+  &__statBox {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 28px 20px;
+    border: 1px solid rgba(46, 204, 113, 0.2);
+    text-align: center;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-4px);
+      border-color: #2ECC71;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      a, button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+// ── Final CTA Section ──
+.finalCTA {
+  background: linear-gradient(135deg, #F5821F 0%, #D9690D 60%, #FF9A2E 100%);
+  padding: 72px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
+
+  &__iconCircle {
+    width: 72px;
+    height: 72px;
+    background: rgba($white, 0.2);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin: 0 auto 20px;
+    border: 2px solid rgba($white, 0.35);
+    backdrop-filter: blur(8px);
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 800;
+    color: $white;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 15.5px;
+    color: rgba($white, 0.92);
+    margin: 0 0 36px;
+    line-height: 1.75;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 576px) {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      a, button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
