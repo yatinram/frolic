@@ -1,0 +1,28 @@
+[2026-09-11 10:23:47] [INFO]: Initializing Frolic Kids Edu Labs Enterprise Backend...
+[2026-09-11 10:23:47] [INFO]: Database 'frolic_db' ensured.
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT 1+1 AS result
+[2026-09-11 10:23:47] [INFO]: ✅ MySQL Sequelize connection established successfully.
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admin_users' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `admin_users`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admissions' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `admissions`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'franchise_enquiries' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `franchise_enquiries`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'programs' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `programs`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'testimonials' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `testimonials`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'media_gallery' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `media_gallery`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'blogs' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `blogs`
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SHOW INDEX FROM `contact_messages`
+[2026-09-11 10:23:47] [INFO]: Sequelize models synchronized successfully.
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admin_users` AS `AdminUser`;
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `programs` AS `Program`;
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `testimonials` AS `Testimonial`;
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `media_gallery` AS `MediaGallery`;
+[2026-09-11 10:23:47] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `blogs` AS `Blog`;
+[2026-09-11 10:23:47] [INFO]: 🚀 Frolic Server running in development mode on port 5000
+[2026-09-11 10:23:47] [INFO]: 🌐 API Endpoint: http://localhost:5000/api/health

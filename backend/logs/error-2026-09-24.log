@@ -1,0 +1,101 @@
+[2026-09-24 16:33:01] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async Program.findOne (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1240:12)
+    at async seedProgramsData (E:\Frolic_Project\backend\src\seeders\seedPrograms.js:677:24)
+    at async seedInitialData (E:\Frolic_Project\backend\src\seeders\initialSeed.js:25:5)
+    at async startServer (E:\Frolic_Project\backend\server.js:16:9)
+[2026-09-24 16:35:40] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:35:40] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:35:46] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:35:46] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:35:48] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:35:48] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:36:43] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:36:43] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:37:19] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:37:19] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:37:45] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:37:45] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)
+[2026-09-24 16:39:05] [ERROR]: Error
+    at Query.run (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\mysql\query.js:52:25)
+    at E:\Frolic_Project\backend\node_modules\sequelize\lib\sequelize.js:315:28
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySQLQueryInterface.select (E:\Frolic_Project\backend\node_modules\sequelize\lib\dialects\abstract\query-interface.js:407:12)
+    at async Program.findAll (E:\Frolic_Project\backend\node_modules\sequelize\lib\model.js:1140:21)
+    at async getPrograms (E:\Frolic_Project\backend\src\controllers\programController.js:12:22)

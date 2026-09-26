@@ -1,0 +1,60 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\Frolic_Project\\backend\\logs\\.5f7ebf73a6026720fe176ed025400e2796e8452e-audit.json",
+    "files": [
+        {
+            "date": 1789052739218,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-10.log",
+            "hash": "48c6c6e2bfbd064a812fc439c5efb1f40dca69418a32588da6765c655728d793"
+        },
+        {
+            "date": 1789102426380,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-11.log",
+            "hash": "6e1e76cd870393bd6bc9e41c34e3ffacfe7e5548259411e52a0af9d603e657a5"
+        },
+        {
+            "date": 1789540094336,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-16.log",
+            "hash": "0eec1a70996cb4225384a7c981d37d9f53a49c2ee8c03fd0d153015ed70d0fdd"
+        },
+        {
+            "date": 1789617291157,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-17.log",
+            "hash": "b67cd348f70d8c5d3e9a105570855dee1de6a28223c1c7615e02b6ca6bd3cfd8"
+        },
+        {
+            "date": 1789741040363,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-18.log",
+            "hash": "c7621f5c73e82a5959d0ef9b84bd402b11ef0bff87b847356405b0f834544528"
+        },
+        {
+            "date": 1789826768484,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-19.log",
+            "hash": "1939e7adea4b9e8974df2027c3500af367bc699322f15f2167b65122177561e9"
+        },
+        {
+            "date": 1789984206385,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-21.log",
+            "hash": "3e6f73c237eb49ec2bf823c19d0301d3b3d6c019bfb77631e5f2259fa9c4c2b7"
+        },
+        {
+            "date": 1790055323456,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-22.log",
+            "hash": "e3a850242084da2bb4133f14928ff7228a1987240ef95899e18db1ddb5cf8f32"
+        },
+        {
+            "date": 1790160631557,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-23.log",
+            "hash": "6d0b35164059d347daa00487f82b74e5980bf4538b3ee231ef6913ffc5a3a825"
+        },
+        {
+            "date": 1790219911852,
+            "name": "E:\\Frolic_Project\\backend\\logs\\combined-2026-09-24.log",
+            "hash": "14e33670e6f20ac6eb52eabf49bec45c7e291585341e0a515552293c358afb2e"
+        }
+    ],
+    "hashType": "sha256"
+}

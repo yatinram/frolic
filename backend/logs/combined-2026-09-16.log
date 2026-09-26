@@ -1,0 +1,176 @@
+[2026-09-16 11:58:25] [INFO]: Initializing Frolic Kids Edu Labs Enterprise Backend...
+[2026-09-16 11:58:26] [INFO]: Database 'frolic_db' ensured.
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT 1+1 AS result
+[2026-09-16 11:58:26] [INFO]: ✅ MySQL Sequelize connection established successfully.
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admin_users' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `admin_users`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admissions' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `admissions`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'franchise_enquiries' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `franchise_enquiries`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'programs' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `programs`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'testimonials' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `testimonials`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'media_gallery' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `media_gallery`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'blogs' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `blogs`
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'frolic_db'
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SHOW INDEX FROM `contact_messages`
+[2026-09-16 11:58:26] [INFO]: Sequelize models synchronized successfully.
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admin_users` AS `AdminUser`;
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `programs` AS `Program`;
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `testimonials` AS `Testimonial`;
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `media_gallery` AS `MediaGallery`;
+[2026-09-16 11:58:26] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `blogs` AS `Blog`;
+[2026-09-16 11:58:26] [INFO]: 🚀 Frolic Server running in development mode on port 5000
+[2026-09-16 11:58:26] [INFO]: 🌐 API Endpoint: http://localhost:5000/api/health
+[2026-09-16 15:57:54] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-09-16 15:57:54] [DEBUG]: Executing (default): UPDATE `admin_users` SET `lastLogin`=?,`updatedAt`=? WHERE `id` = ?
+[2026-09-16 15:57:54] [INFO]: [AUTH SUCCESS] User 'Super Admin' (admin@frolic.com) logged in successfully.
+[2026-09-16 15:57:54] [INFO]: [0mPOST /api/auth/login [32m200[0m 261.061 ms - 379[0m
+[2026-09-16 15:57:58] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-09-16 15:57:58] [DEBUG]: Executing (default): UPDATE `admin_users` SET `lastLogin`=?,`updatedAt`=? WHERE `id` = ?
+[2026-09-16 15:57:58] [INFO]: [AUTH SUCCESS] User 'Super Admin' (admin@frolic.com) logged in successfully.
+[2026-09-16 15:57:58] [INFO]: [0mPOST /api/auth/login [32m200[0m 70.957 ms - 379[0m
+[2026-09-16 15:58:32] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-09-16 15:58:32] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-09-16 15:58:32] [INFO]: [0mPOST /api/auth/login [33m401[0m 68.029 ms - 64[0m
+[2026-09-16 15:58:40] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-09-16 15:58:40] [DEBUG]: Executing (default): UPDATE `admin_users` SET `lastLogin`=?,`updatedAt`=? WHERE `id` = ?
+[2026-09-16 15:58:40] [INFO]: [AUTH SUCCESS] User 'Super Admin' (admin@frolic.com) logged in successfully.
+[2026-09-16 15:58:40] [INFO]: [0mPOST /api/auth/login [32m200[0m 68.634 ms - 379[0m
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): UPDATE `admin_users` SET `lastLogin`=?,`updatedAt`=? WHERE `id` = ?
+[2026-09-16 15:59:06] [INFO]: [AUTH SUCCESS] User 'Super Admin' (admin@frolic.com) logged in successfully.
+[2026-09-16 15:59:06] [INFO]: [0mPOST /api/auth/login [32m200[0m 82.075 ms - 379[0m
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:06] [INFO]: [0mGET /api/auth/me [32m200[0m 12.419 ms - 173[0m
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:06] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [32m200[0m 60.989 ms - 119[0m
+[2026-09-16 15:59:06] [INFO]: [0mGET /api/admissions?limit=5 [32m200[0m 65.789 ms - 120[0m
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:06] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:06] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 12.740 ms - -[0m
+[2026-09-16 15:59:06] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 11.778 ms - -[0m
+[2026-09-16 15:59:11] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:11] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 10;
+[2026-09-16 15:59:11] [INFO]: [0mGET /api/admissions?page=1&limit=10 [32m200[0m 5.972 ms - 120[0m
+[2026-09-16 15:59:11] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:11] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:11] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 10;
+[2026-09-16 15:59:11] [INFO]: [0mGET /api/admissions?page=1&limit=10 [36m304[0m 12.313 ms - -[0m
+[2026-09-16 15:59:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 10;
+[2026-09-16 15:59:13] [INFO]: [0mGET /api/franchise-enquiries?page=1&limit=10 [32m200[0m 3.738 ms - 119[0m
+[2026-09-16 15:59:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 10;
+[2026-09-16 15:59:13] [INFO]: [0mGET /api/franchise-enquiries?page=1&limit=10 [36m304[0m 5.315 ms - -[0m
+[2026-09-16 15:59:14] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `ageGroup`, `tagline`, `category`, `accentColor`, `icon`, `shortDescription`, `fullDescription`, `features`, `syllabusContent`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-09-16 15:59:14] [INFO]: [0mGET /api/programs?activeOnly=false [32m200[0m 8.868 ms - 4597[0m
+[2026-09-16 15:59:14] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `ageGroup`, `tagline`, `category`, `accentColor`, `icon`, `shortDescription`, `fullDescription`, `features`, `syllabusContent`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-09-16 15:59:14] [INFO]: [0mGET /api/programs?activeOnly=false [36m304[0m 2.165 ms - -[0m
+[2026-09-16 15:59:18] [DEBUG]: Executing (default): SELECT `id`, `name`, `role`, `childName`, `program`, `rating`, `quote`, `photoUrl`, `videoUrl`, `isPublished`, `sortOrder`, `createdAt`, `updatedAt` FROM `testimonials` AS `Testimonial` ORDER BY `Testimonial`.`sortOrder` ASC, `Testimonial`.`createdAt` DESC;
+[2026-09-16 15:59:18] [INFO]: [0mGET /api/testimonials?all=true [32m200[0m 4.314 ms - 1972[0m
+[2026-09-16 15:59:18] [DEBUG]: Executing (default): SELECT `id`, `name`, `role`, `childName`, `program`, `rating`, `quote`, `photoUrl`, `videoUrl`, `isPublished`, `sortOrder`, `createdAt`, `updatedAt` FROM `testimonials` AS `Testimonial` ORDER BY `Testimonial`.`sortOrder` ASC, `Testimonial`.`createdAt` DESC;
+[2026-09-16 15:59:18] [INFO]: [0mGET /api/testimonials?all=true [36m304[0m 1.491 ms - -[0m
+[2026-09-16 15:59:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-09-16 15:59:22] [INFO]: [0mGET /api/gallery [32m200[0m 4.265 ms - 1770[0m
+[2026-09-16 15:59:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-09-16 15:59:22] [INFO]: [0mGET /api/gallery [36m304[0m 4.477 ms - -[0m
+[2026-09-16 15:59:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 15:59:28] [INFO]: [0mGET /api/blogs?all=true [32m200[0m 5.256 ms - 4402[0m
+[2026-09-16 15:59:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 15:59:28] [INFO]: [0mGET /api/blogs?all=true [36m304[0m 2.253 ms - -[0m
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:34] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 18.587 ms - -[0m
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:34] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 21.594 ms - -[0m
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:34] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 8.346 ms - -[0m
+[2026-09-16 15:59:34] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 6.475 ms - -[0m
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:50] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 14.921 ms - -[0m
+[2026-09-16 15:59:50] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 17.950 ms - -[0m
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 1;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-09-16 15:59:50] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-09-16 15:59:50] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 8.797 ms - -[0m
+[2026-09-16 15:59:50] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 10.423 ms - -[0m
+[2026-09-16 20:21:23] [INFO]: [0mGET /api/centers [33m404[0m 15.152 ms - 76[0m
+[2026-09-16 20:21:23] [INFO]: [0mGET /api/centers [33m404[0m 2.409 ms - 76[0m
+[2026-09-16 20:22:02] [INFO]: [0mGET /api/centers [33m404[0m 3.251 ms - 76[0m
+[2026-09-16 20:22:02] [INFO]: [0mGET /api/centers [33m404[0m 0.435 ms - 76[0m
+[2026-09-16 20:32:01] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-09-16 20:32:01] [INFO]: [0mGET /api/gallery [36m304[0m 248.639 ms - -[0m
+[2026-09-16 20:32:01] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-09-16 20:32:01] [INFO]: [0mGET /api/gallery [36m304[0m 4.772 ms - -[0m
+[2026-09-16 20:33:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 20:33:25] [INFO]: [0mGET /api/blogs [32m200[0m 49.094 ms - 4402[0m
+[2026-09-16 20:33:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 20:33:25] [INFO]: [0mGET /api/blogs [36m304[0m 5.791 ms - -[0m
+[2026-09-16 20:33:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`slug` = 'play-group-vs-nursery-vs-lkg-difference';
+[2026-09-16 20:33:28] [INFO]: [0mGET /api/blogs/play-group-vs-nursery-vs-lkg-difference [32m200[0m 25.004 ms - 1477[0m
+[2026-09-16 20:33:28] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`slug` = 'play-group-vs-nursery-vs-lkg-difference';
+[2026-09-16 20:33:28] [INFO]: [0mGET /api/blogs/play-group-vs-nursery-vs-lkg-difference [36m304[0m 3.888 ms - -[0m
+[2026-09-16 20:33:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 20:33:32] [INFO]: [0mGET /api/blogs [36m304[0m 5.203 ms - -[0m
+[2026-09-16 20:33:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 20:33:32] [INFO]: [0mGET /api/blogs [36m304[0m 17.669 ms - -[0m
+[2026-09-16 20:33:35] [INFO]: [0mGET /api/centers [33m404[0m 0.887 ms - 76[0m
+[2026-09-16 20:33:35] [INFO]: [0mGET /api/centers [33m404[0m 0.424 ms - 76[0m
+[2026-09-16 20:37:36] [INFO]: [0mGET /api/products [33m404[0m 0.925 ms - 77[0m
+[2026-09-16 20:37:36] [INFO]: [0mGET /api/products [33m404[0m 0.374 ms - 77[0m
+[2026-09-16 20:38:41] [INFO]: [0mGET /api/centers [33m404[0m 0.269 ms - 76[0m
+[2026-09-16 20:38:41] [INFO]: [0mGET /api/centers [33m404[0m 0.424 ms - 76[0m
+[2026-09-16 20:38:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-09-16 20:38:44] [INFO]: [0mGET /api/gallery [36m304[0m 18.313 ms - -[0m
+[2026-09-16 20:38:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-09-16 20:38:44] [INFO]: [0mGET /api/gallery [36m304[0m 9.460 ms - -[0m
+[2026-09-16 20:39:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 20:39:03] [INFO]: [0mGET /api/blogs [36m304[0m 18.975 ms - -[0m
+[2026-09-16 20:39:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-09-16 20:39:03] [INFO]: [0mGET /api/blogs [36m304[0m 4.233 ms - -[0m
+[2026-09-16 20:39:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`slug` = 'why-digital-interactive-learning-works-for-preschoolers';
+[2026-09-16 20:39:07] [INFO]: [0mGET /api/blogs/why-digital-interactive-learning-works-for-preschoolers [32m200[0m 6.363 ms - 1943[0m
+[2026-09-16 20:39:07] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`slug` = 'why-digital-interactive-learning-works-for-preschoolers';
+[2026-09-16 20:39:07] [INFO]: [0mGET /api/blogs/why-digital-interactive-learning-works-for-preschoolers [36m304[0m 4.633 ms - -[0m
+[2026-09-16 20:39:12] [INFO]: [0mGET /api/events [33m404[0m 0.253 ms - 75[0m
+[2026-09-16 20:39:12] [INFO]: [0mGET /api/awards [33m404[0m 0.184 ms - 75[0m
+[2026-09-16 20:39:12] [INFO]: [0mGET /api/events [33m404[0m 0.462 ms - 75[0m
+[2026-09-16 20:39:12] [INFO]: [0mGET /api/awards [33m404[0m 0.435 ms - 75[0m
+[2026-09-16 20:39:19] [INFO]: [0mGET /api/products [33m404[0m 0.206 ms - 77[0m
+[2026-09-16 20:39:19] [INFO]: [0mGET /api/products [33m404[0m 0.538 ms - 77[0m
+[2026-09-16 20:41:40] [INFO]: [0mGET /api/products [33m404[0m 0.424 ms - 77[0m
+[2026-09-16 20:41:40] [INFO]: [0mGET /api/products [33m404[0m 1.312 ms - 77[0m
+[2026-09-16 20:45:04] [INFO]: [0mGET /api/products [33m404[0m 0.416 ms - 77[0m
