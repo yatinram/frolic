@@ -123,7 +123,7 @@ export default function FranchiseList() {
               setStatusModalOpen(true);
             }}
           >
-            Review
+            
           </Button>
 
           <Popconfirm title="Delete partner enquiry?" onConfirm={() => handleDelete(r.id)}>
@@ -139,9 +139,9 @@ export default function FranchiseList() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 14 }}>
         <div>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#222' }}>
-            🏢 Franchise Partner Leads
+            Franchise Partner Leads
           </h2>
-          <p style={{ color: '#777', margin: '2px 0 0' }}>Review investor inquiries, territory feasibility, and investment budgets.</p>
+          {/* <p style={{ color: '#777', margin: '2px 0 0' }}>Review investor inquiries, territory feasibility, and investment budgets.</p> */}
         </div>
 
         <Space wrap>
@@ -150,7 +150,7 @@ export default function FranchiseList() {
             prefix={<SearchOutlined />}
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            style={{ width: 220, borderRadius: 8 }}
+            style={{ width: 350, borderRadius: 30 }}
           />
 
           <Select
@@ -181,10 +181,31 @@ export default function FranchiseList() {
       />
 
       <Modal
-        title={`Review Franchise Application: ${selectedEnquiry?.name}`}
+        title={`Review Franchise Application: ${selectedEnquiry?.name || ''}`}
         open={statusModalOpen}
         onCancel={() => setStatusModalOpen(false)}
-        footer={null}
+        width={580}
+        centered
+        destroyOnClose
+        styles={{
+          body: {
+            maxHeight: 'calc(76vh - 80px)',
+            overflowY: 'auto',
+            padding: '16px 20px 24px 20px',
+          },
+        }}
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, padding: '10px 4px' }}>
+            <Button onClick={() => setStatusModalOpen(false)}>Cancel</Button>
+            <Button
+              type="primary"
+              onClick={() => form.submit()}
+              style={{ background: '#F5821F', borderColor: '#F5821F', fontWeight: 700 }}
+            >
+              Save Partner Status
+            </Button>
+          </div>
+        }
       >
         <Form form={form} layout="vertical" onFinish={handleStatusUpdate}>
           <Form.Item name="status" label="Partner Lead Status" rules={[{ required: true }]}>
@@ -199,10 +220,6 @@ export default function FranchiseList() {
           <Form.Item name="notes" label="Director / Review Notes">
             <Input.TextArea rows={4} placeholder="Add territory notes, meeting discussion, space evaluation..." />
           </Form.Item>
-
-          <Button type="primary" htmlType="submit" block style={{ background: '#F5821F' }}>
-            Save Partner Status
-          </Button>
         </Form>
       </Modal>
     </div>

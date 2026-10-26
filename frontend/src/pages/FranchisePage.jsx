@@ -38,7 +38,7 @@ export default function FranchisePage() {
       if (res.success || res.status === 200 || res.status === 201) {
         confetti({ particleCount: 80, spread: 80, origin: { y: 0.6 } });
         notification.success({
-          message: 'Franchise Application Received! 🏢',
+          title: 'Franchise Application Received! 🏢',
           description:
             'Thank you for your interest in partnering with Frolic Kids Edu Labs. Our Expansion Directorate will contact you within 24 hours.',
           duration: 6,
@@ -48,7 +48,7 @@ export default function FranchisePage() {
       }
     } catch (err) {
       notification.error({
-        message: 'Submission Error',
+        title: 'Submission Error',
         description: err.message || 'Please verify your contact information and try again.',
       });
     } finally {

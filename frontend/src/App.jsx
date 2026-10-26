@@ -1,9 +1,22 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, App as AntdApp, message, notification } from 'antd';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { ROUTES } from './constants/routes';
+
+// Global Premium Toast Configuration
+message.config({
+  top: 26,
+  duration: 3.5,
+  maxCount: 3,
+});
+
+notification.config({
+  placement: 'topRight',
+  top: 24,
+  duration: 4,
+});
 
 // Layouts
 import Navbar from './components/layout/Navbar';
@@ -12,6 +25,8 @@ import AdminLayout from './components/layout/AdminLayout';
 
 // Common
 import AdminLoginModal from './components/common/AdminLoginModal';
+import ToastContainer from './components/ui/Toast/ToastContainer';
+import './utils/premiumToast';
 
 // Lazy-Loaded Public Pages (Code Splitting for high performance)
 const Home = lazy(() => import('./pages/Home'));
@@ -42,6 +57,7 @@ const ProgramManager = lazy(() => import('./admin/ProgramManager'));
 const TestimonialManager = lazy(() => import('./admin/TestimonialManager'));
 const GalleryManager = lazy(() => import('./admin/GalleryManager'));
 const BlogManager = lazy(() => import('./admin/BlogManager'));
+const CenterManager = lazy(() => import('./admin/CenterManager'));
 const ProductManager = lazy(() => import('./admin/ProductManager'));
 const OrderManager = lazy(() => import('./admin/OrderManager'));
 
@@ -131,6 +147,7 @@ function MainAppRoutes() {
             <Route path="admissions" element={<AdmissionsList />} />
             <Route path="franchise" element={<FranchiseList />} />
             <Route path="programs" element={<ProgramManager />} />
+            <Route path="centers" element={<CenterManager />} />
             <Route path="products" element={<ProductManager />} />
             <Route path="orders" element={<OrderManager />} />
             <Route path="testimonials" element={<TestimonialManager />} />
@@ -150,6 +167,9 @@ function MainAppRoutes() {
         open={adminModalOpen}
         onClose={() => setAdminModalOpen(false)}
       />
+
+      {/* Global Ultra-Premium Toast Notification System */}
+      <ToastContainer />
     </>
   );
 }
@@ -190,13 +210,15 @@ export default function App() {
         },
       }}
     >
-      <AuthProvider>
-        <LanguageProvider>
-          <BrowserRouter>
-            <MainAppRoutes />
-          </BrowserRouter>
-        </LanguageProvider>
-      </AuthProvider>
+      <AntdApp>
+        <AuthProvider>
+          <LanguageProvider>
+            <BrowserRouter>
+              <MainAppRoutes />
+            </BrowserRouter>
+          </LanguageProvider>
+        </AuthProvider>
+      </AntdApp>
     </ConfigProvider>
   );
 }

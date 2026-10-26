@@ -219,7 +219,7 @@ export default function ProgramManager() {
       title: 'Order',
       dataIndex: 'sortOrder',
       width: 70,
-      render: (v) => <Tag color="default">#{v || 0}</Tag>,
+      render: (v) => <Tag color="default">{v || 0}</Tag>,
     },
     {
       title: 'Program Title & Code',
@@ -317,7 +317,7 @@ export default function ProgramManager() {
             style={{ background: '#F7941D', borderColor: '#F7941D' }}
             onClick={() => handleOpenEdit(r)}
           >
-            Edit
+            
           </Button>
           <Popconfirm
             title="Delete Program?"
@@ -354,11 +354,9 @@ export default function ProgramManager() {
       >
         <div>
           <h2 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0F172A', margin: 0 }}>
-            📚 Programs &amp; Curricula Management
+            Programs &amp; Curricula Management
           </h2>
-          <p style={{ color: '#64748B', margin: '4px 0 0', fontSize: '0.86rem' }}>
-            Manage rich course descriptions, 4 NEP learning pillars, syllabus terms, milestones, and daily routines.
-          </p>
+         
         </div>
 
         <Space>

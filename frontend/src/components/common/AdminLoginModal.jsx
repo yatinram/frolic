@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Modal, Form, Input, message } from 'antd';
+import { Modal, Form, Input } from 'antd';
 import { LockOutlined, MailOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
+import { toast } from '../../utils/premiumToast';
 import Button from './Button';
+import { useState } from 'react';
 
 export default function AdminLoginModal({ open, onClose }) {
   const [form] = Form.useForm();
@@ -16,12 +17,12 @@ export default function AdminLoginModal({ open, onClose }) {
     setLoading(true);
     try {
       await login(values);
-      message.success('Welcome to Frolic Admin Portal!');
+      toast.success('Welcome to Frolic Admin Portal!', 'Login Successful');
       onClose();
       form.resetFields();
       navigate(ROUTES.ADMIN);
     } catch (err) {
-      message.error(err.message || 'Invalid admin credentials');
+      toast.error(err.message || 'Invalid admin credentials', 'Authentication Failed');
     } finally {
       setLoading(false);
     }
@@ -102,20 +103,10 @@ export default function AdminLoginModal({ open, onClose }) {
             block
             size="large"
           >
-            Enter Dashboard 🔐
+            Enter Dashboard
           </Button>
         </div>
 
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: 18,
-            fontSize: '0.8rem',
-            color: '#A0A0A0',
-          }}
-        >
-          Shortcut: Press <kbd style={{ background: '#F0F0F0', padding: '2px 6px', borderRadius: 4 }}>Ctrl + Shift + L</kbd> anytime
-        </div>
       </Form>
     </Modal>
   );

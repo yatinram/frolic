@@ -137,7 +137,7 @@ export default function OrderManager() {
       dataIndex: 'id',
       key: 'id',
       width: 80,
-      render: (id) => <Text strong>#ORD-{id}</Text>,
+      render: (id) => <Text strong>{id}</Text>,
     },
     {
       title: 'Customer / Parent',
@@ -250,10 +250,10 @@ export default function OrderManager() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
         <div>
           <Title level={3} style={{ margin: 0, fontWeight: 800, color: '#0f172a' }}>
-            <OrderedListOutlined style={{ color: '#f7941d', marginRight: 8 }} />
+           
             Store Orders &amp; Kit Inquiries
           </Title>
-          <Text type="secondary">Manage incoming orders, update shipping / delivery stages, and maintain parent contact logs.</Text>
+          {/* <Text type="secondary">Manage incoming orders, update shipping / delivery stages, and maintain parent contact logs.</Text> */}
         </div>
 
         <Button icon={<ReloadOutlined />} onClick={fetchOrders}>
@@ -334,12 +334,30 @@ export default function OrderManager() {
         title={`Order Details: #ORD-${editingOrder?.id} (${editingOrder?.parentName})`}
         open={notesModalVisible}
         onCancel={() => setNotesModalVisible(false)}
-        footer={null}
+        width={620}
+        centered
         destroyOnClose
+        styles={{
+          body: {
+            maxHeight: 'calc(76vh - 80px)',
+            overflowY: 'auto',
+            padding: '16px 20px 24px 20px',
+          },
+        }}
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, padding: '10px 4px' }}>
+            <Button onClick={() => setNotesModalVisible(false)} style={{ borderRadius: 10, fontWeight: 600 }}>Cancel</Button>
+            <Button type="primary" onClick={() => form.submit()} loading={submitting} style={{ background: '#f7941d', borderColor: '#f7941d', borderRadius: 10, fontWeight: 700 }}>
+              Save Order Updates
+            </Button>
+          </div>
+        }
       >
-        <Form form={form} layout="vertical" onFinish={handleSaveNotes} style={{ marginTop: 16 }}>
-          <Form.Item name="status" label="Order Status" rules={[{ required: true }]}>
+        <Form form={form} layout="vertical" onFinish={handleSaveNotes} style={{ marginTop: 8 }}>
+          <Form.Item name="status" label={<span style={{ fontWeight: 700 }}>Order Status</span>} rules={[{ required: true }]}>
             <Select
+              size="large"
+              style={{ borderRadius: 10 }}
               options={Object.entries(STATUS_CONFIG).map(([k, v]) => ({
                 value: k,
                 label: v.label,
@@ -347,21 +365,13 @@ export default function OrderManager() {
             />
           </Form.Item>
 
-          <Form.Item name="adminNotes" label="Admin Notes / Tracking Number / Follow-Up Details">
+          <Form.Item name="adminNotes" label={<span style={{ fontWeight: 700 }}>Admin Notes / Tracking Number / Follow-Up Details</span>}>
             <TextArea
               rows={4}
+              style={{ borderRadius: 10 }}
               placeholder="e.g. Called parent on 23rd Sept. Confirmed delivery to Sargasan campus. AWB#9876543210."
             />
           </Form.Item>
-
-          <div style={{ textAlign: 'right', marginTop: 16 }}>
-            <Space>
-              <Button onClick={() => setNotesModalVisible(false)}>Cancel</Button>
-              <Button type="primary" htmlType="submit" loading={submitting} style={{ background: '#f7941d', borderColor: '#f7941d' }}>
-                Save Order Updates
-              </Button>
-            </Space>
-          </div>
         </Form>
       </Modal>
     </div>

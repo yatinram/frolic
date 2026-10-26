@@ -123,7 +123,7 @@ export default function AdmissionsList() {
               setStatusModalOpen(true);
             }}
           >
-            Update
+           
           </Button>
 
           <Popconfirm title="Delete enquiry?" onConfirm={() => handleDelete(r.id)}>
@@ -139,18 +139,18 @@ export default function AdmissionsList() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 14 }}>
         <div>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#222' }}>
-            🎒 Admission Enquiries Management
+            Admission Inquiry Management
           </h2>
-          <p style={{ color: '#777', margin: '2px 0 0' }}>Manage lead inquiries, update counseling statuses, and review notes.</p>
+          {/* <p style={{ color: '#777', margin: '2px 0 0' }}>Manage lead inquiries, update counseling statuses, and review notes.</p> */}
         </div>
 
         <Space wrap>
           <Input
-            placeholder="Search child/parent/phone"
+            placeholder="Search child name "
             prefix={<SearchOutlined />}
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            style={{ width: 220, borderRadius: 8 }}
+            style={{ width: 350, borderRadius: 30 }}
           />
 
           <Select
@@ -158,7 +158,7 @@ export default function AdmissionsList() {
             allowClear
             value={statusFilter || undefined}
             onChange={setStatusFilter}
-            style={{ width: 140 }}
+            style={{ width: 140 ,paddingTop: 4, paddingBottom: 4, borderRadius: 30 }}
           >
             <Option value="new">🔴 NEW</Option>
             <Option value="contacted">🔵 CONTACTED</Option>
@@ -185,11 +185,28 @@ export default function AdmissionsList() {
         title={`Update Status for ${selectedAdmission?.childName}`}
         open={statusModalOpen}
         onCancel={() => setStatusModalOpen(false)}
-        footer={null}
+        width={580}
+        centered
+        destroyOnClose
+        styles={{
+          body: {
+            maxHeight: 'calc(76vh - 80px)',
+            overflowY: 'auto',
+            padding: '16px 20px 24px 20px',
+          },
+        }}
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, padding: '10px 4px' }}>
+            <Button onClick={() => setStatusModalOpen(false)} style={{ borderRadius: 10, fontWeight: 600 }}>Cancel</Button>
+            <Button type="primary" onClick={() => form.submit()} style={{ background: '#F5821F', borderColor: '#F5821F', borderRadius: 10, fontWeight: 700 }}>
+              Save Status &amp; Notes
+            </Button>
+          </div>
+        }
       >
-        <Form form={form} layout="vertical" onFinish={handleStatusUpdate}>
-          <Form.Item name="status" label="Lead Status" rules={[{ required: true }]}>
-            <Select size="large">
+        <Form form={form} layout="vertical" onFinish={handleStatusUpdate} style={{ marginTop: 8 }}>
+          <Form.Item name="status" label={<span style={{ fontWeight: 700 }}>Lead Status</span>} rules={[{ required: true }]}>
+            <Select size="large" style={{ borderRadius: 10 }}>
               <Option value="new">🔴 NEW LEAD</Option>
               <Option value="contacted">🔵 CONTACTED / COUNSELING</Option>
               <Option value="enrolled">🟢 ENROLLED / PAID</Option>
@@ -197,13 +214,9 @@ export default function AdmissionsList() {
             </Select>
           </Form.Item>
 
-          <Form.Item name="notes" label="Counselor Notes">
-            <Input.TextArea rows={4} placeholder="Add notes on parent discussion, fee quote given, campus visit date..." />
+          <Form.Item name="notes" label={<span style={{ fontWeight: 700 }}>Counselor Notes</span>}>
+            <Input.TextArea rows={4} style={{ borderRadius: 10 }} placeholder="Add notes on parent discussion, fee quote given, campus visit date..." />
           </Form.Item>
-
-          <Button type="primary" htmlType="submit" block style={{ background: '#F5821F' }}>
-            Save Status & Notes
-          </Button>
         </Form>
       </Modal>
     </div>

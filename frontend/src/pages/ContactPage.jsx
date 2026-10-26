@@ -31,7 +31,7 @@ export default function ContactPage() {
       const res = await contactService.create(values);
       if (res.success) {
         notification.success({
-          message: t('contactPage.successMsg', 'Message Sent Successfully! ✉️'),
+          title: t('contactPage.successMsg', 'Message Sent Successfully! ✉️'),
           description:
             'Thank you for contacting Frolic Kids Edu Labs. We will respond to your message shortly.',
         });
@@ -39,7 +39,7 @@ export default function ContactPage() {
       }
     } catch (err) {
       notification.error({
-        message: t('common.error', 'Could not send message'),
+        title: t('common.error', 'Could not send message'),
         description: err.message || 'Please try again or call us directly at 7575008820.',
       });
     } finally {

@@ -17,6 +17,7 @@ import { PROGRAMS_DATA } from '../constants/programsData';
 import { ROUTES } from '../constants/routes';
 import { programService } from '../services';
 import { useLanguage } from '../context/LanguageContext';
+import { useLocalizedPrograms } from '../utils/programLocalization';
 import s from './Programs.module.scss';
 
 export default function Programs() {
@@ -50,15 +51,18 @@ export default function Programs() {
     };
   }, []);
 
+  // Localize programs according to selected language
+  const localizedPrograms = useLocalizedPrograms(programs);
+
   const categoryCounts = useMemo(() => {
-    const counts = { all: programs.length, preschool: 0, lab: 0, training: 0 };
-    programs.forEach((p) => {
+    const counts = { all: localizedPrograms.length, preschool: 0, lab: 0, training: 0 };
+    localizedPrograms.forEach((p) => {
       if (counts[p.category] !== undefined) {
         counts[p.category]++;
       }
     });
     return counts;
-  }, [programs]);
+  }, [localizedPrograms]);
 
   const categoryTabs = useMemo(() => [
     { key: 'all', label: `${t('programsPage.tabAll', 'All Programs')} (${categoryCounts.all})`, icon: <AppstoreOutlined /> },
@@ -68,9 +72,9 @@ export default function Programs() {
   ], [categoryCounts, t]);
 
   const filteredPrograms = useMemo(() => {
-    if (activeTab === 'all') return programs;
-    return programs.filter((p) => p.category === activeTab);
-  }, [programs, activeTab]);
+    if (activeTab === 'all') return localizedPrograms;
+    return localizedPrograms.filter((p) => p.category === activeTab);
+  }, [localizedPrograms, activeTab]);
 
   const handleProgramClick = (prog) => {
     navigate(`/programs/${prog.slug || prog.id}`);

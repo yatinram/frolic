@@ -96,3 +96,20 @@ export const awardService = {
   delete: (id) => apiClient.delete(`/awards/${id}`),
 };
 
+export const uploadService = {
+  uploadFile: (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return apiClient.post('/upload', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  uploadMultiple: (files) => {
+    const formData = new FormData();
+    Array.from(files).forEach((file) => formData.append('files', file));
+    return apiClient.post('/upload/multiple', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+};
+

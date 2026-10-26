@@ -147,6 +147,21 @@
     color: #F7941D;
     box-shadow: 0 2px 8px rgba(247, 148, 29, 0.12);
   }
+
+  .chevron {
+    font-size: 0.62rem;
+    color: #94A3B8;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  &:hover .chevron {
+    color: #F7941D;
+    transform: translateY(1px);
+  }
+
+  @media (max-width: 1040px) {
+    display: none;
+  }
 }
 
 // Call Support Pill Button
@@ -250,5 +265,227 @@
 
   @media (max-width: 1040px) {
     display: flex;
+  }
+}
+
+// ── Mobile Full-Screen Overlay Menu (Reference Design) ─────────────────
+
+/* Dark backdrop */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(30, 35, 45, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px 24px;
+  overflow-y: auto;
+  animation: overlayFadeIn 0.22s ease;
+
+  @keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+/* Full sheet container (top pill + card) */
+.mobileSheet {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: sheetSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes sheetSlideUp {
+    from { transform: translateY(28px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+
+  /* Top pill bar (logo + close) */
+  &__topPill {
+    background: #FFFFFF;
+    border-radius: 9999px;
+    padding: 10px 14px 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Close X button */
+  &__closeBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid #E2E8F0;
+    background: #F8FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background: #FFF2E0;
+      border-color: #F7941D;
+      color: #F7941D;
+    }
+  }
+
+  /* Main white rounded card */
+  &__card {
+    background: #FFFFFF;
+    border-radius: 26px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Scrollable menu area */
+  &__scrollArea {
+    padding: 10px 14px 6px;
+    overflow-y: auto;
+    max-height: calc(100dvh - 220px);
+  }
+
+  /* CTA at bottom of card */
+  &__cta {
+    padding: 14px 16px 16px;
+    border-top: 1px solid #F1F5F9;
+  }
+
+  &__ctaBtn {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, #FF8A00 0%, #E65100 100%);
+    color: #FFFFFF;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 14px 20px;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(230, 81, 0, 0.35);
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 8px 26px rgba(230, 81, 0, 0.45);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+/* Simple nav link row */
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 10px;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1E293B;
+  text-decoration: none;
+  border-bottom: 1px solid #F1F5F9;
+  transition: color 0.18s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover,
+  &__active {
+    color: #F7941D;
+  }
+}
+
+/* Accordion trigger button */
+.mobileAccordionBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #F1F5F9;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1E293B;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.18s ease;
+
+  &:hover {
+    color: #F7941D;
+  }
+}
+
+/* Animated chevron */
+.mobileAccordionChevron {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  transition: transform 0.22s ease, color 0.18s ease;
+
+  &__open {
+    transform: rotate(180deg);
+    color: #F7941D;
+  }
+}
+
+/* Accordion expanded children area */
+.mobileAccordionContent {
+  background: #FAFBFC;
+  border-radius: 14px;
+  margin: 4px 6px 10px;
+  padding: 6px 4px;
+  border: 1px solid #F1F5F9;
+  animation: accordionOpen 0.2s ease;
+
+  @keyframes accordionOpen {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Child link / button inside accordion */
+.mobileAccordionChild {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 11px 14px;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s ease, color 0.18s ease;
+
+  &:hover {
+    background: #FFF8EF;
+    color: #F7941D;
+  }
+
+  &__active {
+    color: #F7941D;
+    font-weight: 700;
+    background: #FFF8EF;
   }
 }

@@ -30,7 +30,7 @@ const Product = sequelize.define('Product', {
     defaultValue: 'orange',
   },
   image: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT('long'),
     allowNull: false,
   },
   images: {

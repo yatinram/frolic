@@ -28,6 +28,7 @@ export const ROUTES = {
   ADMIN_TESTIMONIALS: '/admin/testimonials',
   ADMIN_GALLERY: '/admin/gallery',
   ADMIN_BLOGS: '/admin/blogs',
+  ADMIN_CENTERS: '/admin/centers',
   ADMIN_PRODUCTS: '/admin/products',
   ADMIN_ORDERS: '/admin/orders',
 };

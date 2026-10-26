@@ -48,7 +48,7 @@ function AlphabetGame() {
       setScore((s) => s + 10);
       confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
       notification.success({
-        message: '🎉 Fantastic Job!',
+        title: '🎉 Fantastic Job!',
         description: `You spelled "${currentWord.word}" perfectly! +10 Points`,
         placement: 'topRight',
         duration: 2,
@@ -56,7 +56,7 @@ function AlphabetGame() {
       setTimeout(pickWord, 1800);
     } else if (nextTyped.length === currentWord.word.length) {
       notification.warning({
-        message: '😅 Almost There!',
+        title: '😅 Almost There!',
         description: 'Try again with the letters!',
         placement: 'topRight',
         duration: 1.5,

@@ -47,6 +47,7 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 import { programService } from '../services';
 import { PROGRAMS_DATA } from '../constants/programsData';
+import { useLocalizedPrograms } from '../utils/programLocalization';
 import s from './Home.module.scss';
 
 // AntD Icon resolver for Home Page Program cards
@@ -353,11 +354,14 @@ function ProgramsSection() {
     };
   }, []);
 
+  // Localize programs according to selected language
+  const localizedPrograms = useLocalizedPrograms(programs);
+
   // For progression bar, take preschool programs or first 4
   const progressionPrograms = useMemo(() => {
-    const preschools = programs.filter((p) => p.category === 'preschool');
-    return preschools.length > 0 ? preschools : programs.slice(0, 4);
-  }, [programs]);
+    const preschools = localizedPrograms.filter((p) => p.category === 'preschool');
+    return preschools.length > 0 ? preschools : localizedPrograms.slice(0, 4);
+  }, [localizedPrograms]);
 
   return (
     <section className={s.sectionCanvas}>
@@ -407,7 +411,7 @@ function ProgramsSection() {
 
         {/* Dynamic Program Cards */}
         <div className="row g-4">
-          {programs.map((prog) => {
+          {localizedPrograms.map((prog) => {
             const title = prog.title || prog.name;
             const age = prog.ageGroup || prog.badgeText;
             const color = prog.accentColor || '#F7941D';
@@ -706,7 +710,7 @@ function LocationSection() {
                 <FrolicCard key={c.label} variant="contact" {...c} hoverable />
               ))}
 
-              <div className="d-flex gap-2 flex-wrap mt-2">
+              <div className={s.locationcta} >
                 <FrolicButton to={ROUTES.ADMISSION} variant="primary" size="md" icon={<CalendarOutlined />}>
                   {t('home.location.bookVisitBtn', 'Book Free Visit')}
                 </FrolicButton>

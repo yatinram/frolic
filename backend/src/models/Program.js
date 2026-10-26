@@ -117,7 +117,12 @@ const Program = sequelize.define('Program', {
   isActive: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
-  }
+  },
+  translations: {
+    type: DataTypes.JSON,
+    defaultValue: {},
+    // e.g. { gu: { title, tagline, shortDescription, overview }, hi: { ... } }
+  },
 }, {
   tableName: 'programs',
   timestamps: true,

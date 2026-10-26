@@ -1,0 +1,300 @@
+// premiumToast.scss
+// Ultra-Premium Toast Notification and Message Styling for Frolic Kids Edu Labs
+
+@keyframes toastFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// ── 1. GLOBAL ANTD MESSAGE (TOAST PILL) ──
+.ant-message {
+  top: 26px !important;
+  z-index: 99999 !important;
+
+  .ant-message-notice {
+    padding: 8px 0;
+    text-align: center;
+    animation: toastFloatIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .ant-message-notice-content {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 26px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 4px 14px -2px rgba(15, 23, 42, 0.08) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.94rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    pointer-events: all;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 26px 50px -10px rgba(15, 23, 42, 0.22), 0 6px 18px -2px rgba(15, 23, 42, 0.1) !important;
+    }
+
+    // Success Message Toast
+    &:has(.anticon-check-circle),
+    &:has(.ant-message-success) {
+      border: 1.5px solid rgba(16, 185, 129, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 24px;
+        right: 24px;
+        height: 3px;
+        background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+        border-radius: 9999px;
+      }
+
+      .anticon {
+        color: #10B981 !important;
+        font-size: 1.25rem !important;
+        filter: drop-shadow(0 2px 6px rgba(16, 185, 129, 0.4));
+      }
+    }
+
+    // Error Message Toast
+    &:has(.anticon-close-circle),
+    &:has(.ant-message-error) {
+      border: 1.5px solid rgba(239, 68, 68, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 242, 242, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 24px;
+        right: 24px;
+        height: 3px;
+        background: linear-gradient(90deg, #EF4444 0%, #DC2626 100%);
+        border-radius: 9999px;
+      }
+
+      .anticon {
+        color: #EF4444 !important;
+        font-size: 1.25rem !important;
+        filter: drop-shadow(0 2px 6px rgba(239, 68, 68, 0.4));
+      }
+    }
+
+    // Warning Message Toast
+    &:has(.anticon-exclamation-circle),
+    &:has(.ant-message-warning) {
+      border: 1.5px solid rgba(245, 130, 31, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 247, 237, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 24px;
+        right: 24px;
+        height: 3px;
+        background: linear-gradient(90deg, #F5821F 0%, #EA580C 100%);
+        border-radius: 9999px;
+      }
+
+      .anticon {
+        color: #F5821F !important;
+        font-size: 1.25rem !important;
+        filter: drop-shadow(0 2px 6px rgba(245, 130, 31, 0.4));
+      }
+    }
+
+    // Info Message Toast
+    &:has(.anticon-info-circle),
+    &:has(.anticon-loading),
+    &:has(.ant-message-info) {
+      border: 1.5px solid rgba(59, 130, 246, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(239, 246, 255, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 24px;
+        right: 24px;
+        height: 3px;
+        background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%);
+        border-radius: 9999px;
+      }
+
+      .anticon {
+        color: #3B82F6 !important;
+        font-size: 1.25rem !important;
+      }
+    }
+
+    .ant-message-custom-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+}
+
+// ── 2. GLOBAL ANTD NOTIFICATION (CARD TOAST) ──
+.ant-notification {
+  z-index: 99999 !important;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif !important;
+
+  .ant-notification-notice {
+    padding: 16px 22px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.16), 0 4px 14px -2px rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    margin-bottom: 16px !important;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 28px 56px -10px rgba(15, 23, 42, 0.2) !important;
+    }
+
+    // Success Notification Toast
+    &.ant-notification-notice-success {
+      border: 1.5px solid rgba(16, 185, 129, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 5px;
+        background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+      }
+
+      .ant-notification-notice-icon {
+        color: #10B981 !important;
+        font-size: 1.4rem !important;
+        margin-top: 2px !important;
+      }
+    }
+
+    // Error Notification Toast
+    &.ant-notification-notice-error {
+      border: 1.5px solid rgba(239, 68, 68, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 242, 242, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 5px;
+        background: linear-gradient(180deg, #EF4444 0%, #DC2626 100%);
+      }
+
+      .ant-notification-notice-icon {
+        color: #EF4444 !important;
+        font-size: 1.4rem !important;
+        margin-top: 2px !important;
+      }
+    }
+
+    // Warning Notification Toast
+    &.ant-notification-notice-warning {
+      border: 1.5px solid rgba(245, 130, 31, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 247, 237, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 5px;
+        background: linear-gradient(180deg, #F5821F 0%, #EA580C 100%);
+      }
+
+      .ant-notification-notice-icon {
+        color: #F5821F !important;
+        font-size: 1.4rem !important;
+        margin-top: 2px !important;
+      }
+    }
+
+    // Info Notification Toast
+    &.ant-notification-notice-info {
+      border: 1.5px solid rgba(59, 130, 246, 0.35) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(239, 246, 255, 0.95) 100%) !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 5px;
+        background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
+      }
+
+      .ant-notification-notice-icon {
+        color: #3B82F6 !important;
+        font-size: 1.4rem !important;
+        margin-top: 2px !important;
+      }
+    }
+
+    .ant-notification-notice-message {
+      font-weight: 800 !important;
+      font-size: 1.05rem !important;
+      color: #0F172A !important;
+      margin-bottom: 4px !important;
+    }
+
+    .ant-notification-notice-description {
+      color: #475569 !important;
+      font-size: 0.88rem !important;
+      line-height: 1.55 !important;
+    }
+
+    .ant-notification-notice-close {
+      color: #94A3B8 !important;
+      transition: all 0.2s ease;
+      top: 14px !important;
+      right: 14px !important;
+
+      &:hover {
+        color: #0F172A !important;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+// Suppress legacy default antd message and notification containers
+// so only Frolic's ultra-premium custom ToastContainer cards are rendered
+.ant-message:not(:empty) {
+  display: none !important;
+}
+.ant-notification:not(:empty) {
+  display: none !important;
+}
+

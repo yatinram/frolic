@@ -16,6 +16,8 @@ import {
   Col,
   InputNumber,
   Typography,
+  Upload,
+  Image,
 } from 'antd';
 import {
   PlusOutlined,
@@ -25,7 +27,7 @@ import {
   ReloadOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
-import { productService } from '../services';
+import { productService, uploadService } from '../services';
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
@@ -46,6 +48,12 @@ export default function ProductManager() {
   const [submitting, setSubmitting] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // Picture-Card Upload States
+  const [mainFileList, setMainFileList] = useState([]);
+  const [carouselFileList, setCarouselFileList] = useState([]);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
 
   const [form] = Form.useForm();
 
@@ -70,6 +78,8 @@ export default function ProductManager() {
   const handleOpenAddModal = () => {
     setEditingProduct(null);
     form.resetFields();
+    setMainFileList([]);
+    setCarouselFileList([]);
     form.setFieldsValue({
       category: 'uniforms',
       inStock: true,
@@ -84,15 +94,36 @@ export default function ProductManager() {
     setEditingProduct(record);
     form.resetFields();
 
-    // Format images, sizes, and items as comma/newline separated for easy editing
-    const imagesStr = Array.isArray(record.images) ? record.images.join('\n') : '';
+    // Setup main image fileList
+    if (record.image) {
+      setMainFileList([
+        {
+          uid: '-1',
+          name: 'primary-image.png',
+          status: 'done',
+          url: record.image,
+        },
+      ]);
+    } else {
+      setMainFileList([]);
+    }
+
+    // Setup carousel images fileList
+    const rawCarousel = Array.isArray(record.images) ? record.images : record.image ? [record.image] : [];
+    const formattedCarousel = rawCarousel.map((imgUrl, index) => ({
+      uid: `-${index + 2}`,
+      name: `carousel-${index + 1}.png`,
+      status: 'done',
+      url: imgUrl,
+    }));
+    setCarouselFileList(formattedCarousel);
+
     const sizesStr = Array.isArray(record.sizes) ? record.sizes.join(', ') : '';
     const itemsStr = Array.isArray(record.items) ? record.items.join('\n') : '';
     const specsStr = record.specifications ? JSON.stringify(record.specifications, null, 2) : '';
 
     form.setFieldsValue({
       ...record,
-      imagesList: imagesStr,
       sizesList: sizesStr,
       itemsList: itemsStr,
       specificationsJson: specsStr,
@@ -100,21 +131,87 @@ export default function ProductManager() {
     setModalVisible(true);
   };
 
+  // Preview helper
+  const handlePreview = async (file) => {
+    setPreviewImage(file.url || file.preview || file.thumbUrl);
+    setPreviewOpen(true);
+  };
+
+  // Main Image Upload Handler
+  const handleMainCustomUpload = async ({ file, onSuccess, onError }) => {
+    try {
+      const res = await uploadService.uploadFile(file);
+      const url = res?.data?.url || res?.url;
+      if (url) {
+        onSuccess({ url }, file);
+      } else {
+        throw new Error('Upload response missing URL');
+      }
+    } catch (err) {
+      console.warn('Backend upload error, using local data URL fallback:', err);
+      const reader = new FileReader();
+      reader.onload = () => {
+        onSuccess({ url: reader.result }, file);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleMainChange = ({ fileList }) => {
+    const updated = fileList.map((file) => {
+      if (file.response?.url) {
+        return { ...file, url: file.response.url };
+      }
+      return file;
+    });
+    setMainFileList(updated);
+  };
+
+  // Carousel Images Upload Handler
+  const handleCarouselCustomUpload = async ({ file, onSuccess, onError }) => {
+    try {
+      const res = await uploadService.uploadFile(file);
+      const url = res?.data?.url || res?.url;
+      if (url) {
+        onSuccess({ url }, file);
+      } else {
+        throw new Error('Upload response missing URL');
+      }
+    } catch (err) {
+      console.warn('Backend upload error, using local data URL fallback:', err);
+      const reader = new FileReader();
+      reader.onload = () => {
+        onSuccess({ url: reader.result }, file);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleCarouselChange = ({ fileList }) => {
+    const updated = fileList.map((file) => {
+      if (file.response?.url) {
+        return { ...file, url: file.response.url };
+      }
+      return file;
+    });
+    setCarouselFileList(updated);
+  };
+
   const handleFormSubmit = async (values) => {
     try {
+      // Validate primary image
+      const primaryUrl = mainFileList[0]?.url || mainFileList[0]?.response?.url || '';
+      if (!primaryUrl) {
+        message.error('Please upload a Primary Featured Image');
+        return;
+      }
+
       setSubmitting(true);
 
-      // Parse images array
-      let images = [];
-      if (values.imagesList && values.imagesList.trim()) {
-        images = values.imagesList
-          .split('\n')
-          .map((url) => url.trim())
-          .filter((url) => url.length > 0);
-      }
-      if (images.length === 0 && values.image) {
-        images = [values.image];
-      }
+      // Extract carousel image URLs
+      const images = carouselFileList
+        .map((f) => f.url || f.response?.url)
+        .filter(Boolean);
 
       // Parse sizes array
       let sizes = [];
@@ -140,7 +237,6 @@ export default function ProductManager() {
         try {
           specifications = JSON.parse(values.specificationsJson);
         } catch {
-          // If plain text, wrap it
           specifications = { details: values.specificationsJson.trim() };
         }
       }
@@ -159,17 +255,17 @@ export default function ProductManager() {
         category: values.category,
         badge: values.badge || '',
         badgeColor: values.badgeColor || 'orange',
-        image: values.image || images[0] || '',
-        images,
+        image: primaryUrl,
+        images: images.length > 0 ? images : [primaryUrl],
         sizes,
         specifications,
         price: values.price,
         subPrice: values.subPrice || '',
         description: values.description,
         items,
-        inStock: values.inStock !== false,
-        isActive: values.isActive !== false,
-        sortOrder: values.sortOrder || 0,
+        inStock: Boolean(values.inStock),
+        sortOrder: Number(values.sortOrder) || 0,
+        isActive: Boolean(values.isActive),
       };
 
       if (editingProduct) {
@@ -177,14 +273,14 @@ export default function ProductManager() {
         message.success('Product updated successfully!');
       } else {
         await productService.create(payload);
-        message.success('New product created successfully!');
+        message.success('New product added to store!');
       }
 
       setModalVisible(false);
       fetchProducts();
     } catch (err) {
       console.error(err);
-      message.error('Failed to save product: ' + (err.message || 'Error occurred'));
+      message.error(err.message || 'Failed to save product');
     } finally {
       setSubmitting(false);
     }
@@ -193,7 +289,7 @@ export default function ProductManager() {
   const handleDelete = async (id) => {
     try {
       await productService.delete(id);
-      message.success('Product deleted successfully');
+      message.success('Product removed');
       fetchProducts();
     } catch (err) {
       console.error(err);
@@ -201,26 +297,48 @@ export default function ProductManager() {
     }
   };
 
+  const handleToggleActive = async (record, checked) => {
+    try {
+      await productService.update(record.id, { isActive: checked });
+      message.success(`Product ${checked ? 'published' : 'hidden'}`);
+      setProducts((prev) =>
+        prev.map((p) => (p.id === record.id ? { ...p, isActive: checked } : p))
+      );
+    } catch (err) {
+      console.error(err);
+      message.error('Failed to toggle status');
+    }
+  };
+
   const handleToggleStock = async (record, checked) => {
     try {
       await productService.update(record.id, { inStock: checked });
-      message.success(`Product marked as ${checked ? 'In Stock' : 'Out of Stock'}`);
+      message.success(`Stock status updated to ${checked ? 'In Stock' : 'Out of Stock'}`);
       setProducts((prev) =>
         prev.map((p) => (p.id === record.id ? { ...p, inStock: checked } : p))
       );
-    } catch {
-      message.error('Failed to update stock status');
+    } catch (err) {
+      console.error(err);
+      message.error('Failed to toggle stock');
     }
   };
 
   const filteredProducts = products.filter((p) => {
+    const matchesCat = selectedCategory === 'all' || p.category === selectedCategory;
     const matchesSearch =
       !searchText ||
       p.title?.toLowerCase().includes(searchText.toLowerCase()) ||
-      p.slug?.toLowerCase().includes(searchText.toLowerCase());
-    const matchesCat = selectedCategory === 'all' || p.category === selectedCategory;
-    return matchesSearch && matchesCat;
+      p.slug?.toLowerCase().includes(searchText.toLowerCase()) ||
+      p.category?.toLowerCase().includes(searchText.toLowerCase());
+    return matchesCat && matchesSearch;
   });
+
+  const uploadButton = (
+    <div>
+      <PlusOutlined style={{ fontSize: 18, color: '#94A3B8' }} />
+      <div style={{ marginTop: 8, fontWeight: 700, fontSize: '0.85rem', color: '#475569' }}>Upload</div>
+    </div>
+  );
 
   const columns = [
     {
@@ -228,29 +346,31 @@ export default function ProductManager() {
       dataIndex: 'image',
       key: 'image',
       width: 70,
-      render: (img, record) => (
+      render: (img) => (
         <img
-          src={img || record.images?.[0] || '/assets/kits.jpeg'}
-          alt={record.title}
+          src={img || '/assets/kits.jpeg'}
+          alt="product"
           style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 8, border: '1px solid #e2e8f0' }}
+          onError={(e) => {
+            e.target.src = '/assets/kits.jpeg';
+          }}
         />
       ),
     },
     {
-      title: 'Product Title & Slug',
+      title: 'Product Info',
+      dataIndex: 'title',
       key: 'title',
-      render: (_, record) => (
+      render: (title, record) => (
         <div>
-          <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '14px' }}>{record.title}</div>
-          <Text type="secondary" style={{ fontSize: '11px' }}>
-            /store/{record.slug}
-          </Text>
+          <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0f172a' }}>{title}</div>
+          <div style={{ fontSize: '0.8rem', color: '#64748b' }}>
+            <code>/{record.slug}</code>
+          </div>
           {record.badge && (
-            <div style={{ marginTop: 4 }}>
-              <Tag color={record.badgeColor || 'orange'} style={{ fontSize: 10, fontWeight: 700 }}>
-                {record.badge}
-              </Tag>
-            </div>
+            <Tag color={record.badgeColor || 'orange'} style={{ marginTop: 4, borderRadius: 6, fontSize: '0.75rem' }}>
+              {record.badge}
+            </Tag>
           )}
         </div>
       ),
@@ -261,40 +381,20 @@ export default function ProductManager() {
       key: 'category',
       width: 140,
       render: (cat) => {
-        const found = CATEGORY_OPTIONS.find((c) => c.value === cat);
-        return <Tag color="blue" style={{ fontWeight: 600 }}>{found?.label || cat}</Tag>;
+        const opt = CATEGORY_OPTIONS.find((c) => c.value === cat);
+        return <Tag color="blue" style={{ borderRadius: 6 }}>{opt ? opt.label : cat}</Tag>;
       },
     },
     {
-      title: 'Price',
+      title: 'Pricing',
+      dataIndex: 'price',
       key: 'price',
-      width: 120,
-      render: (_, record) => (
+      width: 130,
+      render: (price, record) => (
         <div>
-          <div style={{ fontWeight: 800, color: '#f7941d', fontSize: '15px' }}>{record.price}</div>
-          {record.subPrice && <Text type="secondary" style={{ fontSize: '11px' }}>{record.subPrice}</Text>}
-        </div>
-      ),
-    },
-    {
-      title: 'Sizes / Inclusions',
-      key: 'details',
-      width: 180,
-      render: (_, record) => (
-        <div>
-          {Array.isArray(record.sizes) && record.sizes.length > 0 ? (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-              {record.sizes.map((s, idx) => (
-                <Tag key={idx} style={{ fontSize: 10 }}>{s}</Tag>
-              ))}
-            </div>
-          ) : (
-            <Text type="secondary" style={{ fontSize: 11 }}>Standard Single Size</Text>
-          )}
-          {Array.isArray(record.images) && (
-            <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 4 }}>
-              📸 {record.images.length} Carousel Images
-            </div>
+          <div style={{ fontWeight: 800, color: '#f7941d', fontSize: '1rem' }}>{price}</div>
+          {record.subPrice && (
+            <div style={{ fontSize: '0.72rem', color: '#94a3b8' }}>{record.subPrice}</div>
           )}
         </div>
       ),
@@ -306,7 +406,7 @@ export default function ProductManager() {
       width: 100,
       render: (inStock, record) => (
         <Switch
-          checked={inStock !== false}
+          checked={inStock}
           onChange={(checked) => handleToggleStock(record, checked)}
           checkedChildren="Yes"
           unCheckedChildren="No"
@@ -314,26 +414,47 @@ export default function ProductManager() {
       ),
     },
     {
+      title: 'Active',
+      dataIndex: 'isActive',
+      key: 'isActive',
+      width: 90,
+      render: (isActive, record) => (
+        <Switch
+          checked={isActive}
+          onChange={(checked) => handleToggleActive(record, checked)}
+          checkedChildren="Live"
+          unCheckedChildren="Off"
+        />
+      ),
+    },
+    {
+      title: 'Order',
+      dataIndex: 'sortOrder',
+      key: 'sortOrder',
+      width: 70,
+      align: 'center',
+    },
+    {
       title: 'Actions',
       key: 'actions',
       width: 120,
+      align: 'center',
       render: (_, record) => (
         <Space size="small">
           <Button
-            type="primary"
-            icon={<EditOutlined />}
-            size="small"
+            type="text"
+            icon={<EditOutlined style={{ color: '#0072bc' }} />}
             onClick={() => handleOpenEditModal(record)}
           />
           <Popconfirm
-            title="Delete this product?"
-            description="Are you sure you want to remove this product from store?"
+            title="Delete product?"
+            description="Are you sure you want to permanently delete this product?"
             onConfirm={() => handleDelete(record.id)}
             okText="Yes, Delete"
-            cancelText="No"
+            cancelText="Cancel"
             okButtonProps={{ danger: true }}
           >
-            <Button danger icon={<DeleteOutlined />} size="small" />
+            <Button type="text" danger icon={<DeleteOutlined />} />
           </Popconfirm>
         </Space>
       ),
@@ -342,21 +463,20 @@ export default function ProductManager() {
 
   return (
     <div>
-      {/* Header & Controls */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
         <div>
-          <Title level={3} style={{ margin: 0, fontWeight: 800, color: '#0f172a' }}>
-            <ShoppingOutlined style={{ color: '#f7941d', marginRight: 8 }} />
+          <Title level={3} style={{ margin: 0, color: '#0f172a', fontWeight: 800 }}>
+         
             Store Products &amp; Kits Manager
           </Title>
-          <Text type="secondary">Add, edit, change prices, update carousel images and manage stock availability.</Text>
         </div>
 
         <Space>
           <Button icon={<ReloadOutlined />} onClick={fetchProducts}>
             Refresh
           </Button>
-          <Button type="primary" icon={<PlusOutlined />} onClick={handleOpenAddModal} style={{ background: '#f7941d', borderColor: '#f7941d' }}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleOpenAddModal} style={{ background: '#f7941d', borderColor: '#f7941d', borderRadius: 10, fontWeight: 700 }}>
             Add New Product
           </Button>
         </Space>
@@ -403,29 +523,65 @@ export default function ProductManager() {
         bordered
       />
 
-      {/* Create / Edit Modal */}
+      {/* ── Fixed-Size Scrollable Product Modal ── */}
       <Modal
-        title={editingProduct ? 'Edit Product: ' + editingProduct.title : 'Add New Store Product'}
+        title={
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ width: 34, height: 34, borderRadius: 8, background: '#FFF7EE', color: '#F7941D', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <ShoppingOutlined style={{ fontSize: 18 }} />
+            </div>
+            <span style={{ fontWeight: 800, fontSize: '1.2rem', color: '#0F172A' }}>
+              {editingProduct ? `Edit Product: ${editingProduct.title}` : 'Add New Store Product'}
+            </span>
+          </div>
+        }
         open={modalVisible}
         onCancel={() => setModalVisible(false)}
-        footer={null}
-        width={720}
+        width={780}
+        centered
         destroyOnClose
+        styles={{
+          body: {
+            maxHeight: 'calc(76vh - 80px)',
+            overflowY: 'auto',
+            padding: '16px 20px 24px 20px',
+          },
+        }}
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 4px' }}>
+            <span style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
+              * Make sure to provide price &amp; primary image
+            </span>
+            <Space>
+              <Button onClick={() => setModalVisible(false)} style={{ borderRadius: 10, fontWeight: 600 }}>
+                Cancel
+              </Button>
+              <Button
+                type="primary"
+                onClick={() => form.submit()}
+                loading={submitting}
+                style={{ background: '#F7941D', borderColor: '#F7941D', borderRadius: 10, fontWeight: 700 }}
+              >
+                {editingProduct ? 'Update Product' : 'Create Product'}
+              </Button>
+            </Space>
+          </div>
+        }
       >
-        <Form form={form} layout="vertical" onFinish={handleFormSubmit} style={{ marginTop: 16 }}>
+        <Form form={form} layout="vertical" onFinish={handleFormSubmit} style={{ marginTop: 8 }}>
           <Row gutter={16}>
             <Col span={16}>
               <Form.Item
                 name="title"
-                label="Product Title"
+                label={<span style={{ fontWeight: 700 }}>Product Title</span>}
                 rules={[{ required: true, message: 'Please enter product title' }]}
               >
-                <Input placeholder="e.g. Frolic Signature Orange Polo T-Shirt" />
+                <Input placeholder="e.g. Frolic Signature Orange Polo T-Shirt" size="large" style={{ borderRadius: 10 }} />
               </Form.Item>
             </Col>
             <Col span={8}>
-              <Form.Item name="category" label="Category" rules={[{ required: true }]}>
-                <Select options={CATEGORY_OPTIONS} />
+              <Form.Item name="category" label={<span style={{ fontWeight: 700 }}>Category</span>} rules={[{ required: true }]}>
+                <Select options={CATEGORY_OPTIONS} size="large" style={{ borderRadius: 10 }} />
               </Form.Item>
             </Col>
           </Row>
@@ -434,27 +590,27 @@ export default function ProductManager() {
             <Col span={12}>
               <Form.Item
                 name="price"
-                label="Selling Price"
+                label={<span style={{ fontWeight: 700 }}>Selling Price</span>}
                 rules={[{ required: true, message: 'e.g. ₹399' }]}
               >
-                <Input placeholder="e.g. ₹399" />
+                <Input placeholder="e.g. ₹399" style={{ borderRadius: 10 }} />
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item name="subPrice" label="MRP / Sub-Price Text">
-                <Input placeholder="e.g. MRP: ₹549 (Inclusive of all taxes)" />
+              <Form.Item name="subPrice" label={<span style={{ fontWeight: 700 }}>MRP / Sub-Price Text</span>}>
+                <Input placeholder="e.g. MRP: ₹549 (Inclusive of all taxes)" style={{ borderRadius: 10 }} />
               </Form.Item>
             </Col>
           </Row>
 
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="badge" label="Badge Text (Optional)">
-                <Input placeholder="e.g. Official Uniform, Best Seller" />
+              <Form.Item name="badge" label={<span style={{ fontWeight: 700 }}>Badge Text (Optional)</span>}>
+                <Input placeholder="e.g. Official Uniform, Best Seller" style={{ borderRadius: 10 }} />
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item name="badgeColor" label="Badge Color">
+              <Form.Item name="badgeColor" label={<span style={{ fontWeight: 700 }}>Badge Color</span>}>
                 <Select
                   options={[
                     { value: 'orange', label: 'Orange' },
@@ -463,92 +619,123 @@ export default function ProductManager() {
                     { value: 'purple', label: 'Purple' },
                     { value: 'red', label: 'Red' },
                   ]}
+                  style={{ borderRadius: 10 }}
                 />
               </Form.Item>
             </Col>
           </Row>
 
+          {/* ── Picture Card Main Featured Image Upload ── */}
           <Form.Item
-            name="image"
-            label="Primary Featured Image URL"
-            rules={[{ required: true, message: 'Please provide main image URL' }]}
+            label={<span style={{ fontWeight: 700 }}>Primary Featured Image</span>}
+            required
+            extra={<span style={{ fontSize: '0.8rem', color: '#64748B' }}>Accepts JPG, PNG, WebP — up to 5MB. Click + to upload.</span>}
+            style={{ marginBottom: 20 }}
           >
-            <Input placeholder="https://images.unsplash.com/..." />
+            <Upload
+              listType="picture-card"
+              fileList={mainFileList}
+              onPreview={handlePreview}
+              onChange={handleMainChange}
+              customRequest={handleMainCustomUpload}
+              maxCount={1}
+              accept="image/*"
+            >
+              {mainFileList.length >= 1 ? null : uploadButton}
+            </Upload>
           </Form.Item>
 
+          {/* ── Picture Card Carousel Gallery Upload ── */}
           <Form.Item
-            name="imagesList"
-            label="2-Second Carousel Images (1 URL per line - up to 4 images)"
-            tooltip="Each URL on a new line. These images will automatically rotate every 2 seconds on the product detail page."
+            label={<span style={{ fontWeight: 700 }}>Carousel Gallery Images (Max 4)</span>}
+            extra={<span style={{ fontSize: '0.8rem', color: '#64748B' }}>Accepts JPG, PNG, WebP — up to 5MB each. Max 4 images. Rotates automatically every 2 seconds on detail page.</span>}
+            style={{ marginBottom: 20 }}
           >
-            <TextArea
-              rows={4}
-              placeholder="https://images.unsplash.com/photo-1...\nhttps://images.unsplash.com/photo-2...\nhttps://images.unsplash.com/photo-3..."
-            />
+            <Upload
+              listType="picture-card"
+              fileList={carouselFileList}
+              onPreview={handlePreview}
+              onChange={handleCarouselChange}
+              customRequest={handleCarouselCustomUpload}
+              maxCount={4}
+              multiple
+              accept="image/*"
+            >
+              {carouselFileList.length >= 4 ? null : uploadButton}
+            </Upload>
           </Form.Item>
 
           <Form.Item
             name="sizesList"
-            label="Available Sizes (Comma-separated, for clothing/apparel)"
+            label={<span style={{ fontWeight: 700 }}>Available Sizes (Comma-separated)</span>}
             tooltip="Example: 2 – 3 Years, 3 – 4 Years, 4 – 5 Years, 5 – 6 Years"
           >
-            <Input placeholder="2 – 3 Years, 3 – 4 Years, 4 – 5 Years, 5 – 6 Years" />
+            <Input placeholder="2 – 3 Years, 3 – 4 Years, 4 – 5 Years, 5 – 6 Years" style={{ borderRadius: 10 }} />
           </Form.Item>
 
           <Form.Item
             name="description"
-            label="Detailed Product Description"
+            label={<span style={{ fontWeight: 700 }}>Detailed Product Description</span>}
             rules={[{ required: true, message: 'Please enter product description' }]}
           >
-            <TextArea rows={3} placeholder="Comprehensive description of materials, suitability, and highlights..." />
+            <TextArea rows={3} placeholder="Comprehensive description of materials, suitability, and highlights..." style={{ borderRadius: 10 }} />
           </Form.Item>
 
           <Form.Item
             name="itemsList"
-            label="What's Included / Feature Highlights (1 item per line)"
+            label={<span style={{ fontWeight: 700 }}>What's Included / Feature Highlights (1 item per line)</span>}
           >
             <TextArea
               rows={3}
               placeholder="100% Bio-Washed Pique Cotton\nNon-Roll Ribbed Knit Collar\nAnti-Pinch Encased Waistband"
+              style={{ borderRadius: 10 }}
             />
           </Form.Item>
 
           <Form.Item
             name="specificationsJson"
-            label="Specifications (JSON Object)"
+            label={<span style={{ fontWeight: 700 }}>Specifications (JSON Object)</span>}
             tooltip='Example: {"material": "100% Cotton", "fit": "Regular", "care": "Machine Wash"}'
           >
-            <TextArea rows={3} placeholder='{"material": "100% Bio-Washed Pique Cotton", "fit": "Regular", "care": "Machine Wash Cold"}' />
+            <TextArea
+              rows={3}
+              placeholder='{"material": "100% Bio-Washed Pique Cotton", "fit": "Regular", "care": "Machine Wash Cold"}'
+              style={{ borderRadius: 10, fontFamily: 'monospace', fontSize: '0.84rem' }}
+            />
           </Form.Item>
 
           <Row gutter={16}>
             <Col span={8}>
-              <Form.Item name="sortOrder" label="Sort Order">
-                <InputNumber min={0} style={{ width: '100%' }} />
+              <Form.Item name="sortOrder" label={<span style={{ fontWeight: 700 }}>Sort Order</span>}>
+                <InputNumber min={0} style={{ width: '100%', borderRadius: 10 }} />
               </Form.Item>
             </Col>
             <Col span={8}>
-              <Form.Item name="inStock" label="In Stock" valuePropName="checked">
+              <Form.Item name="inStock" label={<span style={{ fontWeight: 700 }}>In Stock</span>} valuePropName="checked">
                 <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
             </Col>
             <Col span={8}>
-              <Form.Item name="isActive" label="Active / Visible" valuePropName="checked">
+              <Form.Item name="isActive" label={<span style={{ fontWeight: 700 }}>Active / Visible</span>} valuePropName="checked">
                 <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
             </Col>
           </Row>
-
-          <div style={{ textAlign: 'right', marginTop: 16 }}>
-            <Space>
-              <Button onClick={() => setModalVisible(false)}>Cancel</Button>
-              <Button type="primary" htmlType="submit" loading={submitting} style={{ background: '#f7941d', borderColor: '#f7941d' }}>
-                {editingProduct ? 'Update Product' : 'Create Product'}
-              </Button>
-            </Space>
-          </div>
         </Form>
       </Modal>
+
+      {/* Image Preview Modal */}
+      {previewOpen && (
+        <Image
+          wrapperStyle={{ display: 'none' }}
+          preview={{
+            visible: previewOpen,
+            onVisibleChange: (visible) => setPreviewOpen(visible),
+            afterOpenChange: (visible) => !visible && setPreviewImage(''),
+          }}
+          src={previewImage}
+        />
+      )}
     </div>
   );
 }

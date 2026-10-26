@@ -379,3 +379,151 @@
     }
   }
 }
+
+// ── Mobile Responsive Breakpoints ────────────────────────────
+
+/* Hero Banner */
+@media (max-width: 992px) {
+  .heroBanner {
+    padding: 90px 0 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    padding: 80px 0 50px;
+
+    &__subtitle {
+      font-size: 14px;
+    }
+
+    &__stats {
+      gap: 8px;
+    }
+  }
+
+  .heroStatPill {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroBanner {
+    padding: 70px 0 40px;
+
+    &__badge {
+      font-size: 11px;
+      padding: 5px 12px;
+      margin-bottom: 12px;
+    }
+
+    &__subtitle {
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    &__stats {
+      gap: 6px;
+    }
+  }
+
+  .heroStatPill {
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+}
+
+/* Hub Header (title + filter row) */
+@media (max-width: 768px) {
+  .hubHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin: 28px 0 20px;
+
+    &__title {
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hubHeader {
+    margin: 20px 0 16px;
+
+    &__title {
+      font-size: 20px;
+    }
+  }
+}
+
+/* Category Tabs — horizontal scroll on mobile */
+@media (max-width: 768px) {
+  .categoryTabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 5px;
+    border-radius: 12px;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .tabBtn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tabBtn {
+    padding: 6px 10px;
+    font-size: 11px;
+    gap: 4px;
+  }
+}
+
+/* Program Card Image Height */
+@media (max-width: 768px) {
+  .programCard {
+    &__image {
+      height: 170px;
+    }
+
+    &__content {
+      padding: 18px;
+    }
+
+    &__footer {
+      padding: 0 18px 18px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .programCard {
+    &__image {
+      height: 150px;
+    }
+
+    &__title {
+      font-size: 18px;
+    }
+
+    &__content {
+      padding: 14px;
+    }
+
+    &__footer {
+      padding: 0 14px 14px;
+    }
+  }
+}

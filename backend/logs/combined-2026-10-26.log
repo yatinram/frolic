@@ -1,0 +1,918 @@
+[2026-10-26 21:12:49] [INFO]: Initializing Frolic Kids Edu Labs Enterprise Backend...
+[2026-10-26 21:12:50] [INFO]: Database 'vertix_solutions' ensured.
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT 1+1 AS result
+[2026-10-26 21:12:50] [INFO]: ✅ MySQL Sequelize connection established successfully.
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admin_users' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admin_users`;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admin_users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `role` `role` ENUM('super_admin', 'editor') DEFAULT 'super_admin';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `lastLogin` `lastLogin` DATETIME;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW INDEX FROM `admin_users`
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admissions' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admissions`;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admissions' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `childName` `childName` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `dob` `dob` DATE;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `email` `email` VARCHAR(255);
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `program` `program` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `preferredCenter` `preferredCenter` VARCHAR(255) DEFAULT 'Gandhinagar';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `message` `message` TEXT;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `status` `status` ENUM('new', 'contacted', 'enrolled', 'closed') DEFAULT 'new';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `notes` `notes` TEXT;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW INDEX FROM `admissions`
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'franchise_enquiries' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `franchise_enquiries`;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'franchise_enquiries' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `state` `state` VARCHAR(255) DEFAULT 'Gujarat';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `spaceAvailableSqft` `spaceAvailableSqft` VARCHAR(255);
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `investmentCapacity` `investmentCapacity` VARCHAR(255);
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `experience` `experience` VARCHAR(255);
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `message` `message` TEXT;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `status` `status` ENUM('new', 'in_review', 'approved', 'closed') DEFAULT 'new';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `notes` `notes` TEXT;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW INDEX FROM `franchise_enquiries`
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'programs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `programs`;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'programs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `name` `name` VARCHAR(255);
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'preschool';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `categoryLabel` `categoryLabel` VARCHAR(255) DEFAULT 'Preschool Foundation';
+[2026-10-26 21:12:50] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `ageGroup` `ageGroup` VARCHAR(255) NOT NULL DEFAULT '1.5 – 6 Years';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `badgeText` `badgeText` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `courseCode` `courseCode` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `tagline` `tagline` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `accentColor` `accentColor` VARCHAR(255) DEFAULT '#F7941D';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `gradient` `gradient` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroBg` `heroBg` VARCHAR(255) DEFAULT '/assets/hero_kids_clean.png';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroOverlay` `heroOverlay` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `image` `image` VARCHAR(500);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'BookOutlined';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `shortDescription` `shortDescription` TEXT;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `overview` `overview` TEXT;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `quickSpecs` `quickSpecs` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `keyHighlights` `keyHighlights` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `pillars` `pillars` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `curriculum` `curriculum` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `milestones` `milestones` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `dailyRoutine` `dailyRoutine` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `translations` `translations` JSON;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW INDEX FROM `programs`
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'testimonials' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `testimonials`;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'testimonials' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `role` `role` VARCHAR(255) DEFAULT 'Parent';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `childName` `childName` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `program` `program` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `rating` `rating` INTEGER DEFAULT 5;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `quote` `quote` TEXT NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `photoUrl` `photoUrl` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `videoUrl` `videoUrl` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW INDEX FROM `testimonials`
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'media_gallery' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `media_gallery`;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'media_gallery' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `title` `title` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `imageUrl` `imageUrl` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `category` `category` VARCHAR(255) DEFAULT 'activities';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `altText` `altText` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `isFeatured` `isFeatured` TINYINT(1) DEFAULT false;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW INDEX FROM `media_gallery`
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'blogs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `blogs`;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'blogs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `summary` `summary` TEXT NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `content` `content` LONGTEXT NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `coverImage` `coverImage` VARCHAR(255);
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `author` `author` VARCHAR(255) DEFAULT 'Frolic Edu Team';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Early Education';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `readTime` `readTime` VARCHAR(255) DEFAULT '4 min read';
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `publishedAt` `publishedAt` DATETIME;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SHOW INDEX FROM `blogs`
+[2026-10-26 21:12:51] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `contact_messages`;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'contact_messages' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `phone` `phone` VARCHAR(255);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `subject` `subject` VARCHAR(255);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `message` `message` TEXT NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `isRead` `isRead` TINYINT(1) DEFAULT false;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SHOW INDEX FROM `contact_messages`
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'centers' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `centers`;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'centers' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `branchType` `branchType` VARCHAR(255) DEFAULT 'Edu Lab & Preschool';
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `area` `area` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `district` `district` VARCHAR(255);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `taluka` `taluka` VARCHAR(255);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `state` `state` VARCHAR(255) NOT NULL DEFAULT 'Gujarat';
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `pincode` `pincode` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `email` `email` VARCHAR(255) DEFAULT 'frolickidsedulabs@gmail.com';
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `timing` `timing` VARCHAR(255) DEFAULT 'Monday – Saturday: 8:30 AM – 5:30 PM';
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `programs` `programs` JSON;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `facilities` `facilities` JSON;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `mapQuery` `mapQuery` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `latitude` `latitude` DECIMAL(10,7);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `longitude` `longitude` DECIMAL(10,7);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isFlagship` `isFlagship` TINYINT(1) DEFAULT false;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SHOW INDEX FROM `centers`
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'products' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `products`;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'products' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `images` `images` JSON;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'kits';
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badge` `badge` VARCHAR(255);
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badgeColor` `badgeColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `image` `image` LONGTEXT NOT NULL;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sizes` `sizes` JSON;
+[2026-10-26 21:12:52] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `specifications` `specifications` JSON;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `price` `price` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `subPrice` `subPrice` VARCHAR(255);
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `items` `items` JSON;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `inStock` `inStock` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SHOW INDEX FROM `products`
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'kit_orders' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `kit_orders`;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'kit_orders' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `productName` `productName` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `grade` `grade` VARCHAR(255);
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `quantity` `quantity` INTEGER DEFAULT 1;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `status` `status` ENUM('new', 'contacted', 'dispatched', 'delivered', 'cancelled') DEFAULT 'new';
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `adminNotes` `adminNotes` TEXT;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SHOW INDEX FROM `kit_orders`
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'events' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `events`;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'events' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Celebration';
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `tagColor` `tagColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `date` `date` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `time` `time` VARCHAR(255) DEFAULT '10:00 AM – 1:00 PM';
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `location` `location` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `image` `image` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isUpcoming` `isUpcoming` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SHOW INDEX FROM `events`
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'awards' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `awards`;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'awards' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `org` `org` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'Trophy';
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-26 21:12:53] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SHOW INDEX FROM `awards`
+[2026-10-26 21:12:54] [INFO]: Sequelize models synchronized successfully.
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admin_users` AS `AdminUser`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'nursery';
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'lkg';
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'ukg';
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'english-lab';
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'maths-lab';
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'teacher-training';
+[2026-10-26 21:12:54] [INFO]: ✅ Synced 7 detailed Programs in Database
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `testimonials` AS `Testimonial`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `media_gallery` AS `MediaGallery`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `blogs` AS `Blog`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `centers` AS `Center`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `products` AS `Product`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `events` AS `Event`;
+[2026-10-26 21:12:54] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `awards` AS `Award`;
+[2026-10-26 21:12:54] [INFO]: 🚀 Frolic Server running in development mode on port 5000
+[2026-10-26 21:12:54] [INFO]: 🌐 API Endpoint: http://localhost:5000/api/health
+[2026-10-26 21:13:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:13:14] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 20.389 ms - -[0m
+[2026-10-26 21:13:14] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:13:14] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 3.979 ms - -[0m
+[2026-10-26 21:16:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:16:25] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 77.835 ms - -[0m
+[2026-10-26 21:16:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:16:25] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 3.916 ms - -[0m
+[2026-10-26 21:16:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:16:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:16:29] [INFO]: [0mGET /api/programs/play-group [32m200[0m 13.059 ms - 4419[0m
+[2026-10-26 21:16:29] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 10.619 ms - -[0m
+[2026-10-26 21:16:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:16:29] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:16:29] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 4.256 ms - -[0m
+[2026-10-26 21:16:29] [INFO]: [0mGET /api/programs/play-group [36m304[0m 4.418 ms - -[0m
+[2026-10-26 21:16:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:16:46] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 63.595 ms - -[0m
+[2026-10-26 21:16:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:16:46] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 18.132 ms - -[0m
+[2026-10-26 21:17:00] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:17:00] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:17:00] [INFO]: [0mPOST /api/auth/login [33m401[0m 87.021 ms - 64[0m
+[2026-10-26 21:17:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:17:08] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:17:08] [INFO]: [0mPOST /api/auth/login [33m401[0m 65.501 ms - 64[0m
+[2026-10-26 21:17:14] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:17:14] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:17:14] [INFO]: [0mPOST /api/auth/login [33m401[0m 64.641 ms - 64[0m
+[2026-10-26 21:19:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:19:08] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:19:08] [INFO]: [0mPOST /api/auth/login [33m401[0m 190.976 ms - 64[0m
+[2026-10-26 21:21:12] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:21:12] [DEBUG]: Executing (default): UPDATE `admin_users` SET `lastLogin`=?,`updatedAt`=? WHERE `id` = ?
+[2026-10-26 21:21:12] [INFO]: [AUTH SUCCESS] User 'admin' (admin@frolic.com) logged in successfully.
+[2026-10-26 21:21:12] [INFO]: [0mPOST /api/auth/login [32m200[0m 145.534 ms - 365[0m
+[2026-10-26 21:21:12] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:12] [INFO]: [0mGET /api/auth/me [32m200[0m 10.178 ms - 167[0m
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 28.937 ms - -[0m
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 50.116 ms - -[0m
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 49.153 ms - -[0m
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/orders [36m304[0m 48.174 ms - -[0m
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 28.613 ms - -[0m
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:21:13] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/orders [36m304[0m 5.989 ms - -[0m
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 27.857 ms - -[0m
+[2026-10-26 21:21:13] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 21.436 ms - -[0m
+[2026-10-26 21:21:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:21:17] [INFO]: [0mGET /api/programs?activeOnly=false [32m200[0m 8.067 ms - 32429[0m
+[2026-10-26 21:21:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:21:17] [INFO]: [0mGET /api/programs?activeOnly=false [36m304[0m 6.370 ms - -[0m
+[2026-10-26 21:21:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:21] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 23.892 ms - -[0m
+[2026-10-26 21:21:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:22] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 17.714 ms - -[0m
+[2026-10-26 21:21:26] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`id` = '10';
+[2026-10-26 21:21:26] [DEBUG]: Executing (default): DELETE FROM `products` WHERE `id` = 10
+[2026-10-26 21:21:27] [INFO]: [0mDELETE /api/products/10 [32m200[0m 46.937 ms - 69[0m
+[2026-10-26 21:21:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:27] [INFO]: [0mGET /api/products?activeOnly=false [32m200[0m 5.644 ms - 12320[0m
+[2026-10-26 21:21:29] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:29] [INFO]: [0mGET /api/auth/me [36m304[0m 2.028 ms - -[0m
+[2026-10-26 21:21:29] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:21:29] [INFO]: [0mGET /api/auth/me [36m304[0m 1.287 ms - -[0m
+[2026-10-26 21:21:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:30] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 2.404 ms - -[0m
+[2026-10-26 21:21:30] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:30] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 2.201 ms - -[0m
+[2026-10-26 21:21:35] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:21:35] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 4.014 ms - -[0m
+[2026-10-26 21:21:35] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:21:35] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 2.657 ms - -[0m
+[2026-10-26 21:21:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:40] [INFO]: [0mGET /api/products?activeOnly=true [32m200[0m 2.699 ms - 12320[0m
+[2026-10-26 21:21:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:21:40] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 2.710 ms - -[0m
+[2026-10-26 21:23:00] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:00] [INFO]: [0mGET /api/auth/me [36m304[0m 9.823 ms - -[0m
+[2026-10-26 21:23:00] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:00] [INFO]: [0mGET /api/auth/me [36m304[0m 3.817 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.772 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.470 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.256 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.591 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.245 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.631 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.374 ms - -[0m
+[2026-10-26 21:23:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.431 ms - -[0m
+[2026-10-26 21:23:06] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:23:06] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 6.953 ms - -[0m
+[2026-10-26 21:23:06] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:23:06] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 6.156 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 9.164 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 5.276 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [0m-[0m - ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [32m200[0m 2.038 ms - 167[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 2.558 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 4.620 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 4.134 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 2.250 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 2.212 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 2.030 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 1.853 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 2.361 ms - -[0m
+[2026-10-26 21:23:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:43] [INFO]: [0mGET /api/auth/me [36m304[0m 2.386 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 2.284 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 2.411 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 3.020 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 3.197 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 2.379 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 1.884 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 2.245 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 2.075 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 2.653 ms - -[0m
+[2026-10-26 21:23:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:44] [INFO]: [0mGET /api/auth/me [36m304[0m 1.927 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.073 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.860 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.046 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.153 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 1.757 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.672 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 1.997 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.259 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.440 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.369 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.295 ms - -[0m
+[2026-10-26 21:23:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:23:45] [INFO]: [0mGET /api/auth/me [36m304[0m 2.432 ms - -[0m
+[2026-10-26 21:23:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:23:46] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 11.209 ms - -[0m
+[2026-10-26 21:23:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:23:46] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 7.047 ms - -[0m
+[2026-10-26 21:24:55] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:24:55] [INFO]: [0mGET /api/auth/me [36m304[0m 20.485 ms - -[0m
+[2026-10-26 21:24:55] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:24:55] [INFO]: [0mGET /api/auth/me [36m304[0m 6.414 ms - -[0m
+[2026-10-26 21:24:55] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:24:55] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 15.077 ms - -[0m
+[2026-10-26 21:24:55] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:24:55] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 12.500 ms - -[0m
+[2026-10-26 21:25:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:25:17] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 10.521 ms - -[0m
+[2026-10-26 21:25:17] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:25:17] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 6.596 ms - -[0m
+[2026-10-26 21:25:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:25:21] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 4.407 ms - -[0m
+[2026-10-26 21:25:21] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:25:21] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 3.485 ms - -[0m
+[2026-10-26 21:25:29] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:29] [INFO]: [0mGET /api/auth/me [36m304[0m 2.405 ms - -[0m
+[2026-10-26 21:25:29] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:29] [INFO]: [0mGET /api/auth/me [36m304[0m 1.724 ms - -[0m
+[2026-10-26 21:25:30] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:30] [INFO]: [0mGET /api/auth/me [36m304[0m 2.376 ms - -[0m
+[2026-10-26 21:25:30] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:30] [INFO]: [0mGET /api/auth/me [36m304[0m 2.678 ms - -[0m
+[2026-10-26 21:25:30] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:30] [INFO]: [0mGET /api/auth/me [36m304[0m 1.890 ms - -[0m
+[2026-10-26 21:25:30] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:30] [INFO]: [0mGET /api/auth/me [36m304[0m 2.616 ms - -[0m
+[2026-10-26 21:25:30] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:30] [INFO]: [0mGET /api/auth/me [36m304[0m 2.542 ms - -[0m
+[2026-10-26 21:25:30] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:25:30] [INFO]: [0mGET /api/auth/me [36m304[0m 2.762 ms - -[0m
+[2026-10-26 21:25:49] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:25:49] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 8.013 ms - -[0m
+[2026-10-26 21:25:49] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:25:49] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 2.950 ms - -[0m
+[2026-10-26 21:28:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:05] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:05] [INFO]: [0mPOST /api/auth/login [33m401[0m 127.942 ms - 64[0m
+[2026-10-26 21:28:07] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:07] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:07] [INFO]: [0mPOST /api/auth/login [33m401[0m 77.039 ms - 64[0m
+[2026-10-26 21:28:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:08] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:08] [INFO]: [0mPOST /api/auth/login [33m401[0m 75.440 ms - 64[0m
+[2026-10-26 21:28:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:08] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:08] [INFO]: [0mPOST /api/auth/login [33m401[0m 75.853 ms - 64[0m
+[2026-10-26 21:28:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:08] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:08] [INFO]: [0mPOST /api/auth/login [33m401[0m 76.288 ms - 64[0m
+[2026-10-26 21:28:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:09] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:09] [INFO]: [0mPOST /api/auth/login [33m401[0m 76.744 ms - 64[0m
+[2026-10-26 21:28:09] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:09] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:09] [INFO]: [0mPOST /api/auth/login [33m401[0m 76.111 ms - 64[0m
+[2026-10-26 21:28:09] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:09] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:09] [INFO]: [0mPOST /api/auth/login [33m401[0m 87.447 ms - 64[0m
+[2026-10-26 21:28:09] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:09] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:09] [INFO]: [0mPOST /api/auth/login [33m401[0m 75.384 ms - 64[0m
+[2026-10-26 21:28:09] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:09] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:09] [INFO]: [0mPOST /api/auth/login [33m401[0m 73.944 ms - 64[0m
+[2026-10-26 21:28:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:10] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:10] [INFO]: [0mPOST /api/auth/login [33m401[0m 76.495 ms - 64[0m
+[2026-10-26 21:28:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:10] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:10] [INFO]: [0mPOST /api/auth/login [33m401[0m 72.106 ms - 64[0m
+[2026-10-26 21:28:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:10] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:10] [INFO]: [0mPOST /api/auth/login [33m401[0m 77.602 ms - 64[0m
+[2026-10-26 21:28:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:10] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:10] [INFO]: [0mPOST /api/auth/login [33m401[0m 74.694 ms - 64[0m
+[2026-10-26 21:28:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:10] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:10] [INFO]: [0mPOST /api/auth/login [33m401[0m 73.273 ms - 64[0m
+[2026-10-26 21:28:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:28:11] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:28:11] [INFO]: [0mPOST /api/auth/login [33m401[0m 70.251 ms - 64[0m
+[2026-10-26 21:28:21] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:28:21] [INFO]: [0mGET /api/auth/me [36m304[0m 11.777 ms - -[0m
+[2026-10-26 21:28:21] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:28:21] [INFO]: [0mGET /api/auth/me [36m304[0m 6.797 ms - -[0m
+[2026-10-26 21:28:33] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hjdghgdg!@' OR `AdminUser`.`name` = 'hjdghgdg!@') LIMIT 1;
+[2026-10-26 21:28:33] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hjdghgdg!@
+[2026-10-26 21:28:33] [INFO]: [0mPOST /api/auth/login [33m401[0m 11.634 ms - 64[0m
+[2026-10-26 21:28:34] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hjdghgdg!@' OR `AdminUser`.`name` = 'hjdghgdg!@') LIMIT 1;
+[2026-10-26 21:28:34] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hjdghgdg!@
+[2026-10-26 21:28:34] [INFO]: [0mPOST /api/auth/login [33m401[0m 3.015 ms - 64[0m
+[2026-10-26 21:28:35] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hjdghgdg!@' OR `AdminUser`.`name` = 'hjdghgdg!@') LIMIT 1;
+[2026-10-26 21:28:35] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hjdghgdg!@
+[2026-10-26 21:28:35] [INFO]: [0mPOST /api/auth/login [33m401[0m 2.869 ms - 64[0m
+[2026-10-26 21:28:36] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hjdghgdg!@' OR `AdminUser`.`name` = 'hjdghgdg!@') LIMIT 1;
+[2026-10-26 21:28:36] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hjdghgdg!@
+[2026-10-26 21:28:36] [INFO]: [0mPOST /api/auth/login [33m401[0m 3.759 ms - 64[0m
+[2026-10-26 21:29:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:29:04] [INFO]: [0mGET /api/auth/me [36m304[0m 17.374 ms - -[0m
+[2026-10-26 21:29:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:29:04] [INFO]: [0mGET /api/auth/me [36m304[0m 10.462 ms - -[0m
+[2026-10-26 21:29:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:29:04] [INFO]: [0mGET /api/auth/me [36m304[0m 2.721 ms - -[0m
+[2026-10-26 21:29:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:29:04] [INFO]: [0mGET /api/auth/me [36m304[0m 2.750 ms - -[0m
+[2026-10-26 21:29:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:29:04] [INFO]: [0mGET /api/auth/me [36m304[0m 1.985 ms - -[0m
+[2026-10-26 21:29:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:29:04] [INFO]: [0mGET /api/auth/me [36m304[0m 5.361 ms - -[0m
+[2026-10-26 21:34:15] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:34:15] [INFO]: [0mGET /api/auth/me [36m304[0m 76.661 ms - -[0m
+[2026-10-26 21:34:15] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:34:15] [INFO]: [0mGET /api/auth/me [36m304[0m 3.905 ms - -[0m
+[2026-10-26 21:34:31] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:34:31] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:34:31] [INFO]: [0mPOST /api/auth/login [33m401[0m 127.698 ms - 64[0m
+[2026-10-26 21:34:36] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:34:36] [WARN]: [AUTH FAILED] Password mismatch for user: admin@frolic.com
+[2026-10-26 21:34:36] [INFO]: [0mPOST /api/auth/login [33m401[0m 84.743 ms - 64[0m
+[2026-10-26 21:36:52] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:36:52] [INFO]: [0mGET /api/auth/me [36m304[0m 39.807 ms - -[0m
+[2026-10-26 21:36:52] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:36:52] [INFO]: [0mGET /api/auth/me [36m304[0m 1.766 ms - -[0m
+[2026-10-26 21:39:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:01] [INFO]: [0mGET /api/auth/me [36m304[0m 29.469 ms - -[0m
+[2026-10-26 21:39:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:01] [INFO]: [0mGET /api/auth/me [36m304[0m 3.651 ms - -[0m
+[2026-10-26 21:39:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:01] [INFO]: [0mGET /api/auth/me [36m304[0m 2.381 ms - -[0m
+[2026-10-26 21:39:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:01] [INFO]: [0mGET /api/auth/me [36m304[0m 5.618 ms - -[0m
+[2026-10-26 21:39:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs' OR `AdminUser`.`name` = 'hdsfhgs') LIMIT 1;
+[2026-10-26 21:39:08] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs
+[2026-10-26 21:39:08] [INFO]: [0mPOST /api/auth/login [33m401[0m 3.241 ms - 64[0m
+[2026-10-26 21:39:13] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs' OR `AdminUser`.`name` = 'hdsfhgs') LIMIT 1;
+[2026-10-26 21:39:13] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs
+[2026-10-26 21:39:13] [INFO]: [0mPOST /api/auth/login [33m401[0m 3.332 ms - 64[0m
+[2026-10-26 21:39:16] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:16] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:16] [INFO]: [0mPOST /api/auth/login [33m401[0m 1.783 ms - 64[0m
+[2026-10-26 21:39:17] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:17] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:17] [INFO]: [0mPOST /api/auth/login [33m401[0m 8.534 ms - 64[0m
+[2026-10-26 21:39:17] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:17] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:17] [INFO]: [0mPOST /api/auth/login [33m401[0m 1.944 ms - 64[0m
+[2026-10-26 21:39:17] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:17] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:17] [INFO]: [0mPOST /api/auth/login [33m401[0m 1.913 ms - 64[0m
+[2026-10-26 21:39:18] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:18] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:18] [INFO]: [0mPOST /api/auth/login [33m401[0m 1.526 ms - 64[0m
+[2026-10-26 21:39:18] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:18] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:18] [INFO]: [0mPOST /api/auth/login [33m401[0m 2.711 ms - 64[0m
+[2026-10-26 21:39:18] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'hdsfhgs@' OR `AdminUser`.`name` = 'hdsfhgs@') LIMIT 1;
+[2026-10-26 21:39:18] [WARN]: [AUTH FAILED] Login attempt with unknown identifier: hdsfhgs@
+[2026-10-26 21:39:18] [INFO]: [0mPOST /api/auth/login [33m401[0m 1.648 ms - 64[0m
+[2026-10-26 21:39:20] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:20] [INFO]: [0mGET /api/auth/me [36m304[0m 2.251 ms - -[0m
+[2026-10-26 21:39:20] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:20] [INFO]: [0mGET /api/auth/me [36m304[0m 1.239 ms - -[0m
+[2026-10-26 21:39:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE (`AdminUser`.`email` = 'admin@frolic.com' OR `AdminUser`.`name` = 'admin@frolic.com') LIMIT 1;
+[2026-10-26 21:39:43] [DEBUG]: Executing (default): UPDATE `admin_users` SET `lastLogin`=?,`updatedAt`=? WHERE `id` = ?
+[2026-10-26 21:39:43] [INFO]: [AUTH SUCCESS] User 'admin' (admin@frolic.com) logged in successfully.
+[2026-10-26 21:39:43] [INFO]: [0mPOST /api/auth/login [32m200[0m 106.842 ms - 365[0m
+[2026-10-26 21:39:43] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:43] [INFO]: [0mGET /api/auth/me [32m200[0m 3.197 ms - 167[0m
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/orders [36m304[0m 30.753 ms - -[0m
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 36.071 ms - -[0m
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 4.206 ms - -[0m
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 48.926 ms - -[0m
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 51.533 ms - -[0m
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/orders [36m304[0m 8.766 ms - -[0m
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:39:44] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 31.547 ms - -[0m
+[2026-10-26 21:39:44] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 24.550 ms - -[0m
+[2026-10-26 21:39:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:39:50] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 10;
+[2026-10-26 21:39:50] [INFO]: [0mGET /api/admissions?page=1&limit=10 [36m304[0m 4.173 ms - -[0m
+[2026-10-26 21:39:50] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:50] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:39:50] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 10;
+[2026-10-26 21:39:50] [INFO]: [0mGET /api/admissions?page=1&limit=10 [36m304[0m 5.682 ms - -[0m
+[2026-10-26 21:39:52] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:39:52] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 10;
+[2026-10-26 21:39:52] [INFO]: [0mGET /api/franchise-enquiries?page=1&limit=10 [36m304[0m 5.168 ms - -[0m
+[2026-10-26 21:39:52] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:52] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:39:52] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 10;
+[2026-10-26 21:39:52] [INFO]: [0mGET /api/franchise-enquiries?page=1&limit=10 [36m304[0m 3.402 ms - -[0m
+[2026-10-26 21:39:53] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:39:53] [INFO]: [0mGET /api/programs?activeOnly=false [36m304[0m 6.492 ms - -[0m
+[2026-10-26 21:39:53] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:39:53] [INFO]: [0mGET /api/programs?activeOnly=false [36m304[0m 5.522 ms - -[0m
+[2026-10-26 21:39:54] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `branchType`, `address`, `area`, `city`, `district`, `taluka`, `state`, `pincode`, `phone`, `email`, `timing`, `programs`, `facilities`, `mapQuery`, `latitude`, `longitude`, `isFlagship`, `isActive`, `createdAt`, `updatedAt` FROM `centers` AS `Center` ORDER BY `Center`.`isFlagship` DESC, `Center`.`state` ASC, `Center`.`district` ASC, `Center`.`city` ASC, `Center`.`name` ASC;
+[2026-10-26 21:39:54] [INFO]: [0mGET /api/centers?activeOnly=false [36m304[0m 9.522 ms - -[0m
+[2026-10-26 21:39:54] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `branchType`, `address`, `area`, `city`, `district`, `taluka`, `state`, `pincode`, `phone`, `email`, `timing`, `programs`, `facilities`, `mapQuery`, `latitude`, `longitude`, `isFlagship`, `isActive`, `createdAt`, `updatedAt` FROM `centers` AS `Center` ORDER BY `Center`.`isFlagship` DESC, `Center`.`state` ASC, `Center`.`district` ASC, `Center`.`city` ASC, `Center`.`name` ASC;
+[2026-10-26 21:39:54] [INFO]: [0mGET /api/centers?activeOnly=false [36m304[0m 3.566 ms - -[0m
+[2026-10-26 21:39:56] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:56] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:39:56] [INFO]: [0mGET /api/orders [36m304[0m 4.683 ms - -[0m
+[2026-10-26 21:39:56] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:39:56] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:39:56] [INFO]: [0mGET /api/orders [36m304[0m 5.111 ms - -[0m
+[2026-10-26 21:39:57] [DEBUG]: Executing (default): SELECT `id`, `name`, `role`, `childName`, `program`, `rating`, `quote`, `photoUrl`, `videoUrl`, `isPublished`, `sortOrder`, `createdAt`, `updatedAt` FROM `testimonials` AS `Testimonial` ORDER BY `Testimonial`.`sortOrder` ASC, `Testimonial`.`createdAt` DESC;
+[2026-10-26 21:39:57] [INFO]: [0mGET /api/testimonials?all=true [36m304[0m 6.944 ms - -[0m
+[2026-10-26 21:39:57] [DEBUG]: Executing (default): SELECT `id`, `name`, `role`, `childName`, `program`, `rating`, `quote`, `photoUrl`, `videoUrl`, `isPublished`, `sortOrder`, `createdAt`, `updatedAt` FROM `testimonials` AS `Testimonial` ORDER BY `Testimonial`.`sortOrder` ASC, `Testimonial`.`createdAt` DESC;
+[2026-10-26 21:39:57] [INFO]: [0mGET /api/testimonials?all=true [36m304[0m 2.399 ms - -[0m
+[2026-10-26 21:39:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-10-26 21:39:58] [INFO]: [0mGET /api/gallery [36m304[0m 7.658 ms - -[0m
+[2026-10-26 21:39:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-10-26 21:39:58] [INFO]: [0mGET /api/gallery [36m304[0m 3.024 ms - -[0m
+[2026-10-26 21:40:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `role`, `childName`, `program`, `rating`, `quote`, `photoUrl`, `videoUrl`, `isPublished`, `sortOrder`, `createdAt`, `updatedAt` FROM `testimonials` AS `Testimonial` ORDER BY `Testimonial`.`sortOrder` ASC, `Testimonial`.`createdAt` DESC;
+[2026-10-26 21:40:01] [INFO]: [0mGET /api/testimonials?all=true [36m304[0m 1.806 ms - -[0m
+[2026-10-26 21:40:01] [DEBUG]: Executing (default): SELECT `id`, `name`, `role`, `childName`, `program`, `rating`, `quote`, `photoUrl`, `videoUrl`, `isPublished`, `sortOrder`, `createdAt`, `updatedAt` FROM `testimonials` AS `Testimonial` ORDER BY `Testimonial`.`sortOrder` ASC, `Testimonial`.`createdAt` DESC;
+[2026-10-26 21:40:01] [INFO]: [0mGET /api/testimonials?all=true [36m304[0m 2.376 ms - -[0m
+[2026-10-26 21:40:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 21:40:03] [INFO]: [0mGET /api/blogs?all=true [36m304[0m 10.661 ms - -[0m
+[2026-10-26 21:40:03] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 21:40:03] [INFO]: [0mGET /api/blogs?all=true [36m304[0m 2.500 ms - -[0m
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 18.679 ms - -[0m
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 34.374 ms - -[0m
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/orders [36m304[0m 30.256 ms - -[0m
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 36.416 ms - -[0m
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/products?activeOnly=false [36m304[0m 16.644 ms - -[0m
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admissions` AS `Admission`;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `childName`, `dob`, `parentName`, `phone`, `email`, `program`, `preferredCenter`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `admissions` AS `Admission` ORDER BY `Admission`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `parentName`, `phone`, `productName`, `grade`, `quantity`, `address`, `status`, `adminNotes`, `createdAt`, `updatedAt` FROM `kit_orders` AS `KitOrder` ORDER BY `KitOrder`.`createdAt` DESC;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `franchise_enquiries` AS `FranchiseEnquiry`;
+[2026-10-26 21:40:05] [DEBUG]: Executing (default): SELECT `id`, `name`, `phone`, `email`, `city`, `state`, `spaceAvailableSqft`, `investmentCapacity`, `experience`, `message`, `status`, `notes`, `createdAt`, `updatedAt` FROM `franchise_enquiries` AS `FranchiseEnquiry` ORDER BY `FranchiseEnquiry`.`createdAt` DESC LIMIT 0, 5;
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/admissions?limit=5 [36m304[0m 12.543 ms - -[0m
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/orders [36m304[0m 10.999 ms - -[0m
+[2026-10-26 21:40:05] [INFO]: [0mGET /api/franchise-enquiries?limit=5 [36m304[0m 9.655 ms - -[0m
+[2026-10-26 21:40:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:40:10] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 3.692 ms - -[0m
+[2026-10-26 21:40:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:40:10] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 2.344 ms - -[0m
+[2026-10-26 21:42:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:42:58] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 11.777 ms - -[0m
+[2026-10-26 21:42:58] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:42:58] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 4.742 ms - -[0m
+[2026-10-26 21:43:08] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:43:08] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 12.047 ms - -[0m
+[2026-10-26 21:43:08] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:43:08] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 3.654 ms - -[0m
+[2026-10-26 21:43:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:43:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:43:15] [INFO]: [0mGET /api/programs/play-group [36m304[0m 6.462 ms - -[0m
+[2026-10-26 21:43:15] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 7.505 ms - -[0m
+[2026-10-26 21:43:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:43:15] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:43:15] [INFO]: [0mGET /api/programs/play-group [36m304[0m 3.948 ms - -[0m
+[2026-10-26 21:43:15] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 5.007 ms - -[0m
+[2026-10-26 21:54:28] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:54:28] [INFO]: [0mGET /api/auth/me [36m304[0m 69.136 ms - -[0m
+[2026-10-26 21:54:28] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:54:28] [INFO]: [0mGET /api/auth/me [36m304[0m 4.555 ms - -[0m
+[2026-10-26 21:55:11] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:55:11] [INFO]: [0mGET /api/auth/me [36m304[0m 6.998 ms - -[0m
+[2026-10-26 21:55:11] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:55:11] [INFO]: [0mGET /api/auth/me [36m304[0m 1.386 ms - -[0m
+[2026-10-26 21:56:32] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:56:32] [INFO]: [0mGET /api/auth/me [36m304[0m 8.659 ms - -[0m
+[2026-10-26 21:56:32] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 21:56:32] [INFO]: [0mGET /api/auth/me [36m304[0m 2.373 ms - -[0m
+[2026-10-26 21:56:35] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:56:35] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 12.784 ms - -[0m
+[2026-10-26 21:56:35] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:56:35] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 4.739 ms - -[0m
+[2026-10-26 21:56:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:56:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:56:38] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 7.714 ms - -[0m
+[2026-10-26 21:56:38] [INFO]: [0mGET /api/programs/play-group [36m304[0m 8.679 ms - -[0m
+[2026-10-26 21:56:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 21:56:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 21:56:38] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 8.216 ms - -[0m
+[2026-10-26 21:56:38] [INFO]: [0mGET /api/programs/play-group [36m304[0m 7.463 ms - -[0m
+[2026-10-26 22:02:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:02:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:02:12] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:02:12] [INFO]: [0mGET /api/programs/play-group [36m304[0m 21.568 ms - -[0m
+[2026-10-26 22:02:12] [INFO]: [0mGET /api/auth/me [36m304[0m 15.095 ms - -[0m
+[2026-10-26 22:02:12] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 22.090 ms - -[0m
+[2026-10-26 22:02:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:02:12] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:02:12] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:02:12] [INFO]: [0mGET /api/programs/play-group [36m304[0m 5.137 ms - -[0m
+[2026-10-26 22:02:12] [INFO]: [0mGET /api/auth/me [36m304[0m 5.123 ms - -[0m
+[2026-10-26 22:02:12] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 5.723 ms - -[0m
+[2026-10-26 22:05:24] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:05:24] [INFO]: [0mGET /api/auth/me [36m304[0m 10.975 ms - -[0m
+[2026-10-26 22:05:24] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:05:24] [INFO]: [0mGET /api/auth/me [36m304[0m 3.730 ms - -[0m
+[2026-10-26 22:05:24] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:05:24] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:05:24] [INFO]: [0mGET /api/programs/play-group [36m304[0m 9.818 ms - -[0m
+[2026-10-26 22:05:24] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:05:24] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 17.620 ms - -[0m
+[2026-10-26 22:05:24] [INFO]: [0mGET /api/programs/play-group [36m304[0m 15.025 ms - -[0m
+[2026-10-26 22:05:24] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:05:24] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 7.003 ms - -[0m
+[2026-10-26 22:06:27] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:06:27] [INFO]: [0mGET /api/auth/me [36m304[0m 6.676 ms - -[0m
+[2026-10-26 22:06:27] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:06:27] [INFO]: [0mGET /api/auth/me [36m304[0m 1.325 ms - -[0m
+[2026-10-26 22:06:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:06:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:06:27] [INFO]: [0mGET /api/programs/play-group [36m304[0m 8.507 ms - -[0m
+[2026-10-26 22:06:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:06:27] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 13.957 ms - -[0m
+[2026-10-26 22:06:27] [INFO]: [0mGET /api/programs/play-group [36m304[0m 6.047 ms - -[0m
+[2026-10-26 22:06:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:06:27] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 6.811 ms - -[0m
+[2026-10-26 22:07:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:07:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:07:22] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:07:22] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 14.299 ms - -[0m
+[2026-10-26 22:07:22] [INFO]: [0mGET /api/auth/me [36m304[0m 14.553 ms - -[0m
+[2026-10-26 22:07:22] [INFO]: [0mGET /api/programs/play-group [36m304[0m 16.921 ms - -[0m
+[2026-10-26 22:07:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:07:22] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:07:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:07:22] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 7.046 ms - -[0m
+[2026-10-26 22:07:22] [INFO]: [0mGET /api/programs/play-group [36m304[0m 5.501 ms - -[0m
+[2026-10-26 22:07:22] [INFO]: [0mGET /api/auth/me [36m304[0m 9.791 ms - -[0m
+[2026-10-26 22:07:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:07:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:07:39] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:07:39] [INFO]: [0mGET /api/programs/play-group [36m304[0m 10.846 ms - -[0m
+[2026-10-26 22:07:39] [INFO]: [0mGET /api/auth/me [36m304[0m 10.143 ms - -[0m
+[2026-10-26 22:07:39] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 14.445 ms - -[0m
+[2026-10-26 22:07:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:07:39] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:07:39] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:07:39] [INFO]: [0mGET /api/programs/play-group [36m304[0m 6.170 ms - -[0m
+[2026-10-26 22:07:39] [INFO]: [0mGET /api/auth/me [36m304[0m 6.850 ms - -[0m
+[2026-10-26 22:07:39] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 9.163 ms - -[0m
+[2026-10-26 22:11:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:11:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:11:46] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:11:46] [INFO]: [0mGET /api/auth/me [36m304[0m 16.801 ms - -[0m
+[2026-10-26 22:11:46] [INFO]: [0mGET /api/programs/play-group [36m304[0m 24.430 ms - -[0m
+[2026-10-26 22:11:46] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 25.787 ms - -[0m
+[2026-10-26 22:11:46] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:11:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:11:46] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:11:46] [INFO]: [0mGET /api/auth/me [36m304[0m 6.167 ms - -[0m
+[2026-10-26 22:11:46] [INFO]: [0mGET /api/programs/play-group [36m304[0m 4.465 ms - -[0m
+[2026-10-26 22:11:46] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 3.917 ms - -[0m
+[2026-10-26 22:13:33] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:13:33] [INFO]: [0mGET /api/auth/me [36m304[0m 4.953 ms - -[0m
+[2026-10-26 22:13:33] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:13:33] [INFO]: [0mGET /api/auth/me [36m304[0m 1.333 ms - -[0m
+[2026-10-26 22:13:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:13:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:13:33] [INFO]: [0mGET /api/programs/play-group [36m304[0m 4.420 ms - -[0m
+[2026-10-26 22:13:33] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 5.633 ms - -[0m
+[2026-10-26 22:13:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:13:33] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:13:33] [INFO]: [0mGET /api/programs/play-group [36m304[0m 4.158 ms - -[0m
+[2026-10-26 22:13:33] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 4.425 ms - -[0m
+[2026-10-26 22:16:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:16:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:16:38] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:16:38] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 9.121 ms - -[0m
+[2026-10-26 22:16:38] [INFO]: [0mGET /api/programs/play-group [36m304[0m 11.807 ms - -[0m
+[2026-10-26 22:16:38] [INFO]: [0mGET /api/auth/me [36m304[0m 8.208 ms - -[0m
+[2026-10-26 22:16:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:16:38] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:16:38] [DEBUG]: Executing (default): SELECT `id`, `name`, `email`, `passwordHash`, `role`, `isActive`, `lastLogin`, `createdAt`, `updatedAt` FROM `admin_users` AS `AdminUser` WHERE `AdminUser`.`id` = 3;
+[2026-10-26 22:16:38] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 8.368 ms - -[0m
+[2026-10-26 22:16:38] [INFO]: [0mGET /api/programs/play-group [36m304[0m 5.628 ms - -[0m
+[2026-10-26 22:16:38] [INFO]: [0mGET /api/auth/me [36m304[0m 5.347 ms - -[0m
+[2026-10-26 22:18:57] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 22:18:57] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 12.613 ms - -[0m
+[2026-10-26 22:18:57] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 22:18:57] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 4.847 ms - -[0m
+[2026-10-26 22:19:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-10-26 22:19:05] [INFO]: [0mGET /api/gallery [36m304[0m 3.947 ms - -[0m
+[2026-10-26 22:19:05] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-10-26 22:19:05] [INFO]: [0mGET /api/gallery [36m304[0m 6.784 ms - -[0m
+[2026-10-26 22:19:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:19:18] [INFO]: [0mGET /api/blogs [32m200[0m 8.382 ms - 4402[0m
+[2026-10-26 22:19:18] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:19:18] [INFO]: [0mGET /api/blogs [36m304[0m 1.965 ms - -[0m
+[2026-10-26 22:19:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`slug` = 'why-digital-interactive-learning-works-for-preschoolers';
+[2026-10-26 22:19:22] [INFO]: [0mGET /api/blogs/why-digital-interactive-learning-works-for-preschoolers [32m200[0m 2.363 ms - 1943[0m
+[2026-10-26 22:19:22] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`slug` = 'why-digital-interactive-learning-works-for-preschoolers';
+[2026-10-26 22:19:22] [INFO]: [0mGET /api/blogs/why-digital-interactive-learning-works-for-preschoolers [36m304[0m 1.698 ms - -[0m
+[2026-10-26 22:19:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:19:25] [INFO]: [0mGET /api/blogs [36m304[0m 1.676 ms - -[0m
+[2026-10-26 22:19:25] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:19:25] [INFO]: [0mGET /api/blogs [36m304[0m 1.650 ms - -[0m
+[2026-10-26 22:19:28] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `branchType`, `address`, `area`, `city`, `district`, `taluka`, `state`, `pincode`, `phone`, `email`, `timing`, `programs`, `facilities`, `mapQuery`, `latitude`, `longitude`, `isFlagship`, `isActive`, `createdAt`, `updatedAt` FROM `centers` AS `Center` WHERE `Center`.`isActive` = true ORDER BY `Center`.`isFlagship` DESC, `Center`.`state` ASC, `Center`.`district` ASC, `Center`.`city` ASC, `Center`.`name` ASC;
+[2026-10-26 22:19:28] [INFO]: [0mGET /api/centers [32m200[0m 2.208 ms - 797[0m
+[2026-10-26 22:19:28] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `branchType`, `address`, `area`, `city`, `district`, `taluka`, `state`, `pincode`, `phone`, `email`, `timing`, `programs`, `facilities`, `mapQuery`, `latitude`, `longitude`, `isFlagship`, `isActive`, `createdAt`, `updatedAt` FROM `centers` AS `Center` WHERE `Center`.`isActive` = true ORDER BY `Center`.`isFlagship` DESC, `Center`.`state` ASC, `Center`.`district` ASC, `Center`.`city` ASC, `Center`.`name` ASC;
+[2026-10-26 22:19:28] [INFO]: [0mGET /api/centers [36m304[0m 1.393 ms - -[0m
+[2026-10-26 22:19:56] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:19:56] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 12.752 ms - -[0m
+[2026-10-26 22:19:56] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:19:56] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 2.617 ms - -[0m
+[2026-10-26 22:20:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:20:13] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 15.309 ms - -[0m
+[2026-10-26 22:20:13] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:20:13] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 3.384 ms - -[0m
+[2026-10-26 22:20:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:20:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:20:20] [INFO]: [0mGET /api/programs/play-group [36m304[0m 6.483 ms - -[0m
+[2026-10-26 22:20:20] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 5.351 ms - -[0m
+[2026-10-26 22:20:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-26 22:20:20] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:20:20] [INFO]: [0mGET /api/programs/play-group [36m304[0m 4.837 ms - -[0m
+[2026-10-26 22:20:20] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 5.361 ms - -[0m
+[2026-10-26 22:20:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 22:20:36] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 11.746 ms - -[0m
+[2026-10-26 22:20:36] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`isActive` = true ORDER BY `Product`.`sortOrder` ASC, `Product`.`id` ASC;
+[2026-10-26 22:20:36] [INFO]: [0mGET /api/products?activeOnly=true [36m304[0m 4.590 ms - -[0m
+[2026-10-26 22:20:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`slug` = 'frolic-premium-student-kit' AND `Product`.`isActive` = true;
+[2026-10-26 22:20:40] [INFO]: [0mGET /api/products/frolic-premium-student-kit [32m200[0m 2.348 ms - 1763[0m
+[2026-10-26 22:20:40] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `category`, `badge`, `badgeColor`, `image`, `images`, `sizes`, `specifications`, `price`, `subPrice`, `description`, `items`, `inStock`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `products` AS `Product` WHERE `Product`.`slug` = 'frolic-premium-student-kit' AND `Product`.`isActive` = true;
+[2026-10-26 22:20:40] [INFO]: [0mGET /api/products/frolic-premium-student-kit [36m304[0m 1.166 ms - -[0m
+[2026-10-26 22:21:11] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `branchType`, `address`, `area`, `city`, `district`, `taluka`, `state`, `pincode`, `phone`, `email`, `timing`, `programs`, `facilities`, `mapQuery`, `latitude`, `longitude`, `isFlagship`, `isActive`, `createdAt`, `updatedAt` FROM `centers` AS `Center` WHERE `Center`.`isActive` = true ORDER BY `Center`.`isFlagship` DESC, `Center`.`state` ASC, `Center`.`district` ASC, `Center`.`city` ASC, `Center`.`name` ASC;
+[2026-10-26 22:21:11] [INFO]: [0mGET /api/centers [36m304[0m 9.194 ms - -[0m
+[2026-10-26 22:21:11] [DEBUG]: Executing (default): SELECT `id`, `name`, `slug`, `branchType`, `address`, `area`, `city`, `district`, `taluka`, `state`, `pincode`, `phone`, `email`, `timing`, `programs`, `facilities`, `mapQuery`, `latitude`, `longitude`, `isFlagship`, `isActive`, `createdAt`, `updatedAt` FROM `centers` AS `Center` WHERE `Center`.`isActive` = true ORDER BY `Center`.`isFlagship` DESC, `Center`.`state` ASC, `Center`.`district` ASC, `Center`.`city` ASC, `Center`.`name` ASC;
+[2026-10-26 22:21:11] [INFO]: [0mGET /api/centers [36m304[0m 2.174 ms - -[0m
+[2026-10-26 22:21:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-10-26 22:21:26] [INFO]: [0mGET /api/gallery [36m304[0m 6.877 ms - -[0m
+[2026-10-26 22:21:26] [DEBUG]: Executing (default): SELECT `id`, `title`, `imageUrl`, `category`, `altText`, `sortOrder`, `isFeatured`, `createdAt`, `updatedAt` FROM `media_gallery` AS `MediaGallery` ORDER BY `MediaGallery`.`sortOrder` ASC, `MediaGallery`.`createdAt` DESC;
+[2026-10-26 22:21:26] [INFO]: [0mGET /api/gallery [36m304[0m 2.085 ms - -[0m
+[2026-10-26 22:21:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:21:32] [INFO]: [0mGET /api/blogs [36m304[0m 5.479 ms - -[0m
+[2026-10-26 22:21:32] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:21:32] [INFO]: [0mGET /api/blogs [36m304[0m 3.047 ms - -[0m
+[2026-10-26 22:26:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:26:09] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 9.082 ms - -[0m
+[2026-10-26 22:26:09] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-26 22:26:09] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 2.259 ms - -[0m
+[2026-10-26 22:26:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:26:23] [INFO]: [0mGET /api/blogs [36m304[0m 10.194 ms - -[0m
+[2026-10-26 22:26:23] [DEBUG]: Executing (default): SELECT `id`, `title`, `slug`, `summary`, `content`, `coverImage`, `author`, `category`, `readTime`, `isPublished`, `publishedAt`, `createdAt`, `updatedAt` FROM `blogs` AS `Blog` WHERE `Blog`.`isPublished` = true ORDER BY `Blog`.`publishedAt` DESC;
+[2026-10-26 22:26:23] [INFO]: [0mGET /api/blogs [36m304[0m 2.014 ms - -[0m

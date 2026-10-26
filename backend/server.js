@@ -11,7 +11,7 @@ const startServer = async () => {
 
     if (dbConnected) {
       try {
-        await sequelize.sync({ alter: false });
+        await sequelize.sync({ alter: true });
         logger.info('Sequelize models synchronized successfully.');
         await seedInitialData();
       } catch (syncErr) {

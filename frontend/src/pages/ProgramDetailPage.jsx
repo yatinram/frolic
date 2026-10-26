@@ -35,6 +35,7 @@ import { ROUTES } from '../constants/routes';
 import { FrolicButton } from '../components/ui';
 import { programService } from '../services';
 import { useLanguage } from '../context/LanguageContext';
+import { useLocalizedProgram, useLocalizedPrograms } from '../utils/programLocalization';
 import s from './ProgramDetailPage.module.scss';
 
 export default function ProgramDetailPage() {
@@ -51,9 +52,13 @@ export default function ProgramDetailPage() {
     );
   }, [slug]);
 
-  const [program, setProgram] = useState(initialProgram);
-  const [allPrograms, setAllPrograms] = useState(PROGRAMS_DATA);
+  const [rawProgram, setRawProgram] = useState(initialProgram);
+  const [rawAllPrograms, setRawAllPrograms] = useState(PROGRAMS_DATA);
   const [loading, setLoading] = useState(false);
+
+  // Localize current program and program list based on active language
+  const program = useLocalizedProgram(rawProgram);
+  const allPrograms = useLocalizedPrograms(rawAllPrograms);
 
   // Fetch program detail and all programs list from backend API
   useEffect(() => {
@@ -66,12 +71,12 @@ export default function ProgramDetailPage() {
         const res = await programService.getBySlug(slug);
         const data = res?.data?.data || res?.data || res;
         if (isMounted && data && (data.title || data.name)) {
-          setProgram(data);
+          setRawProgram(data);
         }
       } catch (err) {
         console.warn('Fallback to static program data for slug:', slug);
         const local = PROGRAMS_DATA.find((p) => p.slug === slug || p.id === slug);
-        if (isMounted && local) setProgram(local);
+        if (isMounted && local) setRawProgram(local);
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -90,10 +95,10 @@ export default function ProgramDetailPage() {
       .then((res) => {
         const list = res?.data?.data || res?.data || res;
         if (isMounted && Array.isArray(list) && list.length > 0) {
-          setAllPrograms(list);
+          setRawAllPrograms(list);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
     return () => {
       isMounted = false;
     };
@@ -210,121 +215,202 @@ export default function ProgramDetailPage() {
           </div>
 
           {/* Left Column: Specifications Card & Quick Contact */}
-          <div className="col-lg-5">
-            <div className={s.specsCard}>
-              {program.image && (
-                <img
-                  src={program.image}
-                  alt={displayTitle}
-                  className={s.specsCard__image}
-                  loading="lazy"
-                />
-              )}
+          <div>
+            <div className={s.specsCard__container} >
+              <div className={s.specsCard}>
+                {program.image && (
+                  <img
+                    src={program.image}
+                    alt={displayTitle}
+                    className={s.specsCard__image}
+                    loading="lazy"
+                  />
+                )}
 
-              <h4 className={s.specsCard__title}>{t('programDetail.specsTitle', 'Program Specifications')}</h4>
+                <h4 className={s.specsCard__title}>{t('programDetail.specsTitle', 'Program Specifications')}</h4>
 
-              <div className={s.specsCard__row}>
-                <span className={s.specsCard__label}>{t('programDetail.targetAge', 'Target Age')}</span>
-                <span className={s.specsCard__value}>{program.ageGroup}</span>
+                <div className={s.specsCard__row}>
+                  <span className={s.specsCard__label}>{t('programDetail.targetAge', 'Target Age')}</span>
+                  <span className={s.specsCard__value}>{program.ageGroup}</span>
+                </div>
+
+                {program.quickSpecs?.schedule && (
+                  <div className={s.specsCard__row}>
+                    <span className={s.specsCard__label}>{t('programDetail.dailySchedule', 'Daily Schedule')}</span>
+                    <span className={s.specsCard__value}>{program.quickSpecs.schedule}</span>
+                  </div>
+                )}
+
+                {program.quickSpecs?.ratio && (
+                  <div className={s.specsCard__row}>
+                    <span className={s.specsCard__label}>{t('programDetail.mentorRatio', 'Mentor Ratio')}</span>
+                    <span className={s.specsCard__value}>{program.quickSpecs.ratio}</span>
+                  </div>
+                )}
+
+                {program.quickSpecs?.kit && (
+                  <div className={s.specsCard__row}>
+                    <span className={s.specsCard__label}>{t('programDetail.workbooksKit', 'Workbooks / Kit')}</span>
+                    <span className={s.specsCard__value}>{program.quickSpecs.kit}</span>
+                  </div>
+                )}
+
+                {program.quickSpecs?.safety && (
+                  <div className={s.specsCard__row}>
+                    <span className={s.specsCard__label}>{t('programDetail.safety', 'Campus Safety')}</span>
+                    <span className={s.specsCard__value} style={{ color: '#166534' }}>
+                      {program.quickSpecs.safety}
+                    </span>
+                  </div>
+                )}
+
+                {program.quickSpecs?.duration && (
+                  <div className={s.specsCard__row}>
+                    <span className={s.specsCard__label}>{t('programDetail.duration', 'Duration')}</span>
+                    <span className={s.specsCard__value}>{program.quickSpecs.duration}</span>
+                  </div>
+                )}
+
+                <div className={s.specsCard__ctaBox}>
+                  <Button
+                    type="primary"
+                    size="large"
+                    block
+                    icon={<FormOutlined />}
+                    onClick={handleApplyClick}
+                    style={{
+                      backgroundColor: program.accentColor || '#f7941d',
+                      borderColor: program.accentColor || '#f7941d',
+                      fontWeight: 800,
+                      height: 44,
+                      borderRadius: 12,
+                    }}
+                  >
+                    {t('programDetail.applyNow', 'Apply for Admission')}
+                  </Button>
+                  <Button
+                    block
+                    icon={<PhoneOutlined />}
+                    onClick={() => { window.location.href = 'tel:7575008820'; }}
+                    style={{ fontWeight: 700, height: 40, borderRadius: 10 }}
+                  >
+                    {t('programDetail.callCounselor', 'Call Counselor: 7575008820')}
+                  </Button>
+                </div>
               </div>
+              <div>
+                {/* Overview & Philosophy */}
+                {program.overview && (
+                  <div className={s.overviewSection}>
+                    <h3 className={s.overviewSection__title}>
+                      {t('programDetail.overviewTitle', 'Program Overview & Pedagogical Approach')}
+                    </h3>
+                    <p className={s.overviewSection__text}>{program.overview}</p>
 
-              {program.quickSpecs?.schedule && (
-                <div className={s.specsCard__row}>
-                  <span className={s.specsCard__label}>{t('programDetail.dailySchedule', 'Daily Schedule')}</span>
-                  <span className={s.specsCard__value}>{program.quickSpecs.schedule}</span>
-                </div>
-              )}
+                    {/* 4 Core Learning Pillars */}
+                    {Array.isArray(program.pillars) && program.pillars.length > 0 && (
+                      <div>
+                        <h4 className={s.overviewSection__subheading}>
+                          {t('programDetail.learningDomains', 'Core Learning Domains (NEP 2020 Aligned)')}
+                        </h4>
+                        <div className="row g-3">
+                          {program.pillars.map((pill, idx) => (
+                            <div key={idx} className="col-sm-6">
+                              <div className={s.pillarCard}>
+                                <div className={s.pillarCard__header}>
+                                  <div
+                                    className={s.pillarCard__number}
+                                    style={{ backgroundColor: pill.color || program.accentColor || '#0f172a' }}
+                                  >
+                                    {pill.number || idx + 1}
+                                  </div>
+                                  <h5 className={s.pillarCard__title}>{pill.title}</h5>
+                                </div>
+                                <p className={s.pillarCard__desc}>{pill.desc}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                {/* End of Year Milestones */}
+                {Array.isArray(program.milestones) && program.milestones.length > 0 && (
+                  <div className={s.milestonesSection}>
+                    <h3 className={s.milestonesSection__title}>
+                      {t('programDetail.milestonesTitle', 'End-of-Year Developmental Milestones')}
+                    </h3>
+                    <p className={s.milestonesSection__subtitle}>
+                      {t('programDetail.milestonesSubtitle', 'Measurable skill milestones your child achieves before progressing to the next grade.')}
+                    </p>
 
-              {program.quickSpecs?.ratio && (
-                <div className={s.specsCard__row}>
-                  <span className={s.specsCard__label}>{t('programDetail.mentorRatio', 'Mentor Ratio')}</span>
-                  <span className={s.specsCard__value}>{program.quickSpecs.ratio}</span>
-                </div>
-              )}
+                    <div className={s.milestonesSection__grid}>
+                      {program.milestones.map((ms, idx) => (
+                        <div key={idx} className={s.milestonesSection__item}>
+                          <CheckCircleOutlined style={{ color: '#16a34a', fontSize: 16 }} />
+                          <span>{typeof ms === 'string' ? ms : ms.title || ms.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-              {program.quickSpecs?.kit && (
-                <div className={s.specsCard__row}>
-                  <span className={s.specsCard__label}>{t('programDetail.workbooksKit', 'Workbooks / Kit')}</span>
-                  <span className={s.specsCard__value}>{program.quickSpecs.kit}</span>
-                </div>
-              )}
-
-              {program.quickSpecs?.safety && (
-                <div className={s.specsCard__row}>
-                  <span className={s.specsCard__label}>{t('programDetail.safety', 'Campus Safety')}</span>
-                  <span className={s.specsCard__value} style={{ color: '#166534' }}>
-                    {program.quickSpecs.safety}
-                  </span>
-                </div>
-              )}
-
-              {program.quickSpecs?.duration && (
-                <div className={s.specsCard__row}>
-                  <span className={s.specsCard__label}>{t('programDetail.duration', 'Duration')}</span>
-                  <span className={s.specsCard__value}>{program.quickSpecs.duration}</span>
-                </div>
-              )}
-
-              <div className={s.specsCard__ctaBox}>
-                <Button
-                  type="primary"
-                  size="large"
-                  block
-                  icon={<FormOutlined />}
-                  onClick={handleApplyClick}
-                  style={{
-                    backgroundColor: program.accentColor || '#f7941d',
-                    borderColor: program.accentColor || '#f7941d',
-                    fontWeight: 800,
-                    height: 44,
-                    borderRadius: 12,
-                  }}
-                >
-                  {t('programDetail.applyNow', 'Apply for Admission')}
-                </Button>
-                <Button
-                  block
-                  icon={<PhoneOutlined />}
-                  onClick={() => { window.location.href = 'tel:7575008820'; }}
-                  style={{ fontWeight: 700, height: 40, borderRadius: 10 }}
-                >
-                  {t('programDetail.callCounselor', 'Call Counselor: 7575008820')}
-                </Button>
               </div>
             </div>
-          </div>
+            {/* Right Column: Pedagogical Overview, Pillars, Curriculum, Milestones, Daily Routine */}
+            <div className="col-lg-7 " style={{ width: '100%' }}>
+              <div className={s.rightColumn}>
 
-          {/* Right Column: Pedagogical Overview, Pillars, Curriculum, Milestones, Daily Routine */}
-          <div className="col-lg-7">
+                {/* 4-Term Thematic Curriculum */}
+                {Array.isArray(program.curriculum) && program.curriculum.length > 0 && (
+                  <div className={s.curriculumSection}>
+                    <h3 className={s.curriculumSection__title}>
+                      {t('programDetail.curriculumTitle', 'Curriculum Modules & Thematic Terms')}
+                    </h3>
+                    <p className={s.curriculumSection__subtitle}>
+                      {t('programDetail.curriculumSubtitle', 'Structured developmental terms designed for zero-pressure joyful discovery and concept retention.')}
+                    </p>
 
-            {/* Overview & Philosophy */}
-            {program.overview && (
-              <div className={s.overviewSection}>
-                <h3 className={s.overviewSection__title}>
-                  {t('programDetail.overviewTitle', 'Program Overview & Pedagogical Approach')}
-                </h3>
-                <p className={s.overviewSection__text}>{program.overview}</p>
+                    <div>
+                      {program.curriculum.map((curr, idx) => (
+                        <div key={idx} className={s.termRow}>
+                          <span
+                            className={s.termRow__badge}
+                            style={{ backgroundColor: program.accentColor || '#f7941d' }}
+                          >
+                            Term {idx + 1}
+                          </span>
+                          <div>
+                            <h5 className={s.termRow__step}>{curr.step}</h5>
+                            <p className={s.termRow__details}>{curr.details}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {/* Daily Routine Timeline ("A Joyful Day in Our Classroom") */}
+                {Array.isArray(program.dailyRoutine) && program.dailyRoutine.length > 0 && (
+                  <div className={s.routineSection}>
+                    <h3 className={s.routineSection__title}>
+                      {t('programDetail.dailyRoutineTitle', 'A Joyful Day in Our Classroom (Daily Schedule)')}
+                    </h3>
+                    <p className={s.routineSection__subtitle}>
+                      {t('programDetail.dailyRoutineSubtitle', 'Structured daily rhythm balancing sensory discovery, movement, nutrition, and creative rest.')}
+                    </p>
 
-                {/* 4 Core Learning Pillars */}
-                {Array.isArray(program.pillars) && program.pillars.length > 0 && (
-                  <div>
-                    <h4 className={s.overviewSection__subheading}>
-                      {t('programDetail.learningDomains', 'Core Learning Domains (NEP 2020 Aligned)')}
-                    </h4>
                     <div className="row g-3">
-                      {program.pillars.map((pill, idx) => (
-                        <div key={idx} className="col-sm-6">
-                          <div className={s.pillarCard}>
-                            <div className={s.pillarCard__header}>
-                              <div
-                                className={s.pillarCard__number}
-                                style={{ backgroundColor: pill.color || program.accentColor || '#0f172a' }}
-                              >
-                                {pill.number || idx + 1}
-                              </div>
-                              <h5 className={s.pillarCard__title}>{pill.title}</h5>
+                      {program.dailyRoutine.map((rout, idx) => (
+                        <div key={idx} className="col-md-6">
+                          <div className={s.routineCard}>
+                            <div>
+                              <span className={s.routineCard__time}>
+                                <ClockCircleOutlined /> {rout.time}
+                              </span>
+                              <h5 className={s.routineCard__title}>{rout.title}</h5>
+                              <p className={s.routineCard__desc}>{rout.desc}</p>
                             </div>
-                            <p className={s.pillarCard__desc}>{pill.desc}</p>
                           </div>
                         </div>
                       ))}
@@ -332,113 +418,19 @@ export default function ProgramDetailPage() {
                   </div>
                 )}
               </div>
-            )}
 
-            {/* 4-Term Thematic Curriculum */}
-            {Array.isArray(program.curriculum) && program.curriculum.length > 0 && (
-              <div className={s.curriculumSection}>
-                <h3 className={s.curriculumSection__title}>
-                  {t('programDetail.curriculumTitle', 'Curriculum Modules & Thematic Terms')}
-                </h3>
-                <p className={s.curriculumSection__subtitle}>
-                  {t('programDetail.curriculumSubtitle', 'Structured developmental terms designed for zero-pressure joyful discovery and concept retention.')}
-                </p>
 
-                <div>
-                  {program.curriculum.map((curr, idx) => (
-                    <div key={idx} className={s.termRow}>
-                      <span
-                        className={s.termRow__badge}
-                        style={{ backgroundColor: program.accentColor || '#f7941d' }}
-                      >
-                        Term {idx + 1}
-                      </span>
-                      <div>
-                        <h5 className={s.termRow__step}>{curr.step}</h5>
-                        <p className={s.termRow__details}>{curr.details}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
-            {/* End of Year Milestones */}
-            {Array.isArray(program.milestones) && program.milestones.length > 0 && (
-              <div className={s.milestonesSection}>
-                <h3 className={s.milestonesSection__title}>
-                  {t('programDetail.milestonesTitle', 'End-of-Year Developmental Milestones')}
-                </h3>
-                <p className={s.milestonesSection__subtitle}>
-                  {t('programDetail.milestonesSubtitle', 'Measurable skill milestones your child achieves before progressing to the next grade.')}
-                </p>
 
-                <div className={s.milestonesSection__grid}>
-                  {program.milestones.map((ms, idx) => (
-                    <div key={idx} className={s.milestonesSection__item}>
-                      <CheckCircleOutlined style={{ color: '#16a34a', fontSize: 16 }} />
-                      <span>{typeof ms === 'string' ? ms : ms.title || ms.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
-            {/* Daily Routine Timeline ("A Joyful Day in Our Classroom") */}
-            {Array.isArray(program.dailyRoutine) && program.dailyRoutine.length > 0 && (
-              <div className={s.routineSection}>
-                <h3 className={s.routineSection__title}>
-                  {t('programDetail.dailyRoutineTitle', 'A Joyful Day in Our Classroom (Daily Schedule)')}
-                </h3>
-                <p className={s.routineSection__subtitle}>
-                  {t('programDetail.dailyRoutineSubtitle', 'Structured daily rhythm balancing sensory discovery, movement, nutrition, and creative rest.')}
-                </p>
-
-                <div className="row g-3">
-                  {program.dailyRoutine.map((rout, idx) => (
-                    <div key={idx} className="col-md-6">
-                      <div className={s.routineCard}>
-                        <div>
-                          <span className={s.routineCard__time}>
-                            <ClockCircleOutlined /> {rout.time}
-                          </span>
-                          <h5 className={s.routineCard__title}>{rout.title}</h5>
-                          <p className={s.routineCard__desc}>{rout.desc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            </div>
 
           </div>
+
+
+
         </div>
 
-        {/* ── 3. Bottom Program Quick Switcher ── */}
-        <div className={s.bottomSwitcher} style={{ marginTop: 40 }}>
-          <div>
-            <span className={s.bottomSwitcher__label}>{t('programDetail.exploreOther', 'Explore Other Programs')}</span>
-            <h4 className={s.bottomSwitcher__title}>{t('programDetail.switchGrade', 'Switch Grade or Specialized Lab')}</h4>
-          </div>
-
-          <div className={s.bottomSwitcher__buttons}>
-            {allPrograms.map((p) => {
-              const pSlug = p.slug || p.id;
-              const isActive = pSlug === slug || p.id === slug;
-              return (
-                <button
-                  key={p.id || p.slug}
-                  type="button"
-                  className={`${s.switchBtn} ${isActive ? s.switchBtnActive : ''}`}
-                  onClick={() => navigate(`/programs/${pSlug}`)}
-                >
-                  {p.title || p.name}
-                </button>
-              );
-            })}
-          </div>
-        </div>
 
       </div>
     </div>

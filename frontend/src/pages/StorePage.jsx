@@ -25,6 +25,7 @@ import {
 } from 'antd';
 import { productService } from '../services';
 import { useLanguage } from '../context/LanguageContext';
+import { getImageUrl } from '../utils/imageUrl';
 import s from './StorePage.module.scss';
 
 export default function StorePage() {
@@ -61,7 +62,7 @@ export default function StorePage() {
       setProducts(Array.isArray(items) ? items : items?.data || []);
     } catch (err) {
       notification.error({
-        message: 'Could not load products',
+        title: 'Could not load products',
         description: 'Please check your connection and try again.',
         duration: 4,
       });
@@ -232,7 +233,14 @@ function ProductCard({ product, navigate, t }) {
     <div className={s.productCard} onClick={handleViewDetails}>
       {/* Image */}
       <div className={s.productCard__image}>
-        <img src={product.image} alt={product.title} loading="lazy" />
+        <img
+          src={getImageUrl(product.image)}
+          alt={product.title}
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.src = '/assets/kits.jpeg';
+          }}
+        />
         {product.badge && (
           <span className={s.productCard__badge}>
             {product.badge}

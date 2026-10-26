@@ -77,7 +77,7 @@ export default function AdmissionPage() {
   const onFinish = async (values) => {
     if (!agreeConsent) {
       notification.warning({
-        message: 'Consent Required',
+        title: 'Consent Required',
         description: 'Please agree to be contacted by the Frolic team to proceed.',
       });
       return;
@@ -107,7 +107,7 @@ export default function AdmissionPage() {
 
       confetti({ particleCount: 90, spread: 80, origin: { y: 0.6 } });
       notification.success({
-        message: 'Admission Enquiry Received! 🎉',
+        title: 'Admission Enquiry Received! 🎉',
         description: `Thank you, ${values.parentName}! Our Frolic admissions team will contact you at ${values.phone} shortly.`,
         duration: 6,
       });
@@ -116,7 +116,7 @@ export default function AdmissionPage() {
       form.resetFields();
     } catch {
       notification.error({
-        message: 'Submission Failed',
+        title: 'Submission Failed',
         description: 'Please verify your details and try again.',
       });
     } finally {

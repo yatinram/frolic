@@ -12,6 +12,7 @@ import {
 import { admissionService, franchiseService, productService, orderService } from '../services';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
+import KpiCard from '../components/common/KpiCard';
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
@@ -93,105 +94,80 @@ export default function Dashboard() {
     <div>
       <div style={{ marginBottom: 28 }}>
         <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#222222', margin: 0 }}>
-          📊 Enterprise Overview & Lead Metrics
+          Dashboard Overview
         </h2>
-        <p style={{ color: '#777777', margin: '4px 0 0' }}>
-          Real-time summary of admissions, franchise inquiries, and content modules.
-        </p>
+       
       </div>
 
-      {/* KPI Cards */}
+      {/* KPI Cards (4 Cards Per Row on Desktop) */}
       <Row gutter={[20, 20]} style={{ marginBottom: 36 }}>
         <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 18, borderLeft: '5px solid #F5821F', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-            <Statistic
-              title={<span style={{ fontWeight: 700 }}>Total Admission Enquiries</span>}
-              value={stats.totalAdmissions}
-              prefix={<UsergroupAddOutlined style={{ color: '#F5821F' }} />}
-            />
-            <div style={{ marginTop: 8, fontSize: '0.82rem', color: '#888' }}>
-              <Link to={ROUTES.ADMIN_ADMISSIONS} style={{ color: '#F5821F', fontWeight: 700 }}>
-                Manage Enquiries →
-              </Link>
-            </div>
-          </Card>
+          <KpiCard
+            title="Total Admissions"
+            value={stats.totalAdmissions}
+            icon={<UsergroupAddOutlined />}
+            color="#F7941D"
+          
+         
+            loading={loading}
+          />
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 18, borderLeft: '5px solid #E8453C', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-            <Statistic
-              title={<span style={{ fontWeight: 700 }}>New Actionable Leads</span>}
-              value={stats.newAdmissions}
-              prefix={<RiseOutlined style={{ color: '#E8453C' }} />}
-              valueStyle={{ color: '#E8453C' }}
-            />
-            <div style={{ marginTop: 8, fontSize: '0.82rem', color: '#E8453C', fontWeight: 700 }}>
-              Needs phone contact
-            </div>
-          </Card>
+          <KpiCard
+            title="New Action Leads"
+            value={stats.newAdmissions}
+            icon={<RiseOutlined />}
+            color="#E8453C"
+            badge={stats.newAdmissions > 0 ? `${stats.newAdmissions} New` : undefined}
+          
+            loading={loading}
+          />
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 18, borderLeft: '5px solid #2E9BD6', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-            <Statistic
-              title={<span style={{ fontWeight: 700 }}>Franchise Applications</span>}
-              value={stats.totalFranchise}
-              prefix={<ShopOutlined style={{ color: '#2E9BD6' }} />}
-            />
-            <div style={{ marginTop: 8, fontSize: '0.82rem', color: '#888' }}>
-              <Link to={ROUTES.ADMIN_FRANCHISE} style={{ color: '#2E9BD6', fontWeight: 700 }}>
-                View Investor Leads →
-              </Link>
-            </div>
-          </Card>
+          <KpiCard
+            title="Franchise Leads"
+            value={stats.totalFranchise}
+            icon={<ShopOutlined />}
+            color="#0072BC"
+           
+            loading={loading}
+          />
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 18, borderLeft: '5px solid #4CAF3D', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-            <Statistic
-              title={<span style={{ fontWeight: 700 }}>Active Lab Programs</span>}
-              value={7}
-              prefix={<BookOutlined style={{ color: '#4CAF3D' }} />}
-              valueStyle={{ color: '#4CAF3D' }}
-            />
-            <div style={{ marginTop: 8, fontSize: '0.82rem', color: '#888' }}>
-              <Link to={ROUTES.ADMIN_PROGRAMS} style={{ color: '#4CAF3D', fontWeight: 700 }}>
-                Curriculum Manager →
-              </Link>
-            </div>
-          </Card>
+          <KpiCard
+            title="Lab Programs"
+            value={7}
+            icon={<BookOutlined />}
+            color="#39B54A"
+           
+            loading={loading}
+          />
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 18, borderLeft: '5px solid #F7941D', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-            <Statistic
-              title={<span style={{ fontWeight: 700 }}>Store Products & Kits</span>}
-              value={stats.totalProducts}
-              prefix={<ShoppingOutlined style={{ color: '#F7941D' }} />}
-              valueStyle={{ color: '#F7941D' }}
-            />
-            <div style={{ marginTop: 8, fontSize: '0.82rem', color: '#888' }}>
-              <Link to={ROUTES.ADMIN_PRODUCTS} style={{ color: '#F7941D', fontWeight: 700 }}>
-                Manage Products & Stock →
-              </Link>
-            </div>
-          </Card>
+          <KpiCard
+            title="Store Products"
+            value={stats.totalProducts}
+            icon={<ShoppingOutlined />}
+            color="#FBB040"
+           
+            loading={loading}
+          />
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card style={{ borderRadius: 18, borderLeft: '5px solid #8B5CF6', boxShadow: '0 4px 15px rgba(0,0,0,0.04)' }}>
-            <Statistic
-              title={<span style={{ fontWeight: 700 }}>Kit Orders & Inquiries</span>}
-              value={stats.totalOrders}
-              prefix={<OrderedListOutlined style={{ color: '#8B5CF6' }} />}
-              valueStyle={{ color: '#8B5CF6' }}
-            />
-            <div style={{ marginTop: 8, fontSize: '0.82rem', color: '#888' }}>
-              <Link to={ROUTES.ADMIN_ORDERS} style={{ color: '#8B5CF6', fontWeight: 700 }}>
-                {stats.newOrders > 0 ? `${stats.newOrders} New Orders →` : 'View Orders →'}
-              </Link>
-            </div>
-          </Card>
+          <KpiCard
+            title="Kit Orders"
+            value={stats.totalOrders}
+            icon={<OrderedListOutlined />}
+            color="#8B5CF6"
+            badge={stats.newOrders > 0 ? `${stats.newOrders} New` : undefined}
+           
+            loading={loading}
+          />
         </Col>
       </Row>
 

@@ -6,39 +6,14 @@
     "auditLog": "E:\\Frolic_Project\\backend\\logs\\.5aa0d35fe3e2b5edeae2b51129f81bd6a739ebc9-audit.json",
     "files": [
         {
-            "date": 1789052739214,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-10.log",
-            "hash": "4d97224149fbcc782b10bcb58e771f75de904fd8de93e5fc8a76d0f9dc71f5b3"
+            "date": 1792059060565,
+            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-10-15.log",
+            "hash": "dc068144ec19818c42736b7553b3d05e08c0ecd00dfb39760a40b7113230d44e"
         },
         {
-            "date": 1789102426375,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-11.log",
-            "hash": "542e142b26cafefdaa05417132ba44a29793b9654a15e572354debb6e9e5bd6e"
-        },
-        {
-            "date": 1789540094331,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-16.log",
-            "hash": "8634145566b5a22b92e7e5f68f4c143f35ac2fbacf146bcb546e342f4be78ec3"
-        },
-        {
-            "date": 1789617291150,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-17.log",
-            "hash": "cead03007cc3e130b4b2f4190078c2a60f176a0e6e7b5d50a087f82891096de9"
-        },
-        {
-            "date": 1789826768481,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-19.log",
-            "hash": "d52ac56ab8c5251a01096837355211ab00c039c08ca5740f93a75f186c63ad7e"
-        },
-        {
-            "date": 1790161699714,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-23.log",
-            "hash": "03fc61f56fd58f98a2e617b025fb8bbedb4cac62ac16ade3ea7c83300e646d7d"
-        },
-        {
-            "date": 1790219911846,
-            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-09-24.log",
-            "hash": "86fc9d5f47d3e377c2fd42644bf36d49de477a26fb816b6c52514fc14a76a84e"
+            "date": 1793029332072,
+            "name": "E:\\Frolic_Project\\backend\\logs\\error-2026-10-26.log",
+            "hash": "350ad5d519f9f8e52f22ee46b6be91cb01d37dd4004b95a638b6d326ef91c194"
         }
     ],
     "hashType": "sha256"

@@ -17,6 +17,7 @@ import { Button, Modal, Form, Input, Select, notification, Spin, Empty } from 'a
 import confetti from 'canvas-confetti';
 import { productService, orderService } from '../services';
 import { useLanguage } from '../context/LanguageContext';
+import { getImageUrl } from '../utils/imageUrl';
 import s from './ProductDetailPage.module.scss';
 import { FrolicButton } from '../components/ui';
 import { ROUTES } from '../constants/routes';
@@ -151,7 +152,7 @@ export default function ProductDetailPage() {
 
       confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
       notification.success({
-        message: 'Order Enquiry Received Successfully!',
+        title: 'Order Enquiry Received Successfully!',
         description: `Thank you, ${values.parentName}! Your order for "${product.title}" (${selectedSize ? `Size: ${selectedSize}` : ''}) has been registered. Our campus team will contact you shortly on ${values.phone}.`,
         duration: 6,
       });
@@ -160,7 +161,7 @@ export default function ProductDetailPage() {
     } catch (err) {
       console.error('Error placing order:', err);
       notification.error({
-        message: 'Could not complete order',
+        title: 'Could not complete order',
         description: 'Please check your connection and try again.',
       });
     } finally {
@@ -233,9 +234,12 @@ export default function ProductDetailPage() {
             >
               <div className={s.carouselFrame}>
                 <img
-                  src={currentImage}
+                  src={getImageUrl(currentImage)}
                   alt={product.title}
                   className={s.mainImage}
+                  onError={(e) => {
+                    e.currentTarget.src = '/assets/kits.jpeg';
+                  }}
                 />
 
                 {product.badge && (
@@ -292,7 +296,13 @@ export default function ProductDetailPage() {
                       className={`${s.thumbItem} ${idx === currentSlide ? s.activeThumb : ''}`}
                       onClick={() => handleSelectThumbnail(idx)}
                     >
-                      <img src={img} alt={`Thumbnail ${idx + 1}`} />
+                      <img
+                        src={getImageUrl(img)}
+                        alt={`Thumbnail ${idx + 1}`}
+                        onError={(e) => {
+                          e.currentTarget.src = '/assets/kits.jpeg';
+                        }}
+                      />
                     </div>
                   ))}
                 </div>

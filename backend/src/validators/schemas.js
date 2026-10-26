@@ -99,6 +99,7 @@ const programSchema = Joi.object({
   syllabusContent: Joi.array().optional(),
   sortOrder: Joi.number().integer().default(0),
   isActive: Joi.boolean().default(true),
+  translations: Joi.object().optional(),
 }).custom((val, helpers) => {
   if (!val.title && !val.name) {
     return helpers.error('any.custom', { message: 'Either title or name is required' });

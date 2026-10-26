@@ -14,6 +14,7 @@ const productRoutes = require('./productRoutes');
 const kitOrderRoutes = require('./kitOrderRoutes');
 const eventRoutes = require('./eventRoutes');
 const awardRoutes = require('./awardRoutes');
+const uploadRoutes = require('./uploadRoutes');
 
 router.use('/admissions', admissionRoutes);
 router.use('/franchise-enquiries', franchiseRoutes);
@@ -28,6 +29,7 @@ router.use('/products', productRoutes);
 router.use('/orders', kitOrderRoutes);
 router.use('/events', eventRoutes);
 router.use('/awards', awardRoutes);
+router.use('/upload', uploadRoutes);
 
 
 router.get('/health', (req, res) => {

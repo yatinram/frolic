@@ -10,6 +10,7 @@ import {
   FileTextOutlined,
   ShoppingOutlined,
   OrderedListOutlined,
+  CompassOutlined,
   LogoutOutlined,
   HomeOutlined,
   UserOutlined,
@@ -38,6 +39,7 @@ export default function AdminLayout() {
     { key: ROUTES.ADMIN_ADMISSIONS, icon: <UsergroupAddOutlined />, label: <Link to={ROUTES.ADMIN_ADMISSIONS}>Admissions</Link> },
     { key: ROUTES.ADMIN_FRANCHISE, icon: <ShopOutlined />, label: <Link to={ROUTES.ADMIN_FRANCHISE}>Franchise Leads</Link> },
     { key: ROUTES.ADMIN_PROGRAMS, icon: <BookOutlined />, label: <Link to={ROUTES.ADMIN_PROGRAMS}>Programs & Labs</Link> },
+    { key: ROUTES.ADMIN_CENTERS, icon: <CompassOutlined />, label: <Link to={ROUTES.ADMIN_CENTERS}>Find a Center</Link> },
     { key: ROUTES.ADMIN_PRODUCTS, icon: <ShoppingOutlined />, label: <Link to={ROUTES.ADMIN_PRODUCTS}>Products & Kits</Link> },
     { key: ROUTES.ADMIN_ORDERS, icon: <OrderedListOutlined />, label: <Link to={ROUTES.ADMIN_ORDERS}>Store Orders</Link> },
     { key: ROUTES.ADMIN_TESTIMONIALS, icon: <StarOutlined />, label: <Link to={ROUTES.ADMIN_TESTIMONIALS}>Testimonials</Link> },
@@ -60,18 +62,24 @@ export default function AdminLayout() {
   };
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       <Sider
         collapsible
         collapsed={collapsed}
         onCollapse={setCollapsed}
         style={{
+          height: '100vh',
+          position: 'sticky',
+          top: 0,
+          left: 0,
+          overflowY: 'auto',
           background: '#1C2430',
           boxShadow: '2px 0 10px rgba(0, 0, 0, 0.1)',
+          zIndex: 100,
         }}
         width={240}
       >
-        <div style={{ padding: '20px 16px', textAlign: 'center', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+        <div style={{ padding: '20px 16px', textAlign: 'center', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', position: 'sticky', top: 0, background: '#1C2430', zIndex: 10 }}>
           <img
             src="/assets/logo.jpeg"
             alt="Frolic Admin"
@@ -93,7 +101,7 @@ export default function AdminLayout() {
         />
       </Sider>
 
-      <Layout>
+      <Layout style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
         <Header
           style={{
             background: '#FFFFFF',
@@ -103,6 +111,8 @@ export default function AdminLayout() {
             justifyContent: 'space-between',
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
             height: 64,
+            flexShrink: 0,
+            zIndex: 99,
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -131,9 +141,11 @@ export default function AdminLayout() {
           </Space>
         </Header>
 
-        <Content style={{ margin: '24px', padding: '24px', background: '#FFFFFF', borderRadius: 20, minHeight: 400, boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)' }}>
-          <Outlet />
-        </Content>
+        <div style={{ flex: 1, overflowY: 'auto', background: '#F8FAFC', padding: '24px' }}>
+          <Content style={{ padding: '24px', background: '#FFFFFF', borderRadius: 20, minHeight: '100%', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)' }}>
+            <Outlet />
+          </Content>
+        </div>
       </Layout>
     </Layout>
   );

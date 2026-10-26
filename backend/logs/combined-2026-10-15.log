@@ -1,0 +1,756 @@
+[2026-10-15 15:41:15] [INFO]: Initializing Frolic Kids Edu Labs Enterprise Backend...
+[2026-10-15 15:41:16] [INFO]: Database 'vertix_solutions' ensured.
+[2026-10-15 15:41:16] [DEBUG]: Executing (default): SELECT 1+1 AS result
+[2026-10-15 15:41:16] [INFO]: ✅ MySQL Sequelize connection established successfully.
+[2026-10-15 15:41:16] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admin_users' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:16] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admin_users`;
+[2026-10-15 15:41:16] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admin_users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:16] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:41:16] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `role` `role` ENUM('super_admin', 'editor') DEFAULT 'super_admin';
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `lastLogin` `lastLogin` DATETIME;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SHOW INDEX FROM `admin_users`
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admissions' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admissions`;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admissions' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `childName` `childName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `dob` `dob` DATE;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `email` `email` VARCHAR(255);
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `program` `program` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `preferredCenter` `preferredCenter` VARCHAR(255) DEFAULT 'Gandhinagar';
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `message` `message` TEXT;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `status` `status` ENUM('new', 'contacted', 'enrolled', 'closed') DEFAULT 'new';
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `notes` `notes` TEXT;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SHOW INDEX FROM `admissions`
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'franchise_enquiries' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `franchise_enquiries`;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'franchise_enquiries' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:17] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `state` `state` VARCHAR(255) DEFAULT 'Gujarat';
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `spaceAvailableSqft` `spaceAvailableSqft` VARCHAR(255);
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `investmentCapacity` `investmentCapacity` VARCHAR(255);
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `experience` `experience` VARCHAR(255);
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `message` `message` TEXT;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `status` `status` ENUM('new', 'in_review', 'approved', 'closed') DEFAULT 'new';
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `notes` `notes` TEXT;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): SHOW INDEX FROM `franchise_enquiries`
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'programs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `programs`;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'programs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:18] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `name` `name` VARCHAR(255);
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'preschool';
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `categoryLabel` `categoryLabel` VARCHAR(255) DEFAULT 'Preschool Foundation';
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `ageGroup` `ageGroup` VARCHAR(255) NOT NULL DEFAULT '1.5 – 6 Years';
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `badgeText` `badgeText` VARCHAR(255);
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `courseCode` `courseCode` VARCHAR(255);
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `tagline` `tagline` VARCHAR(255);
+[2026-10-15 15:41:19] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `accentColor` `accentColor` VARCHAR(255) DEFAULT '#F7941D';
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `gradient` `gradient` VARCHAR(255);
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroBg` `heroBg` VARCHAR(255) DEFAULT '/assets/hero_kids_clean.png';
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroOverlay` `heroOverlay` VARCHAR(255);
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `image` `image` VARCHAR(500);
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'BookOutlined';
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `shortDescription` `shortDescription` TEXT;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `overview` `overview` TEXT;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `quickSpecs` `quickSpecs` JSON;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `keyHighlights` `keyHighlights` JSON;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `pillars` `pillars` JSON;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `curriculum` `curriculum` JSON;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `milestones` `milestones` JSON;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `dailyRoutine` `dailyRoutine` JSON;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): SHOW INDEX FROM `programs`
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'testimonials' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:20] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `testimonials`;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'testimonials' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `role` `role` VARCHAR(255) DEFAULT 'Parent';
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `childName` `childName` VARCHAR(255);
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `program` `program` VARCHAR(255);
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `rating` `rating` INTEGER DEFAULT 5;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `quote` `quote` TEXT NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `photoUrl` `photoUrl` VARCHAR(255);
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `videoUrl` `videoUrl` VARCHAR(255);
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SHOW INDEX FROM `testimonials`
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'media_gallery' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `media_gallery`;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'media_gallery' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `title` `title` VARCHAR(255);
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `imageUrl` `imageUrl` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `category` `category` VARCHAR(255) DEFAULT 'activities';
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `altText` `altText` VARCHAR(255);
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `isFeatured` `isFeatured` TINYINT(1) DEFAULT false;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SHOW INDEX FROM `media_gallery`
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'blogs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `blogs`;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'blogs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:21] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `summary` `summary` TEXT NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `content` `content` LONGTEXT NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `coverImage` `coverImage` VARCHAR(255);
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `author` `author` VARCHAR(255) DEFAULT 'Frolic Edu Team';
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Early Education';
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `readTime` `readTime` VARCHAR(255) DEFAULT '4 min read';
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `publishedAt` `publishedAt` DATETIME;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SHOW INDEX FROM `blogs`
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `contact_messages`;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'contact_messages' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `phone` `phone` VARCHAR(255);
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `subject` `subject` VARCHAR(255);
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `message` `message` TEXT NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `isRead` `isRead` TINYINT(1) DEFAULT false;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SHOW INDEX FROM `contact_messages`
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'centers' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `centers`;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'centers' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `branchType` `branchType` VARCHAR(255) DEFAULT 'Edu Lab & Preschool';
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-15 15:41:22] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `area` `area` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `district` `district` VARCHAR(255);
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `taluka` `taluka` VARCHAR(255);
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `state` `state` VARCHAR(255) NOT NULL DEFAULT 'Gujarat';
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `pincode` `pincode` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `email` `email` VARCHAR(255) DEFAULT 'frolickidsedulabs@gmail.com';
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `timing` `timing` VARCHAR(255) DEFAULT 'Monday – Saturday: 8:30 AM – 5:30 PM';
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `programs` `programs` JSON;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `facilities` `facilities` JSON;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `mapQuery` `mapQuery` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `latitude` `latitude` DECIMAL(10,7);
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `longitude` `longitude` DECIMAL(10,7);
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isFlagship` `isFlagship` TINYINT(1) DEFAULT false;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): SHOW INDEX FROM `centers`
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'products' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `products`;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'products' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:41:23] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `images` `images` JSON;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'kits';
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badge` `badge` VARCHAR(255);
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badgeColor` `badgeColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `image` `image` LONGTEXT NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sizes` `sizes` JSON;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `specifications` `specifications` JSON;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `price` `price` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `subPrice` `subPrice` VARCHAR(255);
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `items` `items` JSON;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `inStock` `inStock` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): SHOW INDEX FROM `products`
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'kit_orders' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `kit_orders`;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'kit_orders' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:24] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `productName` `productName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:25] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `grade` `grade` VARCHAR(255);
+[2026-10-15 15:41:25] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `quantity` `quantity` INTEGER DEFAULT 1;
+[2026-10-15 15:41:25] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `status` `status` ENUM('new', 'contacted', 'dispatched', 'delivered', 'cancelled') DEFAULT 'new';
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `adminNotes` `adminNotes` TEXT;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): SHOW INDEX FROM `kit_orders`
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'events' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `events`;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'events' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Celebration';
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `tagColor` `tagColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `date` `date` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `time` `time` VARCHAR(255) DEFAULT '10:00 AM – 1:00 PM';
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `location` `location` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:26] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `image` `image` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isUpcoming` `isUpcoming` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SHOW INDEX FROM `events`
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'awards' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `awards`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'awards' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `org` `org` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'Trophy';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SHOW INDEX FROM `awards`
+[2026-10-15 15:41:27] [INFO]: Sequelize models synchronized successfully.
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admin_users` AS `AdminUser`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'nursery';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'lkg';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'ukg';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'english-lab';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'maths-lab';
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'teacher-training';
+[2026-10-15 15:41:27] [INFO]: ✅ Synced 7 detailed Programs in Database
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `testimonials` AS `Testimonial`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `media_gallery` AS `MediaGallery`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `blogs` AS `Blog`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `centers` AS `Center`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `products` AS `Product`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `events` AS `Event`;
+[2026-10-15 15:41:27] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `awards` AS `Award`;
+[2026-10-15 15:41:27] [INFO]: 🚀 Frolic Server running in development mode on port 5000
+[2026-10-15 15:41:27] [INFO]: 🌐 API Endpoint: http://localhost:5000/api/health
+[2026-10-15 15:41:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-15 15:41:31] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 16.120 ms - -[0m
+[2026-10-15 15:41:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-15 15:41:31] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 6.338 ms - -[0m
+[2026-10-15 15:42:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-15 15:42:10] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 23.615 ms - -[0m
+[2026-10-15 15:42:10] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-15 15:42:10] [INFO]: [0mGET /api/programs?activeOnly=true [36m304[0m 6.066 ms - -[0m
+[2026-10-15 15:53:28] [INFO]: Initializing Frolic Kids Edu Labs Enterprise Backend...
+[2026-10-15 15:53:28] [INFO]: Database 'vertix_solutions' ensured.
+[2026-10-15 15:53:28] [DEBUG]: Executing (default): SELECT 1+1 AS result
+[2026-10-15 15:53:28] [INFO]: ✅ MySQL Sequelize connection established successfully.
+[2026-10-15 15:53:28] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admin_users' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:28] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admin_users`;
+[2026-10-15 15:53:28] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admin_users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:28] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `role` `role` ENUM('super_admin', 'editor') DEFAULT 'super_admin';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `lastLogin` `lastLogin` DATETIME;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW INDEX FROM `admin_users`
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admissions' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admissions`;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admissions' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `childName` `childName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `dob` `dob` DATE;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `email` `email` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `program` `program` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `preferredCenter` `preferredCenter` VARCHAR(255) DEFAULT 'Gandhinagar';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `message` `message` TEXT;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `status` `status` ENUM('new', 'contacted', 'enrolled', 'closed') DEFAULT 'new';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `notes` `notes` TEXT;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW INDEX FROM `admissions`
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'franchise_enquiries' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `franchise_enquiries`;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'franchise_enquiries' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `state` `state` VARCHAR(255) DEFAULT 'Gujarat';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `spaceAvailableSqft` `spaceAvailableSqft` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `investmentCapacity` `investmentCapacity` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `experience` `experience` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `message` `message` TEXT;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `status` `status` ENUM('new', 'in_review', 'approved', 'closed') DEFAULT 'new';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `notes` `notes` TEXT;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW INDEX FROM `franchise_enquiries`
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'programs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `programs`;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'programs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` ADD `translations` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `name` `name` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'preschool';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `categoryLabel` `categoryLabel` VARCHAR(255) DEFAULT 'Preschool Foundation';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `ageGroup` `ageGroup` VARCHAR(255) NOT NULL DEFAULT '1.5 – 6 Years';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `badgeText` `badgeText` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `courseCode` `courseCode` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `tagline` `tagline` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `accentColor` `accentColor` VARCHAR(255) DEFAULT '#F7941D';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `gradient` `gradient` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroBg` `heroBg` VARCHAR(255) DEFAULT '/assets/hero_kids_clean.png';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroOverlay` `heroOverlay` VARCHAR(255);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `image` `image` VARCHAR(500);
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'BookOutlined';
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `shortDescription` `shortDescription` TEXT;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `overview` `overview` TEXT;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `quickSpecs` `quickSpecs` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `keyHighlights` `keyHighlights` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `pillars` `pillars` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `curriculum` `curriculum` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `milestones` `milestones` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `dailyRoutine` `dailyRoutine` JSON;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW INDEX FROM `programs`
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'testimonials' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `testimonials`;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'testimonials' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:29] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `role` `role` VARCHAR(255) DEFAULT 'Parent';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `childName` `childName` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `program` `program` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `rating` `rating` INTEGER DEFAULT 5;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `quote` `quote` TEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `photoUrl` `photoUrl` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `videoUrl` `videoUrl` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW INDEX FROM `testimonials`
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'media_gallery' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `media_gallery`;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'media_gallery' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `title` `title` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `imageUrl` `imageUrl` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `category` `category` VARCHAR(255) DEFAULT 'activities';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `altText` `altText` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `isFeatured` `isFeatured` TINYINT(1) DEFAULT false;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW INDEX FROM `media_gallery`
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'blogs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `blogs`;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'blogs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `summary` `summary` TEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `content` `content` LONGTEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `coverImage` `coverImage` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `author` `author` VARCHAR(255) DEFAULT 'Frolic Edu Team';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Early Education';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `readTime` `readTime` VARCHAR(255) DEFAULT '4 min read';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `publishedAt` `publishedAt` DATETIME;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW INDEX FROM `blogs`
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `contact_messages`;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'contact_messages' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `phone` `phone` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `subject` `subject` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `message` `message` TEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `isRead` `isRead` TINYINT(1) DEFAULT false;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW INDEX FROM `contact_messages`
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'centers' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `centers`;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'centers' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `branchType` `branchType` VARCHAR(255) DEFAULT 'Edu Lab & Preschool';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `area` `area` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `district` `district` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `taluka` `taluka` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `state` `state` VARCHAR(255) NOT NULL DEFAULT 'Gujarat';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `pincode` `pincode` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `email` `email` VARCHAR(255) DEFAULT 'frolickidsedulabs@gmail.com';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `timing` `timing` VARCHAR(255) DEFAULT 'Monday – Saturday: 8:30 AM – 5:30 PM';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `programs` `programs` JSON;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `facilities` `facilities` JSON;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `mapQuery` `mapQuery` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `latitude` `latitude` DECIMAL(10,7);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `longitude` `longitude` DECIMAL(10,7);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isFlagship` `isFlagship` TINYINT(1) DEFAULT false;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW INDEX FROM `centers`
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'products' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `products`;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'products' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `images` `images` JSON;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'kits';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badge` `badge` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badgeColor` `badgeColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `image` `image` LONGTEXT NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sizes` `sizes` JSON;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `specifications` `specifications` JSON;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `price` `price` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `subPrice` `subPrice` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `items` `items` JSON;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `inStock` `inStock` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW INDEX FROM `products`
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'kit_orders' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `kit_orders`;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'kit_orders' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `productName` `productName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `grade` `grade` VARCHAR(255);
+[2026-10-15 15:53:30] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `quantity` `quantity` INTEGER DEFAULT 1;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `status` `status` ENUM('new', 'contacted', 'dispatched', 'delivered', 'cancelled') DEFAULT 'new';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `adminNotes` `adminNotes` TEXT;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SHOW INDEX FROM `kit_orders`
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'events' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `events`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'events' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Celebration';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `tagColor` `tagColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `date` `date` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `time` `time` VARCHAR(255) DEFAULT '10:00 AM – 1:00 PM';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `location` `location` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `image` `image` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isUpcoming` `isUpcoming` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SHOW INDEX FROM `events`
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'awards' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `awards`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'awards' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `org` `org` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'Trophy';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SHOW INDEX FROM `awards`
+[2026-10-15 15:53:31] [INFO]: Sequelize models synchronized successfully.
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admin_users` AS `AdminUser`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'nursery';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'lkg';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'ukg';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'english-lab';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'maths-lab';
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'teacher-training';
+[2026-10-15 15:53:31] [INFO]: ✅ Synced 7 detailed Programs in Database
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `testimonials` AS `Testimonial`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `media_gallery` AS `MediaGallery`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `blogs` AS `Blog`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `centers` AS `Center`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `products` AS `Product`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `events` AS `Event`;
+[2026-10-15 15:53:31] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `awards` AS `Award`;
+[2026-10-15 15:53:31] [INFO]: 🚀 Frolic Server running in development mode on port 5000
+[2026-10-15 15:53:31] [INFO]: 🌐 API Endpoint: http://localhost:5000/api/health
+[2026-10-15 15:55:00] [INFO]: Initializing Frolic Kids Edu Labs Enterprise Backend...
+[2026-10-15 15:55:00] [INFO]: Database 'vertix_solutions' ensured.
+[2026-10-15 15:55:00] [DEBUG]: Executing (default): SELECT 1+1 AS result
+[2026-10-15 15:55:00] [INFO]: ✅ MySQL Sequelize connection established successfully.
+[2026-10-15 15:55:00] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admin_users' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:00] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admin_users`;
+[2026-10-15 15:55:00] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admin_users' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:00] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `email` `email` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `passwordHash` `passwordHash` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `role` `role` ENUM('super_admin', 'editor') DEFAULT 'super_admin';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admin_users` CHANGE `lastLogin` `lastLogin` DATETIME;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SHOW INDEX FROM `admin_users`
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'admissions' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `admissions`;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'admissions' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `childName` `childName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `dob` `dob` DATE;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `email` `email` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `program` `program` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `preferredCenter` `preferredCenter` VARCHAR(255) DEFAULT 'Gandhinagar';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `message` `message` TEXT;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `status` `status` ENUM('new', 'contacted', 'enrolled', 'closed') DEFAULT 'new';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `notes` `notes` TEXT;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `admissions` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SHOW INDEX FROM `admissions`
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'franchise_enquiries' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `franchise_enquiries`;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'franchise_enquiries' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `state` `state` VARCHAR(255) DEFAULT 'Gujarat';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `spaceAvailableSqft` `spaceAvailableSqft` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `investmentCapacity` `investmentCapacity` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `experience` `experience` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `message` `message` TEXT;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `status` `status` ENUM('new', 'in_review', 'approved', 'closed') DEFAULT 'new';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `notes` `notes` TEXT;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `franchise_enquiries` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SHOW INDEX FROM `franchise_enquiries`
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'programs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `programs`;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'programs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `name` `name` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'preschool';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `categoryLabel` `categoryLabel` VARCHAR(255) DEFAULT 'Preschool Foundation';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `ageGroup` `ageGroup` VARCHAR(255) NOT NULL DEFAULT '1.5 – 6 Years';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `badgeText` `badgeText` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `courseCode` `courseCode` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `tagline` `tagline` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `accentColor` `accentColor` VARCHAR(255) DEFAULT '#F7941D';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `gradient` `gradient` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroBg` `heroBg` VARCHAR(255) DEFAULT '/assets/hero_kids_clean.png';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `heroOverlay` `heroOverlay` VARCHAR(255);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `image` `image` VARCHAR(500);
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'BookOutlined';
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `shortDescription` `shortDescription` TEXT;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `overview` `overview` TEXT;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `quickSpecs` `quickSpecs` JSON;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `keyHighlights` `keyHighlights` JSON;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `pillars` `pillars` JSON;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `curriculum` `curriculum` JSON;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `milestones` `milestones` JSON;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `dailyRoutine` `dailyRoutine` JSON;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:01] [DEBUG]: Executing (default): ALTER TABLE `programs` CHANGE `translations` `translations` JSON;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW INDEX FROM `programs`
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'testimonials' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `testimonials`;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'testimonials' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `role` `role` VARCHAR(255) DEFAULT 'Parent';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `childName` `childName` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `program` `program` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `rating` `rating` INTEGER DEFAULT 5;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `quote` `quote` TEXT NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `photoUrl` `photoUrl` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `videoUrl` `videoUrl` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `testimonials` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW INDEX FROM `testimonials`
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'media_gallery' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `media_gallery`;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'media_gallery' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `title` `title` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `imageUrl` `imageUrl` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `category` `category` VARCHAR(255) DEFAULT 'activities';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `altText` `altText` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `isFeatured` `isFeatured` TINYINT(1) DEFAULT false;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `media_gallery` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW INDEX FROM `media_gallery`
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'blogs' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `blogs`;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'blogs' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `summary` `summary` TEXT NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `content` `content` LONGTEXT NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `coverImage` `coverImage` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `author` `author` VARCHAR(255) DEFAULT 'Frolic Edu Team';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Early Education';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `readTime` `readTime` VARCHAR(255) DEFAULT '4 min read';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `isPublished` `isPublished` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `publishedAt` `publishedAt` DATETIME;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `blogs` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW INDEX FROM `blogs`
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'contact_messages' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `contact_messages`;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'contact_messages' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `phone` `phone` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `email` `email` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `subject` `subject` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `message` `message` TEXT NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `isRead` `isRead` TINYINT(1) DEFAULT false;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `contact_messages` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW INDEX FROM `contact_messages`
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'centers' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `centers`;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'centers' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `branchType` `branchType` VARCHAR(255) DEFAULT 'Edu Lab & Preschool';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `area` `area` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `city` `city` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `district` `district` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `taluka` `taluka` VARCHAR(255);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `state` `state` VARCHAR(255) NOT NULL DEFAULT 'Gujarat';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `pincode` `pincode` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `email` `email` VARCHAR(255) DEFAULT 'frolickidsedulabs@gmail.com';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `timing` `timing` VARCHAR(255) DEFAULT 'Monday – Saturday: 8:30 AM – 5:30 PM';
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `programs` `programs` JSON;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `facilities` `facilities` JSON;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `mapQuery` `mapQuery` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `latitude` `latitude` DECIMAL(10,7);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `longitude` `longitude` DECIMAL(10,7);
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isFlagship` `isFlagship` TINYINT(1) DEFAULT false;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:02] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `centers` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW INDEX FROM `centers`
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'products' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `products`;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'products' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `images` `images` JSON;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `category` `category` VARCHAR(255) NOT NULL DEFAULT 'kits';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badge` `badge` VARCHAR(255);
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `badgeColor` `badgeColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `image` `image` LONGTEXT NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sizes` `sizes` JSON;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `specifications` `specifications` JSON;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `price` `price` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `subPrice` `subPrice` VARCHAR(255);
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `items` `items` JSON;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `inStock` `inStock` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `products` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW INDEX FROM `products`
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'kit_orders' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `kit_orders`;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'kit_orders' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `parentName` `parentName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `productName` `productName` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `grade` `grade` VARCHAR(255);
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `quantity` `quantity` INTEGER DEFAULT 1;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `address` `address` TEXT NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `status` `status` ENUM('new', 'contacted', 'dispatched', 'delivered', 'cancelled') DEFAULT 'new';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `adminNotes` `adminNotes` TEXT;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `kit_orders` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW INDEX FROM `kit_orders`
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'events' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `events`;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'events' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `slug` `slug` VARCHAR(255) NOT NULL UNIQUE;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `category` `category` VARCHAR(255) DEFAULT 'Celebration';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `tagColor` `tagColor` VARCHAR(255) DEFAULT 'orange';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `date` `date` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `time` `time` VARCHAR(255) DEFAULT '10:00 AM – 1:00 PM';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `location` `location` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `image` `image` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isUpcoming` `isUpcoming` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `events` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW INDEX FROM `events`
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'awards' AND TABLE_SCHEMA = 'vertix_solutions'
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `awards`;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'awards' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='vertix_solutions' AND REFERENCED_TABLE_NAME IS NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `title` `title` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `org` `org` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `year` `year` VARCHAR(255) NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `description` `description` TEXT NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `iconType` `iconType` VARCHAR(255) DEFAULT 'Trophy';
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `sortOrder` `sortOrder` INTEGER DEFAULT 0;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `isActive` `isActive` TINYINT(1) DEFAULT true;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): ALTER TABLE `awards` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SHOW INDEX FROM `awards`
+[2026-10-15 15:55:03] [INFO]: Sequelize models synchronized successfully.
+[2026-10-15 15:55:03] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `admin_users` AS `AdminUser`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'play-group';
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'nursery';
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'lkg';
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'ukg';
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'english-lab';
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'maths-lab';
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`slug` = 'teacher-training';
+[2026-10-15 15:55:04] [INFO]: ✅ Synced 7 detailed Programs in Database
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `testimonials` AS `Testimonial`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `media_gallery` AS `MediaGallery`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `blogs` AS `Blog`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `centers` AS `Center`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `products` AS `Product`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `events` AS `Event`;
+[2026-10-15 15:55:04] [DEBUG]: Executing (default): SELECT count(*) AS `count` FROM `awards` AS `Award`;
+[2026-10-15 15:55:04] [INFO]: 🚀 Frolic Server running in development mode on port 5000
+[2026-10-15 15:55:04] [INFO]: 🌐 API Endpoint: http://localhost:5000/api/health
+[2026-10-15 15:58:01] [DEBUG]: Executing (default): SELECT `id`, `title`, `name`, `slug`, `category`, `categoryLabel`, `ageGroup`, `badgeText`, `courseCode`, `tagline`, `accentColor`, `gradient`, `heroBg`, `heroOverlay`, `image`, `iconType`, `shortDescription`, `overview`, `quickSpecs`, `keyHighlights`, `pillars`, `curriculum`, `milestones`, `dailyRoutine`, `sortOrder`, `isActive`, `translations`, `createdAt`, `updatedAt` FROM `programs` AS `Program` WHERE `Program`.`isActive` = true ORDER BY `Program`.`sortOrder` ASC, `Program`.`id` ASC;
+[2026-10-15 15:58:01] [INFO]: [0mGET /api/programs?activeOnly=true [32m200[0m 33.316 ms - 32429[0m

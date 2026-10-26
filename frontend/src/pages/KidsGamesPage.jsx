@@ -122,9 +122,27 @@ function generateMathQuestion() {
     answer = n1 - n2;
     operator = '−';
   }
-  const wrong1 = answer + 1;
-  const wrong2 = Math.max(1, answer - 1);
-  const options = [answer, wrong1, wrong2].sort(() => Math.random() - 0.5);
+  // Generate 2 distinct wrong options that are strictly unique and positive (> 0)
+  const optionsSet = new Set([answer]);
+  const offsets = [-2, -1, 1, 2, 3].sort(() => Math.random() - 0.5);
+
+  for (const offset of offsets) {
+    if (optionsSet.size >= 3) break;
+    const candidate = answer + offset;
+    if (candidate > 0 && !optionsSet.has(candidate)) {
+      optionsSet.add(candidate);
+    }
+  }
+
+  let fallback = 1;
+  while (optionsSet.size < 3) {
+    if (!optionsSet.has(fallback)) {
+      optionsSet.add(fallback);
+    }
+    fallback++;
+  }
+
+  const options = Array.from(optionsSet).sort(() => Math.random() - 0.5);
   return { n1, n2, operator, answer, options };
 }
 
@@ -323,7 +341,7 @@ function ABCVoiceGame({ onQuit }) {
 // ─── 2. MAGIC MATHEMATICS GAME (WITH "VERY GOOD!" VOICE & CONFETTI) ─────────────
 // ════════════════════════════════════════════════════════════════════════════════
 function MathFunGame({ onQuit }) {
-  const [questions] = useState(() =>
+  const [questions, setQuestions] = useState(() =>
     Array.from({ length: TOTAL_QUESTIONS }, generateMathQuestion)
   );
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -370,6 +388,7 @@ function MathFunGame({ onQuit }) {
 
   const handleReset = () => {
     window.speechSynthesis?.cancel();
+    setQuestions(Array.from({ length: TOTAL_QUESTIONS }, generateMathQuestion));
     setCurrentIdx(0);
     setSelectedAnswer(null);
     setIsAnswerLocked(false);
@@ -726,291 +745,7 @@ function WordSpellGame({ onQuit }) {
 // ════════════════════════════════════════════════════════════════════════════════
 // ─── 4. DIGITAL SMART SLATE & TRACING BOARD (GAME 4) ────────────────────────────
 // ════════════════════════════════════════════════════════════════════════════════
-function DigitalBoardGame({ onQuit }) {
-  const canvasRef = useRef(null);
-  const [mode, setMode] = useState('tracing'); // 'tracing' | 'free'
-  const [tracingIdx, setTracingIdx] = useState(0);
-  const [brushColor, setBrushColor] = useState('#F7941D');
-  const [brushSize, setBrushSize] = useState(14);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [drawnPointsCount, setDrawnPointsCount] = useState(0);
 
-  const colors = ['#F7941D', '#39B54A', '#0072BC', '#ED1C24', '#9C27B0', '#F59E0B', '#0F172A', '#EC4899'];
-  const currentTracing = TRACING_ITEMS[tracingIdx] || TRACING_ITEMS[0];
-
-  // Draw background & dotted tracing guide on canvas
-  const renderCanvasBoard = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    // Slate background
-    ctx.fillStyle = '#1E293B'; // Dark blackboard slate
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Subtle chalk border
-    ctx.strokeStyle = '#334155';
-    ctx.lineWidth = 4;
-    ctx.strokeRect(8, 8, canvas.width - 16, canvas.height - 16);
-
-    // Dotted guide if in tracing mode
-    if (mode === 'tracing' && currentTracing) {
-      ctx.save();
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-      ctx.lineWidth = 3;
-      ctx.setLineDash([8, 8]);
-      ctx.font = 'bold 220px "Fredoka", "Bubblegum Sans", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(currentTracing.display, canvas.width / 2, canvas.height / 2 + 10);
-      ctx.strokeText(currentTracing.display, canvas.width / 2, canvas.height / 2 + 10);
-      ctx.restore();
-    }
-  }, [mode, currentTracing]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    canvas.width = Math.min(680, window.innerWidth - 40);
-    canvas.height = 420;
-    renderCanvasBoard();
-    setDrawnPointsCount(0);
-
-    if (mode === 'tracing') {
-      speakVoice(`Trace the ${currentTracing.label}`, { rate: 0.85 });
-    }
-  }, [mode, tracingIdx, currentTracing, renderCanvasBoard]);
-
-  // Mouse & Touch coordinates helper
-  const getCoordinates = (e) => {
-    const canvas = canvasRef.current;
-    const rect = canvas.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    return {
-      x: (clientX - rect.left) * (canvas.width / rect.width),
-      y: (clientY - rect.top) * (canvas.height / rect.height),
-    };
-  };
-
-  const startDrawing = (e) => {
-    e.preventDefault();
-    setIsDrawing(true);
-    const { x, y } = getCoordinates(e);
-    const ctx = canvasRef.current.getContext('2d');
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-  };
-
-  const draw = (e) => {
-    if (!isDrawing) return;
-    e.preventDefault();
-    const { x, y } = getCoordinates(e);
-    const ctx = canvasRef.current.getContext('2d');
-    ctx.strokeStyle = brushColor;
-    ctx.lineWidth = brushSize;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.lineTo(x, y);
-    ctx.stroke();
-    setDrawnPointsCount((prev) => prev + 1);
-  };
-
-  const stopDrawing = () => {
-    if (!isDrawing) return;
-    setIsDrawing(false);
-  };
-
-  // Check Tracing Complete
-  const handleVerifyTracing = () => {
-    if (drawnPointsCount > 15) {
-      confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 } });
-      speakVoice('Very good! Excellent tracing!', { rate: 0.9, pitch: 1.2 });
-      setTimeout(() => {
-        if (tracingIdx + 1 < TRACING_ITEMS.length) {
-          setTracingIdx((prev) => prev + 1);
-        } else {
-          setTracingIdx(0);
-        }
-      }, 1400);
-    } else {
-      speakVoice('Keep tracing all lines!', { rate: 0.85 });
-    }
-  };
-
-  // Clear Canvas
-  const handleClearSlate = () => {
-    renderCanvasBoard();
-    setDrawnPointsCount(0);
-  };
-
-  // Stamp Shape
-  const handleStampShape = (shapeType) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    ctx.save();
-    ctx.fillStyle = brushColor;
-    ctx.font = '64px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    const x = canvas.width / 2 + (Math.random() * 160 - 80);
-    const y = canvas.height / 2 + (Math.random() * 120 - 60);
-
-    if (shapeType === 'star') ctx.fillText('⭐', x, y);
-    else if (shapeType === 'heart') ctx.fillText('❤️', x, y);
-    else if (shapeType === 'circle') {
-      ctx.beginPath();
-      ctx.arc(x, y, 32, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.restore();
-    setDrawnPointsCount((prev) => prev + 5);
-  };
-
-  // Save Image
-  const handleSaveArtwork = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const link = document.createElement('a');
-    link.download = 'frolic-kids-drawing.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  };
-
-  return (
-    <div className={s.gameOverlay}>
-      <div className={s.gameHeader}>
-        <div className={s.gameHeader__title}>
-          <HighlightOutlined /> <span>Digital Slate &amp; Tracing Board</span>
-        </div>
-        <div className={s.gameHeader__modeSwitch}>
-          <button
-            className={`${s.modeBtn} ${mode === 'tracing' ? s['modeBtn--active'] : ''}`}
-            onClick={() => setMode('tracing')}
-          >
-            <EditOutlined /> Guided Tracing Board
-          </button>
-          <button
-            className={`${s.modeBtn} ${mode === 'free' ? s['modeBtn--active'] : ''}`}
-            onClick={() => setMode('free')}
-          >
-            <HighlightOutlined /> Free Drawing Studio
-          </button>
-        </div>
-        <button className={s.gameHeader__quit} onClick={onQuit} aria-label="Quit game (Esc)">
-          <CloseOutlined /> Quit (Esc)
-        </button>
-      </div>
-
-      <div className={s.gameContent}>
-        <div className={s.slateCard}>
-          {/* Top Instruction Bar */}
-          <div className={s.slateCard__instruction}>
-            {mode === 'tracing' ? (
-              <div className="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                <span>
-                  ✍️ Trace over the dotted <strong>{currentTracing.label}</strong> with your finger/mouse:
-                </span>
-                <span className={s.tracingStepPill}>
-                  {tracingIdx + 1} / {TRACING_ITEMS.length} Tracing Cards
-                </span>
-              </div>
-            ) : (
-              <span>🎨 Creative Free Board: Draw anything, pick bright colors and shapes!</span>
-            )}
-          </div>
-
-          {/* HTML5 Canvas Slate */}
-          <div className={s.slateCanvasFrame}>
-            <canvas
-              ref={canvasRef}
-              onMouseDown={startDrawing}
-              onMouseMove={draw}
-              onMouseUp={stopDrawing}
-              onMouseLeave={stopDrawing}
-              onTouchStart={startDrawing}
-              onTouchMove={draw}
-              onTouchEnd={stopDrawing}
-              className={s.slateCanvas}
-            />
-          </div>
-
-          {/* Slate Control Toolbar */}
-          <div className={s.slateToolbar}>
-            {/* Color Palette */}
-            <div className={s.colorGroup}>
-              {colors.map((c) => (
-                <button
-                  key={c}
-                  className={`${s.colorCircle} ${brushColor === c ? s['colorCircle--active'] : ''}`}
-                  style={{ backgroundColor: c }}
-                  onClick={() => setBrushColor(c)}
-                  aria-label={`Color ${c}`}
-                />
-              ))}
-            </div>
-
-            {/* Brush Size / Eraser */}
-            <div className={s.sizeGroup}>
-              <button
-                className={`${s.sizeBtn} ${brushSize === 8 ? s['sizeBtn--active'] : ''}`}
-                onClick={() => setBrushSize(8)}
-              >
-                Thin
-              </button>
-              <button
-                className={`${s.sizeBtn} ${brushSize === 16 ? s['sizeBtn--active'] : ''}`}
-                onClick={() => setBrushSize(16)}
-              >
-                Medium
-              </button>
-              <button
-                className={`${s.sizeBtn} ${brushSize === 26 ? s['sizeBtn--active'] : ''}`}
-                onClick={() => setBrushSize(26)}
-              >
-                Thick
-              </button>
-            </div>
-
-            {/* Shape Stamps (Free Mode) */}
-            {mode === 'free' && (
-              <div className={s.stampGroup}>
-                <button className={s.toolBtn} onClick={() => handleStampShape('star')}>
-                  <StarFilled style={{ color: '#F59E0B' }} /> Star
-                </button>
-                <button className={s.toolBtn} onClick={() => handleStampShape('heart')}>
-                  <HeartFilled style={{ color: '#EF4444' }} /> Heart
-                </button>
-                <button className={s.toolBtn} onClick={() => handleStampShape('circle')}>
-                  ⭕ Circle
-                </button>
-              </div>
-            )}
-
-            {/* Action Buttons */}
-            <div className={s.actionGroup}>
-              <button className={s.toolBtn} onClick={handleClearSlate}>
-                <DeleteOutlined /> Clear
-              </button>
-              
-              {mode === 'tracing' ? (
-                <button className={`${s.toolBtn} ${s['toolBtn--verify']}`} onClick={handleVerifyTracing}>
-                  <CheckOutlined /> Check &amp; Next →
-                </button>
-              ) : (
-                <button className={`${s.toolBtn} ${s['toolBtn--save']}`} onClick={handleSaveArtwork}>
-                  <DownloadOutlined /> Save
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 // ════════════════════════════════════════════════════════════════════════════════
 // ─── MAIN GAMES HUB PAGE (ALL 4 GAMES) ──────────────────────────────────────────
@@ -1081,7 +816,7 @@ export default function KidsGamesPage() {
           {activeGame === 'abc' && <ABCVoiceGame onQuit={handleQuitGame} />}
           {activeGame === 'math' && <MathFunGame onQuit={handleQuitGame} />}
           {activeGame === 'spell' && <WordSpellGame onQuit={handleQuitGame} />}
-          {activeGame === 'board' && <DigitalBoardGame onQuit={handleQuitGame} />}
+         
         </div>
       )}
 
@@ -1099,10 +834,7 @@ export default function KidsGamesPage() {
           <div className="container-xl position-relative">
             <div className={s.hero__inner}>
               
-              <div className={s.hero__badge}>
-                <PlayCircleOutlined />
-                <span>{t('games.tag', 'Interactive Kids Learning Zone')}</span>
-              </div>
+              
 
               <h1 className={s.hero__title}>
                 {t('games.title', 'Learn • Play • Explore')}
@@ -1271,43 +1003,7 @@ export default function KidsGamesPage() {
                 </div>
               </div>
 
-              {/* ── CARD 4: DIGITAL SLATE & TRACING BOARD ── */}
-              <div className={s.gameCard}>
-                <div className={s.gameCard__illustration} data-theme="board">
-                  <div className={s.gameCard__boardDemo}>
-                    <span className={s.boardDottedA}>A</span>
-                    <span className={s.boardPencil}>✍️</span>
-                  </div>
-                  <span className={`${s.gameCard__badgePill} ${s['gameCard__badgePill--board']}`}>
-                    <HighlightOutlined /> Slate &amp; Tracing
-                  </span>
-                </div>
-
-                <div className={s.gameCard__body}>
-                  <div className={`${s.gameCard__tag} ${s['gameCard__tag--board']}`}>
-                    <HighlightOutlined /> Drawing &amp; Tracing Slate
-                  </div>
-                  <h3 className={s.gameCard__title}>{t('games.tabDraw', 'Digital Slate & Tracing Board')}</h3>
-                  <p className={s.gameCard__desc}>
-                    Trace over dotted letters, numbers, and shapes to hear <strong>"Very Good!"</strong> voice, or freely draw with colorful brushes and shape stamps!
-                  </p>
-
-                  <div className={s.gameCard__meta}>
-                    <span><EditOutlined /> Guided Tracing Cards</span>
-                    <span><DownloadOutlined /> Save Artwork</span>
-                  </div>
-
-                  <button
-                    className={`${s.gameCard__playBtn} ${s['gameCard__playBtn--board']}`}
-                    onClick={() => handlePlayGame('board')}
-                    aria-label="Play Digital Slate & Tracing Board"
-                  >
-                    <PlayCircleOutlined />
-                    <span>{t('common.playNow', 'Play Fullscreen Game')}</span>
-                    <ArrowRightOutlined className={s.gameCard__playBtnArrow} />
-                  </button>
-                </div>
-              </div>
+            
 
             </div>
           </div>

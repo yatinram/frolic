@@ -116,6 +116,26 @@
   margin-top: 40px;
 }
 
+.specsCard__container{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @media (max-width:750px) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+.rightColumn{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @media (max-width:900px) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
 /* Left Specs Card */
 .specsCard {
   background: #ffffff;
@@ -123,6 +143,9 @@
   border: 1px solid #e2e8f0;
   padding: 24px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  width: 125%;
+
+
 
   &__image {
     width: 100%;
@@ -175,6 +198,7 @@
     flex-direction: column;
     gap: 10px;
   }
+ 
 }
 
 /* Right Content Sections */
@@ -268,6 +292,7 @@
   padding: 32px;
   margin-bottom: 28px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  width: 100%;
 
   &__title {
     font-size: 22px;
@@ -378,6 +403,7 @@
     font-weight: 900;
     color: #0f172a;
     margin: 0 0 6px;
+   
   }
 
   &__subtitle {
@@ -483,5 +509,159 @@
     background: #f7941d !important;
     border-color: #f7941d !important;
     color: #ffffff !important;
+  }
+}
+
+// ── Mobile Responsive Breakpoints ────────────────────────────
+
+/* Hero Banner */
+@media (max-width: 992px) {
+  .hero {
+    padding: 90px 0 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 0 50px;
+
+    &__tagline {
+      font-size: 14px;
+    }
+
+    &__actions {
+      flex-direction: column;
+      width: 100%;
+
+      > * {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 70px 0 40px;
+
+    &__title {
+      font-size: clamp(22px, 7vw, 32px);
+    }
+
+    &__backBtn {
+      font-size: 12px;
+      padding: 5px 10px;
+      margin-bottom: 14px;
+    }
+  }
+}
+
+/* Specs Card — remove 125% width on tablet/mobile */
+@media (max-width: 992px) {
+  .specsCard {
+    width: 100% !important;
+    margin-bottom: 28px;
+  }
+}
+
+/* Master layout — ensure full width stack on mobile */
+@media (max-width: 992px) {
+  .masterLayout {
+    margin-top: 28px;
+  }
+}
+
+/* Overview / Curriculum / Milestones sections — reduce padding */
+@media (max-width: 768px) {
+  .overviewSection,
+  .curriculumSection,
+  .milestonesSection,
+  .routineSection {
+    padding: 22px 18px;
+    margin-bottom: 20px;
+
+    &__title {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .overviewSection,
+  .curriculumSection,
+  .milestonesSection,
+  .routineSection {
+    padding: 16px 14px;
+    border-radius: 18px;
+
+    &__title {
+      font-size: 16px;
+    }
+  }
+}
+
+/* Milestones grid — single column on mobile */
+@media (max-width: 640px) {
+  .milestonesSection {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* Pillar cards — 2 col on tablet, 1 col on mobile */
+@media (max-width: 576px) {
+  .pillarCard {
+    padding: 14px;
+
+    &__title {
+      font-size: 13px;
+    }
+  }
+}
+
+/* Term rows */
+@media (max-width: 576px) {
+  .termRow {
+    flex-direction: column;
+    gap: 8px;
+
+    &__badge {
+      align-self: flex-start;
+    }
+  }
+}
+
+/* Bottom Program Switcher */
+@media (max-width: 768px) {
+  .bottomSwitcher {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 22px;
+    gap: 14px;
+    border-radius: 20px;
+
+    &__buttons {
+      width: 100%;
+    }
+  }
+
+  .switchBtn {
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+}
+
+@media (max-width: 576px) {
+  .bottomSwitcher {
+    padding: 16px 16px;
+
+    &__title {
+      font-size: 14px;
+    }
+
+    &__buttons {
+      gap: 6px;
+    }
   }
 }

@@ -11,6 +11,7 @@ import { useLanguage } from '../context/LanguageContext';
 import FloatingEnquireBtn from '../components/common/FloatingEnquireBtn';
 import WhatsAppBubble from '../components/common/WhatsAppBubble';
 import WaveDivider from '../components/common/WaveDivider';
+import { getImageUrl } from '../utils/imageUrl';
 import s from './GalleryPage.module.scss';
 
 // Curated high-res gallery images
@@ -44,8 +45,9 @@ export default function GalleryPage() {
     galleryService
       .getAll()
       .then((res) => {
-        if (res.success && res.data && res.data.length > 0) {
-          setGalleryItems(res.data);
+        const list = res?.data?.data || res?.data || (Array.isArray(res) ? res : []);
+        if (Array.isArray(list)) {
+          setGalleryItems(list);
         }
       })
       .catch(() => { });
@@ -249,7 +251,7 @@ export default function GalleryPage() {
                 onClick={() => setLightboxIndex(idx)}
               >
                 <img
-                  src={item.imageUrl}
+                  src={getImageUrl(item.imageUrl)}
                   alt=""
                   className={s.cardImg}
                   loading="lazy"
@@ -322,7 +324,7 @@ export default function GalleryPage() {
               }}
             >
               <img
-                src={activeItem.imageUrl}
+                src={getImageUrl(activeItem.imageUrl)}
                 alt=""
                 className={s.lightboxImage}
               />
